@@ -1,0 +1,7366 @@
+[
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$600000$l8eXMD3Yb7da2GuNu6SJYI$CjvwGldqhGuCft6B97P3iUlZiM6D1uO4qnPMMNiYQa4=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "testuser789",
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "test789@example.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-02-22T18:05:19.317Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$600000$nwbAn2MuIZ3YqelcNjt790$JJ/vMvLPmq6WxQ/zpNCjE2f51HS1miCQdVJxZA0mcuc=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "testuser999",
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "test999@example.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-02-22T18:06:00.218Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$600000$egSponu19qpnMXS71hd2jD$eecujt3RVn+Hvp/kdSvQwO4fUGI7GVWIr2lwvCSBPc4=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "alice",
+    "first_name": "Alice",
+    "last_name": "Smith",
+    "email": "alice@test.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-02-22T18:11:47.129Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$600000$pZQZaNbFt5RpWRFJc0KbW5$BYd+eJzWMAZ+fVgzGOPQM2UWJKwuGaTNJSn2IzJNVGk=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "bob",
+    "first_name": "Bob",
+    "last_name": "Jones",
+    "email": "bob@test.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-02-22T18:15:20.670Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$600000$gq7mtef1bZlsdWoN3jG5Yp$EjRkzWAQ2KnI0UHKNrFciIX6AsY4f3l2is6TJEfygcg=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "testuser99",
+    "first_name": "Test",
+    "last_name": "User",
+    "email": "testuser99@example.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-02-22T18:17:44.574Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$600000$mzqbOp2WFzol2U1sZmZVJj$s6r6qXlU6oiKoIDUP+Foll4xSxrmzquYn2xMQqo//Sg=",
+    "last_login": "2026-02-22T18:41:59.908Z",
+    "is_superuser": false,
+    "username": "alice99",
+    "first_name": "Alice",
+    "last_name": "Smith",
+    "email": "alice99@test.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-02-22T18:18:04.829Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$600000$75J9PfCVJkAZLr9dyoxaIT$27zEqDIrHLm99SzdGuWS/nxfbkGHE9dLROb90Ek/rTE=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "quicktest",
+    "first_name": "Quick",
+    "last_name": "Test",
+    "email": "quicktest@example.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-02-22T18:42:16.893Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$600000$9EZiUTi3gf2swOLfgPyzdu$vT5Jj8d7uaaxwOz5nVr1HSV++4CuH/+ddTM0hhDKlWs=",
+    "last_login": "2026-02-22T19:14:01.279Z",
+    "is_superuser": false,
+    "username": "demo",
+    "first_name": "Demo",
+    "last_name": "User",
+    "email": "demo@example.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-02-22T19:10:49.990Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$600000$viVKTMP6VTb68T41aCdaXh$TvtbDNGUa+0UpNl13L1PolW8Mcf8vAlYq6wy/lot66c=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "demo_anonymous",
+    "first_name": "",
+    "last_name": "",
+    "email": "demo@example.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-02-24T11:07:10.565Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "alice99"
+    ],
+    "jti": "5fb9cd9c51514cd39bae2d176957f212",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc3MjM4OTA5MSwiaWF0IjoxNzcxNzg0MjkxLCJqdGkiOiI1ZmI5Y2Q5YzUxNTE0Y2QzOWJhZTJkMTc2OTU3ZjIxMiIsInVzZXJfaWQiOjZ9.eauX7Bh_j0N0csgqs5JHI9VbNZnSFzJspkIml_zT8UQ",
+    "created_at": "2026-02-22T18:18:11.827Z",
+    "expires_at": "2026-03-01T18:18:11Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "alice99"
+    ],
+    "jti": "7bf6ef57d57043e4aa23d12ae9bdd0e6",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc3MjM4OTg4NywiaWF0IjoxNzcxNzg1MDg3LCJqdGkiOiI3YmY2ZWY1N2Q1NzA0M2U0YWEyM2QxMmFlOWJkZDBlNiIsInVzZXJfaWQiOjZ9.uiFrxFpjqY5W4fjnfC7qdDxYpZ1Cqiq6MtSt6QiG32I",
+    "created_at": "2026-02-22T18:31:27.561Z",
+    "expires_at": "2026-03-01T18:31:27Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 3,
+  "fields": {
+    "user": [
+      "alice99"
+    ],
+    "jti": "8e2ade9844024a5d9afcf50ce2426a99",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc3MjM5MDEzNywiaWF0IjoxNzcxNzg1MzM3LCJqdGkiOiI4ZTJhZGU5ODQ0MDI0YTVkOWFmY2Y1MGNlMjQyNmE5OSIsInVzZXJfaWQiOjZ9.0i_948bEXKlbeanZ8oK0KhG95LFyf5Xb142JADY7AOg",
+    "created_at": "2026-02-22T18:35:37.331Z",
+    "expires_at": "2026-03-01T18:35:37Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 4,
+  "fields": {
+    "user": [
+      "alice99"
+    ],
+    "jti": "7224564ec9f94f8492466752d9abb0fe",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc3MjM5MDUxOSwiaWF0IjoxNzcxNzg1NzE5LCJqdGkiOiI3MjI0NTY0ZWM5Zjk0Zjg0OTI0NjY3NTJkOWFiYjBmZSIsInVzZXJfaWQiOjZ9.KXsj_QKexDyic4VcNSaYfyp5ooLspCGoYDJjr7vCgRc",
+    "created_at": "2026-02-22T18:41:59.774Z",
+    "expires_at": "2026-03-01T18:41:59Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 5,
+  "fields": {
+    "user": [
+      "demo"
+    ],
+    "jti": "7a4b7c7e48f740a18d110b11ef7f6f2c",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc3MjM5MjQ0MCwiaWF0IjoxNzcxNzg3NjQwLCJqdGkiOiI3YTRiN2M3ZTQ4Zjc0MGExOGQxMTBiMTFlZjdmNmYyYyIsInVzZXJfaWQiOiI4In0.xct2FFkxGNI4C2k5XN51TLUzarRi5j-tUuaP8x3iNE0",
+    "created_at": "2026-02-22T19:14:00.782Z",
+    "expires_at": "2026-03-01T19:14:00Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 6,
+  "fields": {
+    "user": [
+      "testuser789"
+    ],
+    "jti": "503193a34c3f4f3fa525406da540b92b",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc3MjY4MDA1NCwiaWF0IjoxNzcyMDc1MjU0LCJqdGkiOiI1MDMxOTNhMzRjM2Y0ZjNmYTUyNTQwNmRhNTQwYjkyYiIsInVzZXJfaWQiOjF9.dtiFHrsw_bBnWSoNgV_NfdaO5NbnDysN2_SAH7UcrMg",
+    "created_at": "2026-02-26T03:07:34.337Z",
+    "expires_at": "2026-03-05T03:07:34Z"
+  }
+},
+{
+  "model": "scheduling.userprofile",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "testuser789"
+    ],
+    "avatar_url": ""
+  }
+},
+{
+  "model": "scheduling.userprofile",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "testuser999"
+    ],
+    "avatar_url": ""
+  }
+},
+{
+  "model": "scheduling.userprofile",
+  "pk": 3,
+  "fields": {
+    "user": [
+      "alice"
+    ],
+    "avatar_url": ""
+  }
+},
+{
+  "model": "scheduling.userprofile",
+  "pk": 4,
+  "fields": {
+    "user": [
+      "bob"
+    ],
+    "avatar_url": ""
+  }
+},
+{
+  "model": "scheduling.userprofile",
+  "pk": 5,
+  "fields": {
+    "user": [
+      "testuser99"
+    ],
+    "avatar_url": ""
+  }
+},
+{
+  "model": "scheduling.userprofile",
+  "pk": 6,
+  "fields": {
+    "user": [
+      "alice99"
+    ],
+    "avatar_url": ""
+  }
+},
+{
+  "model": "scheduling.userprofile",
+  "pk": 7,
+  "fields": {
+    "user": [
+      "quicktest"
+    ],
+    "avatar_url": ""
+  }
+},
+{
+  "model": "scheduling.userprofile",
+  "pk": 8,
+  "fields": {
+    "user": [
+      "demo"
+    ],
+    "avatar_url": ""
+  }
+},
+{
+  "model": "scheduling.userprofile",
+  "pk": 9,
+  "fields": {
+    "user": [
+      "demo_anonymous"
+    ],
+    "avatar_url": ""
+  }
+},
+{
+  "model": "scheduling.workspace",
+  "pk": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+  "fields": {
+    "name": "Default Workspace",
+    "owner": [
+      "demo_anonymous"
+    ],
+    "created_at": "2026-02-24T11:11:48.496Z",
+    "last_modified": "2026-02-24T12:00:42.306Z"
+  }
+},
+{
+  "model": "scheduling.workspace",
+  "pk": "dceef7f1-4b1e-4bb0-a9eb-ce641d9114e3",
+  "fields": {
+    "name": "Demo Space",
+    "owner": [
+      "demo_anonymous"
+    ],
+    "created_at": "2026-02-24T11:09:43.432Z",
+    "last_modified": "2026-02-24T12:00:42.413Z"
+  }
+},
+{
+  "model": "scheduling.tasktracker",
+  "pk": "0413a785-d223-43a1-8075-4d163e04791b",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "task_id": "057d2705e7b44b1092988e567ed22afe",
+    "status": "COMPLETED",
+    "progress": 100,
+    "current_generation": 0,
+    "current_fitness": 0.0,
+    "result": {
+      "version_id": "b608af04-6196-4c6b-a9c7-62720e694acc",
+      "fitness": 1.0,
+      "hard_violations": 0,
+      "soft_violations": 0,
+      "execution_time_ms": 47
+    },
+    "error_message": null,
+    "created_at": "2026-02-26T01:09:24.081Z",
+    "updated_at": "2026-02-26T01:14:57.121Z"
+  }
+},
+{
+  "model": "scheduling.tasktracker",
+  "pk": "04c8d86e-06ed-4238-a949-314c10f77f3c",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "task_id": "0c8225c298c241ce98e3d28d01e6cfdb",
+    "status": "COMPLETED",
+    "progress": 100,
+    "current_generation": 0,
+    "current_fitness": 0.0,
+    "result": {
+      "version_id": "6e6dab3a-cd98-4727-8ca1-aad4e45859e3",
+      "fitness": 1.0,
+      "hard_violations": 0,
+      "soft_violations": 0,
+      "execution_time_ms": 1087
+    },
+    "error_message": null,
+    "created_at": "2026-02-26T23:19:25.971Z",
+    "updated_at": "2026-02-26T23:19:43.534Z"
+  }
+},
+{
+  "model": "scheduling.tasktracker",
+  "pk": "0739ecc6-2882-4f7d-9d57-39f00f899220",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "task_id": "617f367a9e7e47f5974872287e9ede33",
+    "status": "COMPLETED",
+    "progress": 100,
+    "current_generation": 0,
+    "current_fitness": 0.0,
+    "result": {
+      "version_id": "2996bf27-b94f-40e0-8541-91cde4b5be1f",
+      "fitness": 1.0,
+      "hard_violations": 0,
+      "soft_violations": 0,
+      "execution_time_ms": 1763
+    },
+    "error_message": null,
+    "created_at": "2026-02-26T22:06:44.282Z",
+    "updated_at": "2026-02-26T22:06:48.137Z"
+  }
+},
+{
+  "model": "scheduling.tasktracker",
+  "pk": "154545ee-3247-4c23-97ab-6c1d19e6a4e9",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "task_id": "70d14c3465b544c4b64ec9afef6d67d3",
+    "status": "COMPLETED",
+    "progress": 100,
+    "current_generation": 0,
+    "current_fitness": 0.0,
+    "result": {
+      "version_id": "c1ab62f6-847a-47f7-a5d5-6fb19741341a",
+      "fitness": 1.0,
+      "hard_violations": 0,
+      "soft_violations": 0,
+      "execution_time_ms": 39
+    },
+    "error_message": null,
+    "created_at": "2026-02-26T02:23:25.712Z",
+    "updated_at": "2026-02-26T02:23:26.766Z"
+  }
+},
+{
+  "model": "scheduling.tasktracker",
+  "pk": "275170ab-f950-4c55-8f3d-d3667d561e47",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "task_id": "740eadc5eca54abbbcb444f741cdcffe",
+    "status": "COMPLETED",
+    "progress": 100,
+    "current_generation": 0,
+    "current_fitness": 0.0,
+    "result": {
+      "version_id": "f0b3ca49-787c-4b80-b6f3-9f74a8d184d7",
+      "fitness": 1.0,
+      "hard_violations": 0,
+      "soft_violations": 0,
+      "execution_time_ms": 391
+    },
+    "error_message": null,
+    "created_at": "2026-02-26T17:58:50.397Z",
+    "updated_at": "2026-02-26T17:58:57.555Z"
+  }
+},
+{
+  "model": "scheduling.tasktracker",
+  "pk": "2d1e6484-a6b4-4fc2-8d48-452a2ab7ebad",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "task_id": "ac7fa559a8a44842946ef0156471d511",
+    "status": "COMPLETED",
+    "progress": 100,
+    "current_generation": 0,
+    "current_fitness": 0.0,
+    "result": {
+      "version_id": "f6a21a23-bd33-4da9-95c2-569a8b75ef6a",
+      "fitness": 1.0,
+      "hard_violations": 0,
+      "soft_violations": 0,
+      "execution_time_ms": 29
+    },
+    "error_message": null,
+    "created_at": "2026-02-26T02:45:42.453Z",
+    "updated_at": "2026-02-26T02:45:45.082Z"
+  }
+},
+{
+  "model": "scheduling.tasktracker",
+  "pk": "3135d2e3-a277-4f46-a5d7-6795407f9697",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "task_id": "1f1a4fe683994d65bff36ecb815ed699",
+    "status": "COMPLETED",
+    "progress": 100,
+    "current_generation": 0,
+    "current_fitness": 0.0,
+    "result": {
+      "version_id": "baadbe0a-44b4-4e50-aa5b-7cbb03be7e64",
+      "fitness": 1.0,
+      "hard_violations": 0,
+      "soft_violations": 0,
+      "execution_time_ms": 339
+    },
+    "error_message": null,
+    "created_at": "2026-02-26T22:04:16.032Z",
+    "updated_at": "2026-02-26T22:04:30.418Z"
+  }
+},
+{
+  "model": "scheduling.tasktracker",
+  "pk": "32d05c07-9727-4857-968d-282cdcc67b79",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "task_id": "77fc612932a4428292b7d76bf9188cbf",
+    "status": "COMPLETED",
+    "progress": 100,
+    "current_generation": 0,
+    "current_fitness": 0.0,
+    "result": {
+      "version_id": "c2e4589d-d804-4500-88af-1d621fd5c81f",
+      "fitness": 1.0,
+      "hard_violations": 0,
+      "soft_violations": 0,
+      "execution_time_ms": 421
+    },
+    "error_message": null,
+    "created_at": "2026-02-26T08:33:05.784Z",
+    "updated_at": "2026-02-26T08:33:12.521Z"
+  }
+},
+{
+  "model": "scheduling.tasktracker",
+  "pk": "357db3f1-7d67-4958-a876-25aaa8d315b0",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "task_id": "55bc3e48d6804417913ce79427d5fb52",
+    "status": "COMPLETED",
+    "progress": 100,
+    "current_generation": 0,
+    "current_fitness": 0.0,
+    "result": {
+      "version_id": "55f77d14-cbb4-46bc-a362-31404383d290",
+      "fitness": 1.0,
+      "hard_violations": 0,
+      "soft_violations": 0,
+      "execution_time_ms": 1162
+    },
+    "error_message": null,
+    "created_at": "2026-02-26T23:21:21.540Z",
+    "updated_at": "2026-02-26T23:21:50.873Z"
+  }
+},
+{
+  "model": "scheduling.tasktracker",
+  "pk": "35baa5c4-d63c-4106-9e6d-31015ef78753",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "task_id": "354226e9dd59431594a3db470e04f65c",
+    "status": "COMPLETED",
+    "progress": 100,
+    "current_generation": 0,
+    "current_fitness": 0.0,
+    "result": {
+      "version_id": "f06c8def-eced-4c84-bc9b-416e0c433960",
+      "fitness": 1.0,
+      "hard_violations": 0,
+      "soft_violations": 0,
+      "execution_time_ms": 21
+    },
+    "error_message": null,
+    "created_at": "2026-02-26T01:26:02.076Z",
+    "updated_at": "2026-02-26T01:26:02.634Z"
+  }
+},
+{
+  "model": "scheduling.tasktracker",
+  "pk": "3afe5468-cd7e-489d-8793-ed4c75303968",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "task_id": "324ac96ac295442583fc2108fe6f300f",
+    "status": "COMPLETED",
+    "progress": 100,
+    "current_generation": 0,
+    "current_fitness": 0.0,
+    "result": {
+      "version_id": "4a844558-7694-4f73-9d34-1656ca63595e",
+      "fitness": 1.0,
+      "hard_violations": 0,
+      "soft_violations": 0,
+      "execution_time_ms": 198
+    },
+    "error_message": null,
+    "created_at": "2026-02-26T09:20:29.506Z",
+    "updated_at": "2026-02-26T09:20:33.811Z"
+  }
+},
+{
+  "model": "scheduling.tasktracker",
+  "pk": "42105ef2-06be-46ca-ae6f-c532e845476e",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "task_id": "abccb7cef5c54b0789b49890caf7886a",
+    "status": "COMPLETED",
+    "progress": 100,
+    "current_generation": 0,
+    "current_fitness": 0.0,
+    "result": {
+      "version_id": "685e59b0-4485-4e91-af69-46aba6b59512",
+      "fitness": 1.0,
+      "hard_violations": 0,
+      "soft_violations": 0,
+      "execution_time_ms": 792
+    },
+    "error_message": null,
+    "created_at": "2026-02-26T22:28:24.990Z",
+    "updated_at": "2026-02-26T22:28:37.353Z"
+  }
+},
+{
+  "model": "scheduling.tasktracker",
+  "pk": "45addb0e-0f1b-435b-9a6f-7e0ea249c33c",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "task_id": "6008211003d3468db2789bfd05d6e70c",
+    "status": "COMPLETED",
+    "progress": 100,
+    "current_generation": 0,
+    "current_fitness": 0.0,
+    "result": {
+      "version_id": "247e0fe8-1588-4136-9cfd-5ed7313bc59a",
+      "fitness": 1.0,
+      "hard_violations": 0,
+      "soft_violations": 0,
+      "execution_time_ms": 2499
+    },
+    "error_message": null,
+    "created_at": "2026-02-26T21:58:23.038Z",
+    "updated_at": "2026-02-26T21:58:32.988Z"
+  }
+},
+{
+  "model": "scheduling.tasktracker",
+  "pk": "5134f510-482c-4295-b9a8-b300e74090ec",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "task_id": "8307200bcbb64b97a81aa9bd46cedbc6",
+    "status": "COMPLETED",
+    "progress": 100,
+    "current_generation": 0,
+    "current_fitness": 0.0,
+    "result": {
+      "version_id": "f9da903f-69e4-4b2a-a14c-33605f06a0d9",
+      "fitness": 1.0,
+      "hard_violations": 0,
+      "soft_violations": 0,
+      "execution_time_ms": 66
+    },
+    "error_message": null,
+    "created_at": "2026-02-26T02:00:07.488Z",
+    "updated_at": "2026-02-26T02:00:09.042Z"
+  }
+},
+{
+  "model": "scheduling.tasktracker",
+  "pk": "516509cf-8ee4-4261-81ea-1074e6e1b13f",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "task_id": "caeaa368b40c45c79ed593ea97f96878",
+    "status": "COMPLETED",
+    "progress": 100,
+    "current_generation": 0,
+    "current_fitness": 0.0,
+    "result": {
+      "version_id": "5cbe1966-07a6-42cd-a142-32c3832b32eb",
+      "fitness": 1.0,
+      "hard_violations": 0,
+      "soft_violations": 0,
+      "execution_time_ms": 711
+    },
+    "error_message": null,
+    "created_at": "2026-02-26T02:49:10.638Z",
+    "updated_at": "2026-02-26T02:49:15.813Z"
+  }
+},
+{
+  "model": "scheduling.tasktracker",
+  "pk": "5b40e61b-c2be-4429-9586-2baa15c17903",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "task_id": "48642446e7844d1bb0223a8a8b7ec712",
+    "status": "COMPLETED",
+    "progress": 100,
+    "current_generation": 0,
+    "current_fitness": 0.0,
+    "result": {
+      "version_id": "bf8a53aa-5d63-4840-acda-bfb8957746ed",
+      "fitness": 1.0,
+      "hard_violations": 0,
+      "soft_violations": 0,
+      "execution_time_ms": 511
+    },
+    "error_message": null,
+    "created_at": "2026-02-26T17:58:27.073Z",
+    "updated_at": "2026-02-26T17:58:33.033Z"
+  }
+},
+{
+  "model": "scheduling.tasktracker",
+  "pk": "6266c93b-8161-4752-aefb-875ba6ae1038",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "task_id": "59cba7ad02d84d43b48647d86f48b0e0",
+    "status": "COMPLETED",
+    "progress": 100,
+    "current_generation": 0,
+    "current_fitness": 0.0,
+    "result": {
+      "version_id": "591b30da-6043-4d08-a011-729c8916b2c8",
+      "fitness": 1.0,
+      "hard_violations": 0,
+      "soft_violations": 0,
+      "execution_time_ms": 704
+    },
+    "error_message": null,
+    "created_at": "2026-02-26T22:27:26.827Z",
+    "updated_at": "2026-02-26T22:27:37.268Z"
+  }
+},
+{
+  "model": "scheduling.tasktracker",
+  "pk": "70aab2fc-84fc-4880-9a25-2bf1be5fa175",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "task_id": "c2949f6a14f54e44bd57b62923dbb61e",
+    "status": "COMPLETED",
+    "progress": 100,
+    "current_generation": 0,
+    "current_fitness": 0.0,
+    "result": {
+      "version_id": "e752428b-af3b-4cc4-8d29-3bc73a92a86b",
+      "fitness": 1.0,
+      "hard_violations": 0,
+      "soft_violations": 0,
+      "execution_time_ms": 3932
+    },
+    "error_message": null,
+    "created_at": "2026-02-25T23:41:52.135Z",
+    "updated_at": "2026-02-26T01:14:56.664Z"
+  }
+},
+{
+  "model": "scheduling.tasktracker",
+  "pk": "7acd813f-c0dd-44cf-81d6-84d80074797e",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "task_id": "d366f02d697d4d73b7f46910031129c2",
+    "status": "COMPLETED",
+    "progress": 100,
+    "current_generation": 0,
+    "current_fitness": 0.0,
+    "result": {
+      "version_id": "4f4a3fc6-97f7-401b-8d18-092193a88085",
+      "fitness": 1.0,
+      "hard_violations": 0,
+      "soft_violations": 0,
+      "execution_time_ms": 63
+    },
+    "error_message": null,
+    "created_at": "2026-02-26T09:16:46.128Z",
+    "updated_at": "2026-02-26T09:16:49.725Z"
+  }
+},
+{
+  "model": "scheduling.tasktracker",
+  "pk": "82165e69-253e-4c9e-8c7d-8806e644daf1",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "task_id": "138eb0ae2c2d4d51bd988f257c84953a",
+    "status": "COMPLETED",
+    "progress": 100,
+    "current_generation": 0,
+    "current_fitness": 0.0,
+    "result": {
+      "version_id": "fb7618a1-9eb7-4401-bfd4-d8ea63d2523a",
+      "fitness": 1.0,
+      "hard_violations": 0,
+      "soft_violations": 0,
+      "execution_time_ms": 2868
+    },
+    "error_message": null,
+    "created_at": "2026-02-26T02:40:45.823Z",
+    "updated_at": "2026-02-26T02:40:55.049Z"
+  }
+},
+{
+  "model": "scheduling.tasktracker",
+  "pk": "868e1e35-8bf3-4e10-a4ba-d7bb5b062fb1",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "task_id": "5383284a6f29470eb89b10e8bf56e43f",
+    "status": "COMPLETED",
+    "progress": 100,
+    "current_generation": 0,
+    "current_fitness": 0.0,
+    "result": {
+      "version_id": "8bc2a28a-e776-46d4-9a0c-1b527af6d0fd",
+      "fitness": 1.0,
+      "hard_violations": 0,
+      "soft_violations": 0,
+      "execution_time_ms": 52
+    },
+    "error_message": null,
+    "created_at": "2026-02-26T21:59:22.982Z",
+    "updated_at": "2026-02-26T21:59:24.159Z"
+  }
+},
+{
+  "model": "scheduling.tasktracker",
+  "pk": "8749fc41-aa9e-44a4-ad06-fa753c5c6568",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "task_id": "5de0abcb2b714bea9984c15f4f364908",
+    "status": "COMPLETED",
+    "progress": 100,
+    "current_generation": 0,
+    "current_fitness": 0.0,
+    "result": {
+      "version_id": "3748334e-55ef-4252-a13a-6826db06378a",
+      "fitness": 1.0,
+      "hard_violations": 0,
+      "soft_violations": 0,
+      "execution_time_ms": 306
+    },
+    "error_message": null,
+    "created_at": "2026-02-26T02:42:17.487Z",
+    "updated_at": "2026-02-26T02:42:19.994Z"
+  }
+},
+{
+  "model": "scheduling.tasktracker",
+  "pk": "96f8fb26-8788-4fc5-b495-cc023994a123",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "task_id": "85798a3b3af445b8829d46494b908621",
+    "status": "FAILED",
+    "progress": 0,
+    "current_generation": 0,
+    "current_fitness": 0.0,
+    "result": null,
+    "error_message": "[WinError 32] The process cannot access the file because it is being used by another process: 'C:\\\\Users\\\\DELL\\\\unisched\\\\backend\\\\cache_files\\\\4af87d6799a6ff990fed1e7ae2a1aa27.djcache'",
+    "created_at": "2026-02-26T02:32:56.979Z",
+    "updated_at": "2026-02-26T02:32:58.870Z"
+  }
+},
+{
+  "model": "scheduling.tasktracker",
+  "pk": "9b423ff4-aad9-4423-8d44-826379fa9a95",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "task_id": "2cdddd88aee6479290b2ba2758b83e3f",
+    "status": "COMPLETED",
+    "progress": 100,
+    "current_generation": 0,
+    "current_fitness": 0.0,
+    "result": {
+      "version_id": "92a613b3-32b0-48d2-b581-d16a98528b58",
+      "fitness": 1.0,
+      "hard_violations": 0,
+      "soft_violations": 0,
+      "execution_time_ms": 332
+    },
+    "error_message": null,
+    "created_at": "2026-02-26T22:05:07.719Z",
+    "updated_at": "2026-02-26T22:05:14.188Z"
+  }
+},
+{
+  "model": "scheduling.tasktracker",
+  "pk": "9e044d2c-f21a-4c9a-a9dc-10a6dbddfc8e",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "task_id": "29e42a9a6fd14d609730451846d31958",
+    "status": "COMPLETED",
+    "progress": 100,
+    "current_generation": 0,
+    "current_fitness": 0.0,
+    "result": {
+      "version_id": "d3e39077-76e8-4fdb-b4bf-2f022c0e9918",
+      "fitness": 1.0,
+      "hard_violations": 0,
+      "soft_violations": 0,
+      "execution_time_ms": 53
+    },
+    "error_message": null,
+    "created_at": "2026-02-26T02:46:05.364Z",
+    "updated_at": "2026-02-26T02:46:13.529Z"
+  }
+},
+{
+  "model": "scheduling.tasktracker",
+  "pk": "a26e13fa-d7a5-4bda-aebe-34ab855502d0",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "task_id": "19ae99d739f44317b8bde3c31340fc79",
+    "status": "COMPLETED",
+    "progress": 100,
+    "current_generation": 0,
+    "current_fitness": 0.0,
+    "result": {
+      "version_id": "7978836e-d2a3-4043-83d2-0b0add38684f",
+      "fitness": 1.0,
+      "hard_violations": 0,
+      "soft_violations": 0,
+      "execution_time_ms": 354
+    },
+    "error_message": null,
+    "created_at": "2026-02-26T09:20:00.873Z",
+    "updated_at": "2026-02-26T09:20:10.416Z"
+  }
+},
+{
+  "model": "scheduling.tasktracker",
+  "pk": "a60e5cc2-68ca-433b-bb2c-9812d366ddf5",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "task_id": "6c406ae25b32401792f726082a66a5dd",
+    "status": "COMPLETED",
+    "progress": 100,
+    "current_generation": 0,
+    "current_fitness": 0.0,
+    "result": {
+      "version_id": "67c76391-9db0-4130-b710-3e5370776901",
+      "fitness": 1.0,
+      "hard_violations": 0,
+      "soft_violations": 0,
+      "execution_time_ms": 1176
+    },
+    "error_message": null,
+    "created_at": "2026-02-26T01:59:39.437Z",
+    "updated_at": "2026-02-26T01:59:42.274Z"
+  }
+},
+{
+  "model": "scheduling.tasktracker",
+  "pk": "b0743fe2-de2e-4f99-b8c6-a3800bb6cf62",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "task_id": "12095549dbe84562ae2a31c25ef59fac",
+    "status": "COMPLETED",
+    "progress": 100,
+    "current_generation": 0,
+    "current_fitness": 0.0,
+    "result": {
+      "version_id": "19707aac-4f8a-4071-997a-f0109e3ea135",
+      "fitness": 1.0,
+      "hard_violations": 0,
+      "soft_violations": 0,
+      "execution_time_ms": 411
+    },
+    "error_message": null,
+    "created_at": "2026-02-26T21:57:20.658Z",
+    "updated_at": "2026-02-26T21:57:41.907Z"
+  }
+},
+{
+  "model": "scheduling.tasktracker",
+  "pk": "be81e435-caf5-4ce1-b6f0-f67b3339df60",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "task_id": "1b30be54bdb74133a90b9ae968ae5a73",
+    "status": "COMPLETED",
+    "progress": 100,
+    "current_generation": 0,
+    "current_fitness": 0.0,
+    "result": {
+      "version_id": "c87e27cd-e8bf-4c8c-9eb2-6b215b9aeb52",
+      "fitness": 1.0,
+      "hard_violations": 0,
+      "soft_violations": 0,
+      "execution_time_ms": 764
+    },
+    "error_message": null,
+    "created_at": "2026-02-26T08:34:46.771Z",
+    "updated_at": "2026-02-26T08:34:51.676Z"
+  }
+},
+{
+  "model": "scheduling.tasktracker",
+  "pk": "c43b6efc-5720-48f2-b223-4984e1b28ecc",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "task_id": "183cd54f45a14177ba9d6de4a76e99e9",
+    "status": "COMPLETED",
+    "progress": 100,
+    "current_generation": 0,
+    "current_fitness": 0.0,
+    "result": {
+      "version_id": "82369511-22cf-40e9-9a7b-eff0a549a4bd",
+      "fitness": 0.7873,
+      "hard_violations": 0,
+      "soft_violations": 1,
+      "execution_time_ms": 4550
+    },
+    "error_message": null,
+    "created_at": "2026-02-27T08:02:48.424Z",
+    "updated_at": "2026-02-27T08:03:04.112Z"
+  }
+},
+{
+  "model": "scheduling.tasktracker",
+  "pk": "c832d37b-60a7-44e5-b766-28dacb949468",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "task_id": "aa25379305b3482eb680d3335d2d3200",
+    "status": "COMPLETED",
+    "progress": 100,
+    "current_generation": 0,
+    "current_fitness": 0.0,
+    "result": {
+      "version_id": "47d76cf1-d635-4ee8-ae5e-5833fabf9001",
+      "fitness": 1.0,
+      "hard_violations": 0,
+      "soft_violations": 0,
+      "execution_time_ms": 132
+    },
+    "error_message": null,
+    "created_at": "2026-02-26T01:26:25.398Z",
+    "updated_at": "2026-02-26T01:26:26.721Z"
+  }
+},
+{
+  "model": "scheduling.tasktracker",
+  "pk": "c886fb6a-26c1-463c-9e32-cf483a0d7f84",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "task_id": "d579b8e94f3b48578582bde15eb5bfe1",
+    "status": "COMPLETED",
+    "progress": 100,
+    "current_generation": 0,
+    "current_fitness": 0.0,
+    "result": {
+      "version_id": "199dc547-859b-4734-be47-dcb1463263b0",
+      "fitness": 1.0,
+      "hard_violations": 0,
+      "soft_violations": 0,
+      "execution_time_ms": 199
+    },
+    "error_message": null,
+    "created_at": "2026-02-26T22:28:53.401Z",
+    "updated_at": "2026-02-26T22:28:55.742Z"
+  }
+},
+{
+  "model": "scheduling.tasktracker",
+  "pk": "ca13634a-9028-4df1-800e-1edfe20ebc45",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "task_id": "7220ddeaae1048eca0897c69f2bce581",
+    "status": "COMPLETED",
+    "progress": 100,
+    "current_generation": 0,
+    "current_fitness": 0.0,
+    "result": {
+      "version_id": "ddf32363-95c7-463d-86c0-7c7b72991f4e",
+      "fitness": 1.0,
+      "hard_violations": 0,
+      "soft_violations": 0,
+      "execution_time_ms": 62
+    },
+    "error_message": null,
+    "created_at": "2026-02-26T02:32:45.853Z",
+    "updated_at": "2026-02-26T02:32:47.426Z"
+  }
+},
+{
+  "model": "scheduling.tasktracker",
+  "pk": "db077a71-6ff8-4659-a6a0-ecc4e50bbbbe",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "task_id": "ea99291971554e3c83202eadfec6e282",
+    "status": "COMPLETED",
+    "progress": 100,
+    "current_generation": 0,
+    "current_fitness": 0.0,
+    "result": {
+      "version_id": "9d3335af-417b-4316-8162-2b3e80449331",
+      "fitness": 1.0,
+      "hard_violations": 0,
+      "soft_violations": 0,
+      "execution_time_ms": 997
+    },
+    "error_message": null,
+    "created_at": "2026-02-26T21:59:08.794Z",
+    "updated_at": "2026-02-26T21:59:14.769Z"
+  }
+},
+{
+  "model": "scheduling.tasktracker",
+  "pk": "dc354cb0-8cbf-42e9-8d6f-8564393172c0",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "task_id": "efb7784bb950441282a81b39153fe58c",
+    "status": "COMPLETED",
+    "progress": 100,
+    "current_generation": 0,
+    "current_fitness": 0.0,
+    "result": {
+      "version_id": "48363d62-3288-46ad-a276-b54f14178a52",
+      "fitness": 1.0,
+      "hard_violations": 0,
+      "soft_violations": 0,
+      "execution_time_ms": 366
+    },
+    "error_message": null,
+    "created_at": "2026-02-26T22:24:54.456Z",
+    "updated_at": "2026-02-26T22:25:13.491Z"
+  }
+},
+{
+  "model": "scheduling.tasktracker",
+  "pk": "dcb75576-947e-41e4-b3c5-bc219041ccf1",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "task_id": null,
+    "status": "PENDING",
+    "progress": 0,
+    "current_generation": 0,
+    "current_fitness": 0.0,
+    "result": null,
+    "error_message": null,
+    "created_at": "2026-02-26T23:34:51.266Z",
+    "updated_at": "2026-02-26T23:34:51.266Z"
+  }
+},
+{
+  "model": "scheduling.tasktracker",
+  "pk": "debfca2c-b00b-4ecb-aeac-715c6f0e3285",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "task_id": "6ef5a9617e8440e7b4d7737f08fd54a2",
+    "status": "COMPLETED",
+    "progress": 100,
+    "current_generation": 0,
+    "current_fitness": 0.0,
+    "result": {
+      "version_id": "8ef6ca01-f03e-4327-8712-22c30eed4861",
+      "fitness": 1.0,
+      "hard_violations": 0,
+      "soft_violations": 0,
+      "execution_time_ms": 46
+    },
+    "error_message": null,
+    "created_at": "2026-02-26T22:06:24.219Z",
+    "updated_at": "2026-02-26T22:06:27.858Z"
+  }
+},
+{
+  "model": "scheduling.tasktracker",
+  "pk": "f28c0bac-1033-46fd-a6b3-bbad5f3559ad",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "task_id": "e2ec5191e18a4fd5b98daa22fa8f41b2",
+    "status": "COMPLETED",
+    "progress": 100,
+    "current_generation": 0,
+    "current_fitness": 0.0,
+    "result": {
+      "version_id": "59b0623b-09c3-4533-9b9e-e5f0a6e3423f",
+      "fitness": 0.7873,
+      "hard_violations": 0,
+      "soft_violations": 1,
+      "execution_time_ms": 13273
+    },
+    "error_message": null,
+    "created_at": "2026-02-26T23:35:16.597Z",
+    "updated_at": "2026-02-26T23:35:39.129Z"
+  }
+},
+{
+  "model": "scheduling.lecturer",
+  "pk": 1,
+  "fields": {
+    "name": "Anonymous Guy",
+    "email": "",
+    "department": "CS",
+    "workspace": "dceef7f1-4b1e-4bb0-a9eb-ce641d9114e3",
+    "preferences": {}
+  }
+},
+{
+  "model": "scheduling.lecturer",
+  "pk": 2,
+  "fields": {
+    "name": "dr jane smith",
+    "email": "",
+    "department": "computer science",
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "preferences": {}
+  }
+},
+{
+  "model": "scheduling.lecturer",
+  "pk": 3,
+  "fields": {
+    "name": "Dr. Smith",
+    "email": "",
+    "department": "CS",
+    "workspace": "dceef7f1-4b1e-4bb0-a9eb-ce641d9114e3",
+    "preferences": {}
+  }
+},
+{
+  "model": "scheduling.lecturer",
+  "pk": 4,
+  "fields": {
+    "name": "DR bukola alao",
+    "email": "",
+    "department": "software engineering",
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "preferences": {}
+  }
+},
+{
+  "model": "scheduling.studentgroup",
+  "pk": 1,
+  "fields": {
+    "name": "cs year 3",
+    "size": 1223,
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7"
+  }
+},
+{
+  "model": "scheduling.studentgroup",
+  "pk": 2,
+  "fields": {
+    "name": "Year 1 CS",
+    "size": 30,
+    "workspace": "dceef7f1-4b1e-4bb0-a9eb-ce641d9114e3"
+  }
+},
+{
+  "model": "scheduling.studentgroup",
+  "pk": 3,
+  "fields": {
+    "name": "group b",
+    "size": 70,
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7"
+  }
+},
+{
+  "model": "scheduling.room",
+  "pk": 1,
+  "fields": {
+    "name": "Room 101",
+    "capacity": 50,
+    "building": "Main",
+    "workspace": "dceef7f1-4b1e-4bb0-a9eb-ce641d9114e3"
+  }
+},
+{
+  "model": "scheduling.room",
+  "pk": 2,
+  "fields": {
+    "name": "lab 2",
+    "capacity": 40,
+    "building": "bucodel",
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7"
+  }
+},
+{
+  "model": "scheduling.room",
+  "pk": 3,
+  "fields": {
+    "name": "room 3",
+    "capacity": 400,
+    "building": "New horizon",
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7"
+  }
+},
+{
+  "model": "scheduling.course",
+  "pk": 2,
+  "fields": {
+    "name": "tthe man of the hou",
+    "code": "css102",
+    "duration_hours": 3,
+    "requires_lab": false,
+    "lecturer": null,
+    "student_group": null,
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "description": ""
+  }
+},
+{
+  "model": "scheduling.course",
+  "pk": 3,
+  "fields": {
+    "name": "Intro to CS",
+    "code": "CS101",
+    "duration_hours": 2,
+    "requires_lab": false,
+    "lecturer": 3,
+    "student_group": 2,
+    "workspace": "dceef7f1-4b1e-4bb0-a9eb-ce641d9114e3",
+    "description": ""
+  }
+},
+{
+  "model": "scheduling.course",
+  "pk": 4,
+  "fields": {
+    "name": "introduction to C**",
+    "code": "cosc124",
+    "duration_hours": 3,
+    "requires_lab": false,
+    "lecturer": 3,
+    "student_group": 3,
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "description": ""
+  }
+},
+{
+  "model": "scheduling.course",
+  "pk": 5,
+  "fields": {
+    "name": "strapper",
+    "code": "sen4556",
+    "duration_hours": 1,
+    "requires_lab": false,
+    "lecturer": 4,
+    "student_group": 1,
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "description": ""
+  }
+},
+{
+  "model": "scheduling.constraintconfig",
+  "pk": 1,
+  "fields": {
+    "name": "Lecturer Overlap",
+    "type": "hard",
+    "logic_type": "lecturer_conflict",
+    "weight": 1000,
+    "enabled": true,
+    "workspace": "dceef7f1-4b1e-4bb0-a9eb-ce641d9114e3"
+  }
+},
+{
+  "model": "scheduling.constraintconfig",
+  "pk": 2,
+  "fields": {
+    "name": "Room Overlap",
+    "type": "hard",
+    "logic_type": "room_conflict",
+    "weight": 1000,
+    "enabled": true,
+    "workspace": "dceef7f1-4b1e-4bb0-a9eb-ce641d9114e3"
+  }
+},
+{
+  "model": "scheduling.constraintconfig",
+  "pk": 3,
+  "fields": {
+    "name": "Group Overlap",
+    "type": "hard",
+    "logic_type": "group_conflict",
+    "weight": 1000,
+    "enabled": true,
+    "workspace": "dceef7f1-4b1e-4bb0-a9eb-ce641d9114e3"
+  }
+},
+{
+  "model": "scheduling.constraintconfig",
+  "pk": 4,
+  "fields": {
+    "name": "Room Capacity",
+    "type": "hard",
+    "logic_type": "capacity_overflow",
+    "weight": 500,
+    "enabled": true,
+    "workspace": "dceef7f1-4b1e-4bb0-a9eb-ce641d9114e3"
+  }
+},
+{
+  "model": "scheduling.constraintconfig",
+  "pk": 5,
+  "fields": {
+    "name": "Lecturer Overlap",
+    "type": "hard",
+    "logic_type": "lecturer_conflict",
+    "weight": 1000,
+    "enabled": true,
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7"
+  }
+},
+{
+  "model": "scheduling.constraintconfig",
+  "pk": 6,
+  "fields": {
+    "name": "Room Overlap",
+    "type": "hard",
+    "logic_type": "room_conflict",
+    "weight": 1000,
+    "enabled": true,
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7"
+  }
+},
+{
+  "model": "scheduling.constraintconfig",
+  "pk": 7,
+  "fields": {
+    "name": "Group Overlap",
+    "type": "hard",
+    "logic_type": "group_conflict",
+    "weight": 1000,
+    "enabled": true,
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7"
+  }
+},
+{
+  "model": "scheduling.constraintconfig",
+  "pk": 8,
+  "fields": {
+    "name": "Room Capacity",
+    "type": "hard",
+    "logic_type": "capacity_overflow",
+    "weight": 500,
+    "enabled": true,
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7"
+  }
+},
+{
+  "model": "scheduling.constraintconfig",
+  "pk": 9,
+  "fields": {
+    "name": "Lecturer Availability",
+    "type": "soft",
+    "logic_type": "lecturer_preference",
+    "weight": 50,
+    "enabled": true,
+    "workspace": "dceef7f1-4b1e-4bb0-a9eb-ce641d9114e3"
+  }
+},
+{
+  "model": "scheduling.constraintconfig",
+  "pk": 10,
+  "fields": {
+    "name": "Lecturer Availability",
+    "type": "soft",
+    "logic_type": "lecturer_preference",
+    "weight": 50,
+    "enabled": true,
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7"
+  }
+},
+{
+  "model": "scheduling.timetableversion",
+  "pk": "19707aac-4f8a-4071-997a-f0109e3ea135",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "created_at": "2026-02-26T21:57:41.773Z",
+    "fitness": 1.0,
+    "generations_run": 2,
+    "execution_time": 411.0,
+    "hard_violations": 0,
+    "soft_violations": 0,
+    "is_active": false,
+    "history_data": {
+      "entries": [
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 1
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 30
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 21
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 32
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 33
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 40
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 4
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 39
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 12
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 19
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 13
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 4
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 39
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 33
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 29
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 14
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 37
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 28
+        }
+      ],
+      "fitness_trend": [
+        0.9884,
+        1.0
+      ],
+      "ga_config": {
+        "population_size": 50,
+        "generations": 200,
+        "mutation_rate_min": 0.15,
+        "mutation_rate_max": 0.3
+      },
+      "constraint_violations": {
+        "hard": 0,
+        "soft": 0
+      }
+    }
+  }
+},
+{
+  "model": "scheduling.timetableversion",
+  "pk": "199dc547-859b-4734-be47-dcb1463263b0",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "created_at": "2026-02-26T22:28:55.728Z",
+    "fitness": 1.0,
+    "generations_run": 2,
+    "execution_time": 199.0,
+    "hard_violations": 0,
+    "soft_violations": 0,
+    "is_active": false,
+    "history_data": {
+      "entries": [
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 39
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 10
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 4
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 31
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 30
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 18
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 5
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 11
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 38
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 16
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 28
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 15
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 22
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 34
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 21
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 9
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 7
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 35
+        }
+      ],
+      "fitness_trend": [
+        0.9821,
+        1.0
+      ],
+      "ga_config": {
+        "population_size": 50,
+        "generations": 200,
+        "mutation_rate_min": 0.15,
+        "mutation_rate_max": 0.3
+      },
+      "constraint_violations": {
+        "hard": 0,
+        "soft": 0
+      }
+    }
+  }
+},
+{
+  "model": "scheduling.timetableversion",
+  "pk": "247e0fe8-1588-4136-9cfd-5ed7313bc59a",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "created_at": "2026-02-26T21:58:32.926Z",
+    "fitness": 1.0,
+    "generations_run": 2,
+    "execution_time": 2499.0,
+    "hard_violations": 0,
+    "soft_violations": 0,
+    "is_active": false,
+    "history_data": {
+      "entries": [
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 31
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 10
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 20
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 35
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 21
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 3
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 1
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 14
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 34
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 28
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 38
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 37
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 29
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 30
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 17
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 23
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 9
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 4
+        }
+      ],
+      "fitness_trend": [
+        0.9884,
+        1.0
+      ],
+      "ga_config": {
+        "population_size": 50,
+        "generations": 200,
+        "mutation_rate_min": 0.15,
+        "mutation_rate_max": 0.3
+      },
+      "constraint_violations": {
+        "hard": 0,
+        "soft": 0
+      }
+    }
+  }
+},
+{
+  "model": "scheduling.timetableversion",
+  "pk": "2996bf27-b94f-40e0-8541-91cde4b5be1f",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "created_at": "2026-02-26T22:06:48.123Z",
+    "fitness": 1.0,
+    "generations_run": 1,
+    "execution_time": 1763.0,
+    "hard_violations": 0,
+    "soft_violations": 0,
+    "is_active": false,
+    "history_data": {
+      "entries": [
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 28
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 33
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 2
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 24
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 16
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 17
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 9
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 20
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 38
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 17
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 21
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 12
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 27
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 29
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 30
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 1
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 8
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 27
+        }
+      ],
+      "fitness_trend": [
+        1.0
+      ],
+      "ga_config": {
+        "population_size": 50,
+        "generations": 200,
+        "mutation_rate_min": 0.15,
+        "mutation_rate_max": 0.3
+      },
+      "constraint_violations": {
+        "hard": 0,
+        "soft": 0
+      }
+    }
+  }
+},
+{
+  "model": "scheduling.timetableversion",
+  "pk": "3748334e-55ef-4252-a13a-6826db06378a",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "created_at": "2026-02-26T02:42:19.985Z",
+    "fitness": 1.0,
+    "generations_run": 1,
+    "execution_time": 306.0,
+    "hard_violations": 0,
+    "soft_violations": 0,
+    "is_active": false,
+    "history_data": {
+      "entries": [
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 24
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 34
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 31
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 6
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 7
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 4
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 30
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 18
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 22
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 32
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 13
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 28
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 16
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 1
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 27
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 15
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 35
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 1
+        }
+      ],
+      "fitness_trend": [
+        1.0
+      ],
+      "ga_config": {
+        "population_size": 50,
+        "generations": 200,
+        "mutation_rate_min": 0.15,
+        "mutation_rate_max": 0.3
+      },
+      "constraint_violations": {
+        "hard": 0,
+        "soft": 0
+      }
+    }
+  }
+},
+{
+  "model": "scheduling.timetableversion",
+  "pk": "47d76cf1-d635-4ee8-ae5e-5833fabf9001",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "created_at": "2026-02-26T01:26:26.718Z",
+    "fitness": 1.0,
+    "generations_run": 2,
+    "execution_time": 132.0,
+    "hard_violations": 0,
+    "soft_violations": 0,
+    "is_active": false,
+    "history_data": {
+      "entries": [
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 35
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 33
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 26
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 4
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 10
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 36
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 31
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 14
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 6
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 12
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 34
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 25
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 4
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 16
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 6
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 2
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 27
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 22
+        }
+      ],
+      "fitness_trend": [
+        0.9884,
+        1.0
+      ],
+      "ga_config": {
+        "population_size": 50,
+        "generations": 200,
+        "mutation_rate_min": 0.15,
+        "mutation_rate_max": 0.3
+      },
+      "constraint_violations": {
+        "hard": 0,
+        "soft": 0
+      }
+    }
+  }
+},
+{
+  "model": "scheduling.timetableversion",
+  "pk": "48363d62-3288-46ad-a276-b54f14178a52",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "created_at": "2026-02-26T22:25:13.333Z",
+    "fitness": 1.0,
+    "generations_run": 1,
+    "execution_time": 366.0,
+    "hard_violations": 0,
+    "soft_violations": 0,
+    "is_active": false,
+    "history_data": {
+      "entries": [
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 30
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 10
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 20
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 21
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 2
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 32
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 17
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 18
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 14
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 17
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 23
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 33
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 39
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 8
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 19
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 15
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 24
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 25
+        }
+      ],
+      "fitness_trend": [
+        1.0
+      ],
+      "ga_config": {
+        "population_size": 50,
+        "generations": 200,
+        "mutation_rate_min": 0.15,
+        "mutation_rate_max": 0.3
+      },
+      "constraint_violations": {
+        "hard": 0,
+        "soft": 0
+      }
+    }
+  }
+},
+{
+  "model": "scheduling.timetableversion",
+  "pk": "4a844558-7694-4f73-9d34-1656ca63595e",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "created_at": "2026-02-26T09:20:33.715Z",
+    "fitness": 1.0,
+    "generations_run": 1,
+    "execution_time": 198.0,
+    "hard_violations": 0,
+    "soft_violations": 0,
+    "is_active": false,
+    "history_data": {
+      "entries": [
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 26
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 20
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 13
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 1
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 10
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 4
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 14
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 6
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 16
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 29
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 3
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 2
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 8
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 27
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 37
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 17
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 7
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 14
+        }
+      ],
+      "fitness_trend": [
+        1.0
+      ],
+      "ga_config": {
+        "population_size": 50,
+        "generations": 200,
+        "mutation_rate_min": 0.15,
+        "mutation_rate_max": 0.3
+      },
+      "constraint_violations": {
+        "hard": 0,
+        "soft": 0
+      }
+    }
+  }
+},
+{
+  "model": "scheduling.timetableversion",
+  "pk": "4f4a3fc6-97f7-401b-8d18-092193a88085",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "created_at": "2026-02-26T09:16:49.702Z",
+    "fitness": 1.0,
+    "generations_run": 1,
+    "execution_time": 63.0,
+    "hard_violations": 0,
+    "soft_violations": 0,
+    "is_active": false,
+    "history_data": {
+      "entries": [
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 10
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 19
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 18
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 22
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 21
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 34
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 5
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 2
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 35
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 39
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 13
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 26
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 31
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 4
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 8
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 5
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 28
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 40
+        }
+      ],
+      "fitness_trend": [
+        1.0
+      ],
+      "ga_config": {
+        "population_size": 50,
+        "generations": 200,
+        "mutation_rate_min": 0.15,
+        "mutation_rate_max": 0.3
+      },
+      "constraint_violations": {
+        "hard": 0,
+        "soft": 0
+      }
+    }
+  }
+},
+{
+  "model": "scheduling.timetableversion",
+  "pk": "55f77d14-cbb4-46bc-a362-31404383d290",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "created_at": "2026-02-26T23:21:49.534Z",
+    "fitness": 1.0,
+    "generations_run": 1,
+    "execution_time": 1162.0,
+    "hard_violations": 0,
+    "soft_violations": 0,
+    "is_active": false,
+    "history_data": {
+      "entries": [
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 20
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 5
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 15
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 4
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 23
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 2
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 6
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 13
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 19
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 14
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 10
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 38
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 24
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 17
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 7
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 8
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 29
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 27
+        }
+      ],
+      "fitness_trend": [
+        1.0
+      ],
+      "ga_config": {
+        "population_size": 50,
+        "generations": 200,
+        "mutation_rate_min": 0.15,
+        "mutation_rate_max": 0.3
+      },
+      "constraint_violations": {
+        "hard": 0,
+        "soft": 0
+      }
+    }
+  }
+},
+{
+  "model": "scheduling.timetableversion",
+  "pk": "591b30da-6043-4d08-a011-729c8916b2c8",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "created_at": "2026-02-26T22:27:37.154Z",
+    "fitness": 1.0,
+    "generations_run": 2,
+    "execution_time": 704.0,
+    "hard_violations": 0,
+    "soft_violations": 0,
+    "is_active": false,
+    "history_data": {
+      "entries": [
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 10
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 36
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 37
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 34
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 18
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 23
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 4
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 3
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 7
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 39
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 14
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 24
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 23
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 31
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 12
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 20
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 10
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 15
+        }
+      ],
+      "fitness_trend": [
+        0.9884,
+        1.0
+      ],
+      "ga_config": {
+        "population_size": 50,
+        "generations": 200,
+        "mutation_rate_min": 0.15,
+        "mutation_rate_max": 0.3
+      },
+      "constraint_violations": {
+        "hard": 0,
+        "soft": 0
+      }
+    }
+  }
+},
+{
+  "model": "scheduling.timetableversion",
+  "pk": "59b0623b-09c3-4533-9b9e-e5f0a6e3423f",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "created_at": "2026-02-26T23:35:39.032Z",
+    "fitness": 0.7873,
+    "generations_run": 200,
+    "execution_time": 13273.0,
+    "hard_violations": 0,
+    "soft_violations": 1,
+    "is_active": false,
+    "history_data": {
+      "entries": [
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 7
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 1
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 37
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 31
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 33
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 37
+        },
+        {
+          "course_id": 5,
+          "lecturer_id": 4,
+          "student_group_id": 1,
+          "room_id": 3,
+          "timeslot_id": 26
+        }
+      ],
+      "fitness_trend": [
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873
+      ],
+      "ga_config": {
+        "population_size": 50,
+        "generations": 200,
+        "mutation_rate_min": 0.15,
+        "mutation_rate_max": 0.3
+      },
+      "constraint_violations": {
+        "hard": 0,
+        "soft": 1
+      }
+    }
+  }
+},
+{
+  "model": "scheduling.timetableversion",
+  "pk": "5cbe1966-07a6-42cd-a142-32c3832b32eb",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "created_at": "2026-02-26T02:49:15.797Z",
+    "fitness": 1.0,
+    "generations_run": 1,
+    "execution_time": 711.0,
+    "hard_violations": 0,
+    "soft_violations": 0,
+    "is_active": false,
+    "history_data": {
+      "entries": [
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 26
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 12
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 22
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 4
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 38
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 13
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 33
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 18
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 33
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 37
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 6
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 9
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 36
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 32
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 17
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 11
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 39
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 38
+        }
+      ],
+      "fitness_trend": [
+        1.0
+      ],
+      "ga_config": {
+        "population_size": 50,
+        "generations": 200,
+        "mutation_rate_min": 0.15,
+        "mutation_rate_max": 0.3
+      },
+      "constraint_violations": {
+        "hard": 0,
+        "soft": 0
+      }
+    }
+  }
+},
+{
+  "model": "scheduling.timetableversion",
+  "pk": "67c76391-9db0-4130-b710-3e5370776901",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "created_at": "2026-02-26T01:59:42.248Z",
+    "fitness": 1.0,
+    "generations_run": 2,
+    "execution_time": 1176.0,
+    "hard_violations": 0,
+    "soft_violations": 0,
+    "is_active": false,
+    "history_data": {
+      "entries": [
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 36
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 6
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 17
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 14
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 29
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 10
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 32
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 31
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 18
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 15
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 28
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 14
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 33
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 35
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 3
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 12
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 27
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 26
+        }
+      ],
+      "fitness_trend": [
+        0.9884,
+        1.0
+      ],
+      "ga_config": {
+        "population_size": 50,
+        "generations": 200,
+        "mutation_rate_min": 0.15,
+        "mutation_rate_max": 0.3
+      },
+      "constraint_violations": {
+        "hard": 0,
+        "soft": 0
+      }
+    }
+  }
+},
+{
+  "model": "scheduling.timetableversion",
+  "pk": "685e59b0-4485-4e91-af69-46aba6b59512",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "created_at": "2026-02-26T22:28:37.179Z",
+    "fitness": 1.0,
+    "generations_run": 2,
+    "execution_time": 792.0,
+    "hard_violations": 0,
+    "soft_violations": 0,
+    "is_active": false,
+    "history_data": {
+      "entries": [
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 37
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 32
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 6
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 20
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 37
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 11
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 15
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 7
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 2
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 6
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 10
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 38
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 3
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 1
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 23
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 28
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 29
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 3
+        }
+      ],
+      "fitness_trend": [
+        0.9884,
+        1.0
+      ],
+      "ga_config": {
+        "population_size": 50,
+        "generations": 200,
+        "mutation_rate_min": 0.15,
+        "mutation_rate_max": 0.3
+      },
+      "constraint_violations": {
+        "hard": 0,
+        "soft": 0
+      }
+    }
+  }
+},
+{
+  "model": "scheduling.timetableversion",
+  "pk": "6e6dab3a-cd98-4727-8ca1-aad4e45859e3",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "created_at": "2026-02-26T23:19:43.038Z",
+    "fitness": 1.0,
+    "generations_run": 2,
+    "execution_time": 1087.0,
+    "hard_violations": 0,
+    "soft_violations": 0,
+    "is_active": false,
+    "history_data": {
+      "entries": [
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 29
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 39
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 8
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 37
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 1
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 33
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 18
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 39
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 25
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 1
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 13
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 32
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 5
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 29
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 21
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 30
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 16
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 35
+        }
+      ],
+      "fitness_trend": [
+        0.9884,
+        1.0
+      ],
+      "ga_config": {
+        "population_size": 50,
+        "generations": 200,
+        "mutation_rate_min": 0.15,
+        "mutation_rate_max": 0.3
+      },
+      "constraint_violations": {
+        "hard": 0,
+        "soft": 0
+      }
+    }
+  }
+},
+{
+  "model": "scheduling.timetableversion",
+  "pk": "7978836e-d2a3-4043-83d2-0b0add38684f",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "created_at": "2026-02-26T09:20:10.352Z",
+    "fitness": 1.0,
+    "generations_run": 1,
+    "execution_time": 354.0,
+    "hard_violations": 0,
+    "soft_violations": 0,
+    "is_active": false,
+    "history_data": {
+      "entries": [
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 16
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 23
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 28
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 25
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 32
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 4
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 13
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 19
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 31
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 9
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 31
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 32
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 35
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 5
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 10
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 38
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 27
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 24
+        }
+      ],
+      "fitness_trend": [
+        1.0
+      ],
+      "ga_config": {
+        "population_size": 50,
+        "generations": 200,
+        "mutation_rate_min": 0.15,
+        "mutation_rate_max": 0.3
+      },
+      "constraint_violations": {
+        "hard": 0,
+        "soft": 0
+      }
+    }
+  }
+},
+{
+  "model": "scheduling.timetableversion",
+  "pk": "82369511-22cf-40e9-9a7b-eff0a549a4bd",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "created_at": "2026-02-27T08:03:03.982Z",
+    "fitness": 0.7873,
+    "generations_run": 200,
+    "execution_time": 4550.0,
+    "hard_violations": 0,
+    "soft_violations": 1,
+    "is_active": true,
+    "history_data": {
+      "entries": [
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 27
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 39
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 38
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 11
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 1
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 31
+        },
+        {
+          "course_id": 5,
+          "lecturer_id": 4,
+          "student_group_id": 1,
+          "room_id": 3,
+          "timeslot_id": 6
+        }
+      ],
+      "fitness_trend": [
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873,
+        0.7873
+      ],
+      "ga_config": {
+        "population_size": 50,
+        "generations": 200,
+        "mutation_rate_min": 0.15,
+        "mutation_rate_max": 0.3
+      },
+      "constraint_violations": {
+        "hard": 0,
+        "soft": 1
+      }
+    }
+  }
+},
+{
+  "model": "scheduling.timetableversion",
+  "pk": "8bc2a28a-e776-46d4-9a0c-1b527af6d0fd",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "created_at": "2026-02-26T21:59:24.145Z",
+    "fitness": 1.0,
+    "generations_run": 2,
+    "execution_time": 52.0,
+    "hard_violations": 0,
+    "soft_violations": 0,
+    "is_active": false,
+    "history_data": {
+      "entries": [
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 31
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 28
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 19
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 29
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 11
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 5
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 21
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 16
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 7
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 22
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 32
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 14
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 2
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 39
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 13
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 34
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 37
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 24
+        }
+      ],
+      "fitness_trend": [
+        0.9884,
+        1.0
+      ],
+      "ga_config": {
+        "population_size": 50,
+        "generations": 200,
+        "mutation_rate_min": 0.15,
+        "mutation_rate_max": 0.3
+      },
+      "constraint_violations": {
+        "hard": 0,
+        "soft": 0
+      }
+    }
+  }
+},
+{
+  "model": "scheduling.timetableversion",
+  "pk": "8ef6ca01-f03e-4327-8712-22c30eed4861",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "created_at": "2026-02-26T22:06:27.827Z",
+    "fitness": 1.0,
+    "generations_run": 1,
+    "execution_time": 46.0,
+    "hard_violations": 0,
+    "soft_violations": 0,
+    "is_active": false,
+    "history_data": {
+      "entries": [
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 39
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 9
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 11
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 35
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 16
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 18
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 22
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 15
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 26
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 23
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 20
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 37
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 8
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 29
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 2
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 7
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 21
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 32
+        }
+      ],
+      "fitness_trend": [
+        1.0
+      ],
+      "ga_config": {
+        "population_size": 50,
+        "generations": 200,
+        "mutation_rate_min": 0.15,
+        "mutation_rate_max": 0.3
+      },
+      "constraint_violations": {
+        "hard": 0,
+        "soft": 0
+      }
+    }
+  }
+},
+{
+  "model": "scheduling.timetableversion",
+  "pk": "92a613b3-32b0-48d2-b581-d16a98528b58",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "created_at": "2026-02-26T22:05:14.114Z",
+    "fitness": 1.0,
+    "generations_run": 2,
+    "execution_time": 332.0,
+    "hard_violations": 0,
+    "soft_violations": 0,
+    "is_active": false,
+    "history_data": {
+      "entries": [
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 12
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 21
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 19
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 8
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 40
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 35
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 29
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 32
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 11
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 26
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 40
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 34
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 30
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 7
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 2
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 24
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 33
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 39
+        }
+      ],
+      "fitness_trend": [
+        0.9884,
+        1.0
+      ],
+      "ga_config": {
+        "population_size": 50,
+        "generations": 200,
+        "mutation_rate_min": 0.15,
+        "mutation_rate_max": 0.3
+      },
+      "constraint_violations": {
+        "hard": 0,
+        "soft": 0
+      }
+    }
+  }
+},
+{
+  "model": "scheduling.timetableversion",
+  "pk": "9d3335af-417b-4316-8162-2b3e80449331",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "created_at": "2026-02-26T21:59:14.751Z",
+    "fitness": 1.0,
+    "generations_run": 3,
+    "execution_time": 997.0,
+    "hard_violations": 0,
+    "soft_violations": 0,
+    "is_active": false,
+    "history_data": {
+      "entries": [
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 28
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 31
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 31
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 10
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 33
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 36
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 40
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 35
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 11
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 13
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 7
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 27
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 33
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 8
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 2
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 12
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 24
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 19
+        }
+      ],
+      "fitness_trend": [
+        0.9884,
+        0.9884,
+        1.0
+      ],
+      "ga_config": {
+        "population_size": 50,
+        "generations": 200,
+        "mutation_rate_min": 0.15,
+        "mutation_rate_max": 0.3
+      },
+      "constraint_violations": {
+        "hard": 0,
+        "soft": 0
+      }
+    }
+  }
+},
+{
+  "model": "scheduling.timetableversion",
+  "pk": "b608af04-6196-4c6b-a9c7-62720e694acc",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "created_at": "2026-02-26T01:14:57.113Z",
+    "fitness": 1.0,
+    "generations_run": 2,
+    "execution_time": 47.0,
+    "hard_violations": 0,
+    "soft_violations": 0,
+    "is_active": false,
+    "history_data": {
+      "entries": [
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 24
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 6
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 39
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 36
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 14
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 31
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 10
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 7
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 30
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 33
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 19
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 33
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 12
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 16
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 39
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 34
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 4
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 35
+        }
+      ],
+      "fitness_trend": [
+        0.9884,
+        1.0
+      ],
+      "ga_config": {
+        "population_size": 50,
+        "generations": 200,
+        "mutation_rate_min": 0.15,
+        "mutation_rate_max": 0.3
+      },
+      "constraint_violations": {
+        "hard": 0,
+        "soft": 0
+      }
+    }
+  }
+},
+{
+  "model": "scheduling.timetableversion",
+  "pk": "baadbe0a-44b4-4e50-aa5b-7cbb03be7e64",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "created_at": "2026-02-26T22:04:30.333Z",
+    "fitness": 1.0,
+    "generations_run": 1,
+    "execution_time": 339.0,
+    "hard_violations": 0,
+    "soft_violations": 0,
+    "is_active": false,
+    "history_data": {
+      "entries": [
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 5
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 38
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 14
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 4
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 1
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 8
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 29
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 10
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 9
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 5
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 17
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 40
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 13
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 15
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 6
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 19
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 27
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 11
+        }
+      ],
+      "fitness_trend": [
+        1.0
+      ],
+      "ga_config": {
+        "population_size": 50,
+        "generations": 200,
+        "mutation_rate_min": 0.15,
+        "mutation_rate_max": 0.3
+      },
+      "constraint_violations": {
+        "hard": 0,
+        "soft": 0
+      }
+    }
+  }
+},
+{
+  "model": "scheduling.timetableversion",
+  "pk": "bf8a53aa-5d63-4840-acda-bfb8957746ed",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "created_at": "2026-02-26T17:58:32.996Z",
+    "fitness": 1.0,
+    "generations_run": 1,
+    "execution_time": 511.0,
+    "hard_violations": 0,
+    "soft_violations": 0,
+    "is_active": false,
+    "history_data": {
+      "entries": [
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 15
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 40
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 37
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 18
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 21
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 21
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 16
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 6
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 12
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 32
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 2
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 38
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 31
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 13
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 8
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 34
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 4
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 25
+        }
+      ],
+      "fitness_trend": [
+        1.0
+      ],
+      "ga_config": {
+        "population_size": 50,
+        "generations": 200,
+        "mutation_rate_min": 0.15,
+        "mutation_rate_max": 0.3
+      },
+      "constraint_violations": {
+        "hard": 0,
+        "soft": 0
+      }
+    }
+  }
+},
+{
+  "model": "scheduling.timetableversion",
+  "pk": "c1ab62f6-847a-47f7-a5d5-6fb19741341a",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "created_at": "2026-02-26T02:23:26.761Z",
+    "fitness": 1.0,
+    "generations_run": 1,
+    "execution_time": 39.0,
+    "hard_violations": 0,
+    "soft_violations": 0,
+    "is_active": false,
+    "history_data": {
+      "entries": [
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 27
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 21
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 27
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 19
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 26
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 16
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 18
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 8
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 1
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 16
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 38
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 3
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 11
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 30
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 12
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 9
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 19
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 23
+        }
+      ],
+      "fitness_trend": [
+        1.0
+      ],
+      "ga_config": {
+        "population_size": 50,
+        "generations": 200,
+        "mutation_rate_min": 0.15,
+        "mutation_rate_max": 0.3
+      },
+      "constraint_violations": {
+        "hard": 0,
+        "soft": 0
+      }
+    }
+  }
+},
+{
+  "model": "scheduling.timetableversion",
+  "pk": "c2e4589d-d804-4500-88af-1d621fd5c81f",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "created_at": "2026-02-26T08:33:12.407Z",
+    "fitness": 1.0,
+    "generations_run": 2,
+    "execution_time": 421.0,
+    "hard_violations": 0,
+    "soft_violations": 0,
+    "is_active": false,
+    "history_data": {
+      "entries": [
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 21
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 2
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 32
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 31
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 31
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 24
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 30
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 1
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 15
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 10
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 13
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 34
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 33
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 30
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 12
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 25
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 37
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 39
+        }
+      ],
+      "fitness_trend": [
+        0.9884,
+        1.0
+      ],
+      "ga_config": {
+        "population_size": 50,
+        "generations": 200,
+        "mutation_rate_min": 0.15,
+        "mutation_rate_max": 0.3
+      },
+      "constraint_violations": {
+        "hard": 0,
+        "soft": 0
+      }
+    }
+  }
+},
+{
+  "model": "scheduling.timetableversion",
+  "pk": "c87e27cd-e8bf-4c8c-9eb2-6b215b9aeb52",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "created_at": "2026-02-26T08:34:51.598Z",
+    "fitness": 1.0,
+    "generations_run": 5,
+    "execution_time": 764.0,
+    "hard_violations": 0,
+    "soft_violations": 0,
+    "is_active": false,
+    "history_data": {
+      "entries": [
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 23
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 5
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 38
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 31
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 2
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 31
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 3
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 1
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 25
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 12
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 34
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 23
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 30
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 35
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 25
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 9
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 7
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 11
+        }
+      ],
+      "fitness_trend": [
+        0.9884,
+        0.9884,
+        0.9884,
+        0.9884,
+        1.0
+      ],
+      "ga_config": {
+        "population_size": 50,
+        "generations": 200,
+        "mutation_rate_min": 0.15,
+        "mutation_rate_max": 0.3
+      },
+      "constraint_violations": {
+        "hard": 0,
+        "soft": 0
+      }
+    }
+  }
+},
+{
+  "model": "scheduling.timetableversion",
+  "pk": "d3e39077-76e8-4fdb-b4bf-2f022c0e9918",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "created_at": "2026-02-26T02:46:13.514Z",
+    "fitness": 1.0,
+    "generations_run": 1,
+    "execution_time": 53.0,
+    "hard_violations": 0,
+    "soft_violations": 0,
+    "is_active": false,
+    "history_data": {
+      "entries": [
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 14
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 32
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 22
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 37
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 21
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 13
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 26
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 31
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 4
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 1
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 25
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 33
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 38
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 23
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 5
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 6
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 7
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 24
+        }
+      ],
+      "fitness_trend": [
+        1.0
+      ],
+      "ga_config": {
+        "population_size": 50,
+        "generations": 200,
+        "mutation_rate_min": 0.15,
+        "mutation_rate_max": 0.3
+      },
+      "constraint_violations": {
+        "hard": 0,
+        "soft": 0
+      }
+    }
+  }
+},
+{
+  "model": "scheduling.timetableversion",
+  "pk": "ddf32363-95c7-463d-86c0-7c7b72991f4e",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "created_at": "2026-02-26T02:32:47.420Z",
+    "fitness": 1.0,
+    "generations_run": 1,
+    "execution_time": 62.0,
+    "hard_violations": 0,
+    "soft_violations": 0,
+    "is_active": false,
+    "history_data": {
+      "entries": [
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 33
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 5
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 40
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 4
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 14
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 9
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 28
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 19
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 1
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 7
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 29
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 1
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 38
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 33
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 31
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 6
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 15
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 40
+        }
+      ],
+      "fitness_trend": [
+        1.0
+      ],
+      "ga_config": {
+        "population_size": 50,
+        "generations": 200,
+        "mutation_rate_min": 0.15,
+        "mutation_rate_max": 0.3
+      },
+      "constraint_violations": {
+        "hard": 0,
+        "soft": 0
+      }
+    }
+  }
+},
+{
+  "model": "scheduling.timetableversion",
+  "pk": "e752428b-af3b-4cc4-8d29-3bc73a92a86b",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "created_at": "2026-02-26T01:14:56.550Z",
+    "fitness": 1.0,
+    "generations_run": 2,
+    "execution_time": 3932.0,
+    "hard_violations": 0,
+    "soft_violations": 0,
+    "is_active": false,
+    "history_data": {
+      "entries": [
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 8
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 6
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 33
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 13
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 18
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 14
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 21
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 26
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 33
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 15
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 24
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 25
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 40
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 34
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 5
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 11
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 12
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 9
+        }
+      ],
+      "fitness_trend": [
+        0.9884,
+        1.0
+      ],
+      "ga_config": {
+        "population_size": 50,
+        "generations": 200,
+        "mutation_rate_min": 0.15,
+        "mutation_rate_max": 0.3
+      },
+      "constraint_violations": {
+        "hard": 0,
+        "soft": 0
+      }
+    }
+  }
+},
+{
+  "model": "scheduling.timetableversion",
+  "pk": "f06c8def-eced-4c84-bc9b-416e0c433960",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "created_at": "2026-02-26T01:26:02.631Z",
+    "fitness": 1.0,
+    "generations_run": 1,
+    "execution_time": 21.0,
+    "hard_violations": 0,
+    "soft_violations": 0,
+    "is_active": false,
+    "history_data": {
+      "entries": [
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 13
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 5
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 3
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 37
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 20
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 28
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 6
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 28
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 8
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 32
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 19
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 15
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 2
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 34
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 16
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 26
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 8
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 33
+        }
+      ],
+      "fitness_trend": [
+        1.0
+      ],
+      "ga_config": {
+        "population_size": 50,
+        "generations": 200,
+        "mutation_rate_min": 0.15,
+        "mutation_rate_max": 0.3
+      },
+      "constraint_violations": {
+        "hard": 0,
+        "soft": 0
+      }
+    }
+  }
+},
+{
+  "model": "scheduling.timetableversion",
+  "pk": "f0b3ca49-787c-4b80-b6f3-9f74a8d184d7",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "created_at": "2026-02-26T17:58:57.333Z",
+    "fitness": 1.0,
+    "generations_run": 1,
+    "execution_time": 391.0,
+    "hard_violations": 0,
+    "soft_violations": 0,
+    "is_active": false,
+    "history_data": {
+      "entries": [
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 5
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 28
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 4
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 17
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 20
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 17
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 2
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 39
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 34
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 28
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 11
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 7
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 22
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 4
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 19
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 8
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 39
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 32
+        }
+      ],
+      "fitness_trend": [
+        1.0
+      ],
+      "ga_config": {
+        "population_size": 50,
+        "generations": 200,
+        "mutation_rate_min": 0.15,
+        "mutation_rate_max": 0.3
+      },
+      "constraint_violations": {
+        "hard": 0,
+        "soft": 0
+      }
+    }
+  }
+},
+{
+  "model": "scheduling.timetableversion",
+  "pk": "f6a21a23-bd33-4da9-95c2-569a8b75ef6a",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "created_at": "2026-02-26T02:45:45.072Z",
+    "fitness": 1.0,
+    "generations_run": 1,
+    "execution_time": 29.0,
+    "hard_violations": 0,
+    "soft_violations": 0,
+    "is_active": false,
+    "history_data": {
+      "entries": [
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 9
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 5
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 38
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 30
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 11
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 18
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 8
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 20
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 32
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 35
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 21
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 24
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 10
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 8
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 13
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 3
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 4
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 37
+        }
+      ],
+      "fitness_trend": [
+        1.0
+      ],
+      "ga_config": {
+        "population_size": 50,
+        "generations": 200,
+        "mutation_rate_min": 0.15,
+        "mutation_rate_max": 0.3
+      },
+      "constraint_violations": {
+        "hard": 0,
+        "soft": 0
+      }
+    }
+  }
+},
+{
+  "model": "scheduling.timetableversion",
+  "pk": "f9da903f-69e4-4b2a-a14c-33605f06a0d9",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "created_at": "2026-02-26T02:00:09.039Z",
+    "fitness": 1.0,
+    "generations_run": 2,
+    "execution_time": 66.0,
+    "hard_violations": 0,
+    "soft_violations": 0,
+    "is_active": false,
+    "history_data": {
+      "entries": [
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 29
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 26
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 4
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 28
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 30
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 35
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 5
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 33
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 10
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 29
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 20
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 7
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 8
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 3
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 21
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 14
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 18
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 33
+        }
+      ],
+      "fitness_trend": [
+        0.9884,
+        1.0
+      ],
+      "ga_config": {
+        "population_size": 50,
+        "generations": 200,
+        "mutation_rate_min": 0.15,
+        "mutation_rate_max": 0.3
+      },
+      "constraint_violations": {
+        "hard": 0,
+        "soft": 0
+      }
+    }
+  }
+},
+{
+  "model": "scheduling.timetableversion",
+  "pk": "fb7618a1-9eb7-4401-bfd4-d8ea63d2523a",
+  "fields": {
+    "workspace": "09ffe2de-f30c-45aa-8a4b-973d902282e7",
+    "created_at": "2026-02-26T02:40:54.911Z",
+    "fitness": 1.0,
+    "generations_run": 3,
+    "execution_time": 2868.0,
+    "hard_violations": 0,
+    "soft_violations": 0,
+    "is_active": false,
+    "history_data": {
+      "entries": [
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 26
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 7
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 29
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 28
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 37
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 36
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 2
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 35
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 40
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 34
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 17
+        },
+        {
+          "course_id": 1,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 8
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 5
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 22
+        },
+        {
+          "course_id": 4,
+          "lecturer_id": 3,
+          "student_group_id": 3,
+          "room_id": 3,
+          "timeslot_id": 4
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 37
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 3,
+          "timeslot_id": 31
+        },
+        {
+          "course_id": 2,
+          "lecturer_id": null,
+          "student_group_id": null,
+          "room_id": 2,
+          "timeslot_id": 38
+        }
+      ],
+      "fitness_trend": [
+        0.9884,
+        0.9884,
+        1.0
+      ],
+      "ga_config": {
+        "population_size": 50,
+        "generations": 200,
+        "mutation_rate_min": 0.15,
+        "mutation_rate_max": 0.3
+      },
+      "constraint_violations": {
+        "hard": 0,
+        "soft": 0
+      }
+    }
+  }
+}
+]

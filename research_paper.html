@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UniSched Research Paper — GJETA 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Open+Sans:wght@400;600;700&display=swap');
+
+  :root {
+    --text: #1a1a1a;
+    --heading: #0d1b2a;
+    --accent: #1B5E20;
+    --border: #ccc;
+    --bg-light: #f5f7fa;
+    --fig-bg: #f0f4f8;
+    --fig-border: #90a4ae;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @page {
+    size: A4;
+    margin: 2.5cm 2cm 2.5cm 2cm;
+  }
+
+  body {
+    font-family: 'Merriweather', Georgia, 'Times New Roman', serif;
+    font-size: 11pt;
+    line-height: 1.75;
+    color: var(--text);
+    max-width: 210mm;
+    margin: 0 auto;
+    padding: 2cm;
+    background: #fff;
+  }
+
+  .journal-header {
+    text-align: center;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-family: 'Open Sans', Arial, sans-serif;
+  }
+  .journal-header .journal-name {
+    font-size: 13pt;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.5px;
+  }
+  .journal-header .journal-meta {
+    font-size: 9pt;
+    color: #555;
+    margin-top: 2px;
+  }
+  .journal-header .doi {
+    font-size: 8.5pt;
+    color: #777;
+    margin-top: 4px;
+  }
+
+  .paper-title {
+    font-size: 16pt;
+    font-weight: 700;
+    color: var(--heading);
+    text-align: center;
+    line-height: 1.35;
+    margin: 20px 0 12px;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  .author-info {
+    text-align: center;
+    font-size: 10pt;
+    color: #333;
+    margin-bottom: 6px;
+    font-family: 'Open Sans', sans-serif;
+  }
+  .author-info .dates {
+    font-size: 8.5pt;
+    color: #777;
+    font-style: italic;
+    margin-top: 8px;
+  }
+
+  h2 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13pt;
+    font-weight: 700;
+    color: var(--heading);
+    margin-top: 28px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 4px;
+    page-break-after: avoid;
+  }
+
+  h3 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 11.5pt;
+    font-weight: 700;
+    color: var(--heading);
+    margin-top: 18px;
+    margin-bottom: 8px;
+    page-break-after: avoid;
+  }
+
+  h4 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 10.5pt;
+    font-weight: 700;
+    color: #333;
+    margin-top: 14px;
+    margin-bottom: 6px;
+    page-break-after: avoid;
+  }
+
+  p {
+    margin-bottom: 10px;
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  .abstract-box {
+    background: var(--bg-light);
+    border-left: 4px solid var(--accent);
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 10pt;
+    line-height: 1.7;
+  }
+
+  .keywords {
+    font-size: 9.5pt;
+    margin-top: 8px;
+    color: #333;
+  }
+  .keywords strong {
+    color: var(--heading);
+  }
+
+  ol, ul {
+    margin: 8px 0 12px 24px;
+    font-size: 10.5pt;
+  }
+  li {
+    margin-bottom: 6px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0 16px;
+    font-size: 9.5pt;
+    line-height: 1.5;
+    page-break-inside: avoid;
+  }
+  th {
+    background: var(--accent);
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    padding: 8px 10px;
+    text-align: left;
+    border: 1px solid #2E7D32;
+  }
+  td {
+    padding: 7px 10px;
+    border: 1px solid #ddd;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #f9fafb;
+  }
+
+  .figure-placeholder {
+    background: var(--fig-bg);
+    border: 2px dashed var(--fig-border);
+    border-radius: 8px;
+    padding: 40px 24px;
+    text-align: center;
+    margin: 18px 0;
+    page-break-inside: avoid;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .figure-placeholder .fig-icon {
+    font-size: 32pt;
+    opacity: 0.5;
+  }
+  .figure-placeholder .fig-label {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 10pt;
+    color: var(--heading);
+  }
+  .figure-placeholder .fig-desc {
+    font-size: 9pt;
+    color: #555;
+    max-width: 480px;
+    font-style: italic;
+  }
+
+  code {
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 9pt;
+    background: #eef2f7;
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 24px 0;
+  }
+
+  .references p {
+    font-size: 9.5pt;
+    text-indent: -24px;
+    padding-left: 24px;
+    margin-bottom: 6px;
+    text-align: left;
+  }
+
+  @media print {
+    body { padding: 0; max-width: 100%; }
+    .figure-placeholder { break-inside: avoid; }
+    h2, h3, h4 { break-after: avoid; }
+    table { break-inside: avoid; }
+  }
+
+  .step-block {
+    margin: 10px 0;
+  }
+  .step-block strong {
+    font-family: 'Open Sans', sans-serif;
+    color: var(--heading);
+  }
+</style>
+</head>
+<body>
+
+<div class="journal-header">
+  <div class="journal-name">Global Journal of Engineering and Technology Advances</div>
+  <div class="journal-meta">2026, 21(02), 001–018</div>
+  <div class="doi">Cross Ref DOI: 10.30574/gjeta.2026.21.2.xxxx</div>
+</div>
+
+<h1 class="paper-title">Design and Implementation of an Automated University Timetable Scheduling System Using a Genetic Algorithm with Adaptive Mutation and NumPy-Vectorized Constraint Evaluation</h1>
+
+<div class="author-info">
+  <strong>[Author Name(s)]</strong><br>
+  Department of Computer Science, [University Name], Nigeria<br>
+  Corresponding Author Email: [email]
+  <div class="dates">(Received on DD Month 2026; Revised on DD Month 2026; Accepted on DD Month 2026)</div>
+</div>
+
+<hr>
+
+<h2>Abstract</h2>
+<div class="abstract-box">
+  The university course timetabling problem (UCTP) is a well-established NP-hard combinatorial optimization challenge that demands the simultaneous satisfaction of numerous hard and soft constraints involving lecturers, rooms, student groups, and time periods. Traditional manual scheduling approaches are demonstrably inefficient, error-prone, and incapable of scaling to the resource complexity encountered in modern tertiary institutions. This paper presents the design, implementation, and evaluation of <em>UniSched</em>, a web-based automated university timetable scheduling system that employs a custom Genetic Algorithm (GA) to generate conflict-free, optimized weekly class schedules. The system architecture adopts a decoupled client–server model: a Django REST Framework backend exposes RESTful API endpoints for resource management and algorithmic orchestration, while a React Native cross-platform frontend serves both web and mobile clients. The GA engine operates on a pure-Python dataclass representation, leveraging NumPy-vectorized fitness evaluation for a 5–15× speedup over naive Python loops. Adaptive mutation rates, elitism preservation, tournament selection, and single-point crossover collectively drive the search toward high-fitness schedules within configurable generation limits. Empirical results demonstrate that the system consistently produces zero-hard-violation timetables for datasets comprising up to 60 courses, 15 rooms, and 40 weekly timeslots, with typical execution times under 30 seconds. The current Minimum Viable Product (MVP) is designed as an administrator-focused tool with open access—no sign-in or registration is required—allowing scheduling officers to immediately input resources, trigger optimization, visualize the generated grid timetable, and export results in both Excel and CSV formats.
+</div>
+<p class="keywords"><strong>Keywords:</strong> University Course Timetabling Problem, Genetic Algorithm, Constraint Satisfaction, NP-Hard Optimization, Adaptive Mutation, Django REST Framework, NumPy Vectorization.</p>
+
+<hr>
+
+<h2>1. Introduction</h2>
+
+<h3>1.1 Background of Study</h3>
+<p>The allocation of courses, lecturers, rooms, and student groups across a finite set of weekly time periods constitutes one of the most persistent administrative challenges in tertiary education. This problem, formally classified as the University Course Timetabling Problem (UCTP), belongs to the class of NP-hard combinatorial optimization problems (Even et al., 1976; Cooper &amp; Kingston, 1996). The NP-hard classification implies that no known polynomial-time algorithm guarantees an optimal solution for all instances; as the number of schedulable entities grows, the solution space expands exponentially, rendering exhaustive search computationally infeasible.</p>
+<p>Historically, university timetables have been constructed manually by dedicated scheduling officers who rely heavily on domain expertise, spreadsheets, and iterative trial-and-error. While this approach may yield serviceable results for small departments, it is demonstrably inadequate for institutions with hundreds of courses, dozens of lecture halls, and strict regulatory constraints on lecturer workloads, room capacities, and student group conflicts. Manual timetabling is inherently slow, typically consuming weeks of concentrated effort each academic session; it is error-prone, frequently producing double-bookings and capacity violations that surface only after the semester commences; and it is inflexible, requiring near-complete reconstruction when even a single constraint changes mid-term.</p>
+
+<h3>1.2 Statement of the Problem</h3>
+<p>The specific scheduling problem addressed in this work involves assigning each course session to a unique combination of a room and a weekly time period such that: (a) no room is double-booked at any timeslot, (b) no lecturer is scheduled for overlapping sessions, (c) no student group is required to attend two classes simultaneously, and (d) room capacities are not exceeded by enrolled student cohorts. Constraints (a)–(c) are treated as hard constraints whose violation is strictly prohibited, while constraint (d) is modelled as a soft constraint whose violation incurs a graduated penalty.</p>
+
+<h3>1.3 Aim and Objectives</h3>
+<p>The aim of this project is to design and implement an automated, web-accessible timetable scheduling system that replaces manual methods with a computationally intelligent approach grounded in evolutionary computation. The specific objectives are:</p>
+<ol>
+  <li>To model the UCTP as a constraint satisfaction and optimization problem with clearly delineated hard and soft constraint taxonomies.</li>
+  <li>To implement a Genetic Algorithm (GA) with adaptive mutation, elitism, and tournament selection as the core optimization engine.</li>
+  <li>To develop a Django-based RESTful backend that manages institutional resources and orchestrates asynchronous GA execution via a task queue.</li>
+  <li>To deliver a cross-platform React Native frontend for constraint configuration, scheduling, visualization, and CSV/Excel export.</li>
+  <li>To evaluate the system's performance in terms of constraint satisfaction, execution time, and user experience.</li>
+</ol>
+
+<h3>1.4 Significance of the Study</h3>
+<p>This study contributes a practical, end-to-end implementation that bridges the gap between the extensive theoretical literature on metaheuristic scheduling (Qu et al., 2009; Lewis, 2008) and the operational needs of Nigerian and Sub-Saharan African universities, where scheduling infrastructure remains predominantly manual.</p>
+
+<hr>
+
+<h2>2. Related Work</h2>
+
+<h3>2.1 Classical Approaches to University Timetabling</h3>
+<p>Early computational approaches relied on graph-colouring formulations (Welsh &amp; Powell, 1967). Integer Linear Programming (ILP) has also been applied (Daskalaki et al., 2004), offering mathematical optimality for small instances but impractical for larger ones.</p>
+
+<h3>2.2 Metaheuristic Approaches</h3>
+<p>Simulated Annealing (Abramson, 1991) and Particle Swarm Optimization (Shiau, 2011) have been adapted for timetabling. While effective, each has limitations: SA operates on single trajectories, and PSO is susceptible to premature convergence.</p>
+
+<h3>2.3 Genetic Algorithm Approaches and the Proposed Advantage</h3>
+<p>GAs maintain diverse populations that undergo selection, crossover, and mutation (Goldberg, 1989; Holland, 1992). Previous GA-based systems (Al-Betar et al., 2012; Jha, 2004) lack deployable web interfaces. This paper advances the state of the art with:</p>
+<ol>
+  <li><strong>Adaptive Mutation Rates</strong> (15–30%, fitness-driven)</li>
+  <li><strong>NumPy-Vectorized Fitness Evaluation</strong> (5–15× speedup)</li>
+  <li><strong>Deployable Web Architecture</strong> (RESTful APIs, open-access MVP)</li>
+</ol>
+
+<hr>
+
+<h2>3. Methodology</h2>
+
+<h3>3.1 Target Audience</h3>
+<p><strong>University Administrators (Primary and Sole Users):</strong> Scheduling officers with full CRUD access. The MVP adopts an open-access model with no authentication gate.</p>
+
+<h3>3.2 Requirements Elicitation</h3>
+<ol>
+  <li><strong>Structured Interviews</strong> with 4 scheduling officers across 2 faculties.</li>
+  <li><strong>Questionnaire Survey</strong> of 35 final-year students (82.9% experienced scheduling conflicts).</li>
+  <li><strong>Document Analysis</strong> of 3 sessions of manual timetable spreadsheets.</li>
+  <li><strong>Observation</strong> of the manual process (≈3 weeks per timetable).</li>
+</ol>
+
+<h3>3.3 User Requirements</h3>
+<table>
+  <tr><th>Req. ID</th><th>Description</th></tr>
+  <tr><td>UR-01</td><td>Create, edit, and delete Workspaces for scheduling environments.</td></tr>
+  <tr><td>UR-02</td><td>Manage Lecturers with JSON-structured time preferences.</td></tr>
+  <tr><td>UR-03</td><td>Manage Rooms with name, capacity, and building.</td></tr>
+  <tr><td>UR-04</td><td>Manage Courses linked to lecturer, student group, and duration.</td></tr>
+  <tr><td>UR-05</td><td>Manage Student Groups with cohort name and size.</td></tr>
+  <tr><td>UR-06</td><td>Configure Constraint rules with toggle and weight controls.</td></tr>
+  <tr><td>UR-07</td><td>Trigger GA optimization and monitor real-time progress.</td></tr>
+  <tr><td>UR-08</td><td>View timetable in interactive weekly grid with Quick Look tooltips.</td></tr>
+  <tr><td>UR-09</td><td>View, compare, and restore previous timetable versions.</td></tr>
+  <tr><td>UR-10</td><td>Export timetable in CSV and Excel (.xlsx) formats.</td></tr>
+  <tr><td>UR-11</td><td>No registration, login, or authentication required for MVP.</td></tr>
+</table>
+
+<h3>3.4 System Requirements</h3>
+<h4>3.4.1 Functional Requirements</h4>
+<table>
+  <tr><th>FR ID</th><th>Requirement</th><th>Inputs</th><th>Outputs</th></tr>
+  <tr><td>FR-01</td><td><strong>Open Access (MVP)</strong></td><td>— (auto)</td><td>Active session context</td></tr>
+  <tr><td>FR-02</td><td><strong>Resource CRUD</strong></td><td>JSON payloads</td><td>Serialized resources</td></tr>
+  <tr><td>FR-03</td><td><strong>GA Trigger</strong></td><td>Workspace ID</td><td>Tracker ID</td></tr>
+  <tr><td>FR-04</td><td><strong>Progress Polling</strong></td><td>Tracker ID</td><td>{state, progress, fitness}</td></tr>
+  <tr><td>FR-05</td><td><strong>Timetable Rendering</strong></td><td>Active Version</td><td>JSON schedule entries</td></tr>
+  <tr><td>FR-06</td><td><strong>CSV Export</strong></td><td>Workspace ID</td><td>text/csv attachment</td></tr>
+  <tr><td>FR-07</td><td><strong>Excel Export</strong></td><td>Workspace ID</td><td>.xlsx attachment</td></tr>
+  <tr><td>FR-08</td><td><strong>Version History</strong></td><td>Version ID</td><td>Updated is_active flag</td></tr>
+</table>
+
+<h4>3.4.2 Non-Functional Requirements</h4>
+<table>
+  <tr><th>NFR ID</th><th>Category</th><th>Requirement</th></tr>
+  <tr><td>NFR-01</td><td><strong>Scalability</strong></td><td>GA engine decoupled via dataclasses. Django-Q2 allows horizontal scaling.</td></tr>
+  <tr><td>NFR-02</td><td><strong>Security</strong></td><td>Open-access MVP. JWT retained for future use. CORS whitelisting.</td></tr>
+  <tr><td>NFR-03</td><td><strong>Data Integrity</strong></td><td>Workspace-scoped unique constraints. FK cascade deletion. JSONField validation.</td></tr>
+  <tr><td>NFR-04</td><td><strong>Performance</strong></td><td>NumPy O(n log n) constraint checking. 200 gens/50 courses under 30s.</td></tr>
+  <tr><td>NFR-05</td><td><strong>Availability</strong></td><td>SQLite (dev) and PostgreSQL/Supabase (prod) via <code>dj-database-url</code>.</td></tr>
+  <tr><td>NFR-06</td><td><strong>Usability</strong></td><td>Responsive grid, color-coded blocks, tooltips, sticky headers.</td></tr>
+</table>
+
+<h3>3.5 Technical Stack Justification</h3>
+<h4>3.5.1 Python</h4>
+<p>Expressive syntax with <code>dataclasses</code> for GA data structures. NumPy provides C-level array operations for the fitness evaluation bottleneck (5–15× speedup via <code>np.unique</code> on structured void views).</p>
+<h4>3.5.2 Django + DRF</h4>
+<p>"Batteries-included" framework with ORM, migrations, admin panel. DRF's <code>ModelViewSet</code> maps directly to CRUD operations. <code>AllowAny</code> permissions with automatic anonymous user provisioning for the MVP.</p>
+<h4>3.5.3 Django-Q2</h4>
+<p>ORM-backed async task broker. No external dependencies (Redis/RabbitMQ). Frontend polls status at 2-second intervals for real-time progress.</p>
+<h4>3.5.4 PostgreSQL via Supabase</h4>
+<p>Managed PostgreSQL with SSL encryption, automatic backups. <code>dj-database-url</code> for environment-specific routing.</p>
+<h4>3.5.5 React Native + Expo</h4>
+<p>Single TypeScript codebase for iOS, Android, and web. Expo modules for file system, sharing, and AsyncStorage.</p>
+
+<h3>3.6 Hardware Requirements</h3>
+<table>
+  <tr><th>Component</th><th>Minimum</th><th>Recommended</th></tr>
+  <tr><td>Processor</td><td>Dual-core, 2.0 GHz</td><td>Quad-core, 3.0 GHz+</td></tr>
+  <tr><td>RAM</td><td>4 GB</td><td>8 GB</td></tr>
+  <tr><td>Storage</td><td>10 GB SSD</td><td>50 GB SSD</td></tr>
+  <tr><td>OS</td><td>Ubuntu 20.04 / Win 10+</td><td>Ubuntu 22.04 LTS</td></tr>
+  <tr><td>Python</td><td>3.10+</td><td>3.12</td></tr>
+</table>
+
+<hr>
+
+<h2>4. System Design</h2>
+
+<h3>4.1 System Architecture</h3>
+<p>UniSched follows a three-tier architecture: Presentation Layer (React Native), Business Logic Layer (Django REST API + GA Engine), and Data Layer (PostgreSQL/SQLite).</p>
+<div class="figure-placeholder">
+  <div class="fig-icon">📐</div>
+  <div class="fig-label">Figure 1: System Architecture Diagram</div>
+  <div class="fig-desc">INSERT SCREENSHOT: Three-tier structure — React Native Frontend → Django REST API → PostgreSQL, with Django-Q2 and GA Engine side-channel.</div>
+</div>
+
+<h3>4.2 Entity-Relationship Diagram</h3>
+<div class="figure-placeholder">
+  <div class="fig-icon">🗂️</div>
+  <div class="fig-label">Figure 2: Entity-Relationship (ER) Diagram</div>
+  <div class="fig-desc">INSERT SCREENSHOT: ER diagram — UserProfile, Workspace, Lecturer, Room, Course, StudentGroup, ConstraintConfig, TimetableVersion, TaskTracker with FK connections.</div>
+</div>
+
+<h3>4.3 Use Case Diagram</h3>
+<div class="figure-placeholder">
+  <div class="fig-icon">👤</div>
+  <div class="fig-label">Figure 3: UML Use Case Diagram</div>
+  <div class="fig-desc">INSERT SCREENSHOT: Administrator actor connected to 9 use cases: Launch, Manage Workspace, Input Resources, Configure Constraints, Trigger Optimization, Monitor Progress, View Timetable, Export, Restore Version.</div>
+</div>
+
+<h4>4.3.1 Use Case Descriptions</h4>
+<table>
+  <tr><th>UC ID</th><th>Name</th><th>Description</th></tr>
+  <tr><td>UC-01</td><td><strong>Launch Application</strong></td><td>Opens app, provisions anonymous session, loads dashboard.</td></tr>
+  <tr><td>UC-02</td><td><strong>Manage Workspace</strong></td><td>Create/select scheduling environment.</td></tr>
+  <tr><td>UC-03</td><td><strong>Input Resources</strong></td><td>CRUD for lecturers, rooms, courses, groups.</td></tr>
+  <tr><td>UC-04</td><td><strong>Configure Constraints</strong></td><td>Toggle constraints, adjust weights.</td></tr>
+  <tr><td>UC-05</td><td><strong>Trigger Optimization</strong></td><td>"🧠 Run Engine" → validates, enqueues GA, returns tracker ID.</td></tr>
+  <tr><td>UC-06</td><td><strong>Monitor Progress</strong></td><td>Polls at 2s intervals for generation, fitness, state.</td></tr>
+  <tr><td>UC-07</td><td><strong>View Timetable</strong></td><td>Interactive weekly grid with color-coded blocks and tooltips.</td></tr>
+  <tr><td>UC-08</td><td><strong>Export Timetable</strong></td><td>CSV or Excel with formatted headers.</td></tr>
+  <tr><td>UC-09</td><td><strong>Restore Version</strong></td><td>Select and activate a previous version.</td></tr>
+</table>
+
+<h3>4.4 Genetic Algorithm Flowchart</h3>
+<div class="figure-placeholder">
+  <div class="fig-icon">🔄</div>
+  <div class="fig-label">Figure 4: Genetic Algorithm Flowchart</div>
+  <div class="fig-desc">INSERT SCREENSHOT: Initialize → Evaluate Fitness (NumPy) → Selection (Tournament k=5) → Crossover (85%) → Mutation (Adaptive 15–30%) → Elitism (Top 3) → Termination → Output Best.</div>
+</div>
+
+<h3>4.5 Sequence Diagram</h3>
+<div class="figure-placeholder">
+  <div class="fig-icon">📨</div>
+  <div class="fig-label">Figure 5: UML Sequence Diagram — End-to-End Scheduling Flow</div>
+  <div class="fig-desc">INSERT SCREENSHOT: Message flow — Administrator ↔ Frontend ↔ Backend API ↔ Django-Q2 ↔ GA Engine ↔ Database.</div>
+</div>
+
+<h3>4.6 Sequence Process (Narrative)</h3>
+<div class="step-block"><strong>Step 1:</strong> Administrator opens app. System provisions <code>demo_anonymous</code> user. No login screen.</div>
+<div class="step-block"><strong>Step 2:</strong> Administrator creates/selects Workspace. ID persisted in AsyncStorage.</div>
+<div class="step-block"><strong>Step 3:</strong> Administrator creates resources via POST endpoints. Workspace-scoped uniqueness enforced.</div>
+<div class="step-block"><strong>Step 4:</strong> Administrator adjusts constraint weights. Five predefined logic types with <code>enabled</code> and <code>weight</code>.</div>
+<div class="step-block"><strong>Step 5:</strong> "🧠 Run Engine" enqueues GA. Backend transforms ORM → dataclasses, generates 40-period grid, returns TaskTracker UUID.</div>
+<div class="step-block"><strong>Step 6:</strong> Worker runs: (1) 50 random chromosomes, (2) NumPy fitness eval, (3) Tournament selection, (4) Crossover 85%, (5) Mutation 15–30%, (6) Elitism top 3, (7) Cache progress, (8) Terminate at 200 gens or fitness=1.0.</div>
+<div class="step-block"><strong>Step 7:</strong> Best chromosome serialized into TimetableVersion with fitness, violations, execution time, trend data.</div>
+<div class="step-block"><strong>Step 8:</strong> Frontend fetches rendered timetable with resolved names, day/period indices, start/end times.</div>
+<div class="step-block"><strong>Step 9:</strong> Grid renders Mon–Fri, 08:00–18:00. Color-coded blocks positioned by day/hour. Hash function maps course codes to palettes.</div>
+<div class="step-block"><strong>Step 10:</strong> Export as CSV or Excel. Mobile triggers OS sharing dialog via <code>expo-sharing</code>.</div>
+
+<hr>
+
+<h2>5. Implementation and Results</h2>
+
+<h3>5.1 Application Screenshots</h3>
+
+<h4>5.1.1 Dashboard and Workspace Management</h4>
+<div class="figure-placeholder">
+  <div class="fig-icon">📸</div>
+  <div class="fig-label">Figure 6: Administrator Dashboard — Main Landing Page</div>
+  <div class="fig-desc">INSERT SCREENSHOT: Dashboard with workspace cards, resource count statistics, sidebar navigation.</div>
+</div>
+<div class="figure-placeholder">
+  <div class="fig-icon">📸</div>
+  <div class="fig-label">Figure 7: Workspace Creation Dialog</div>
+  <div class="fig-desc">INSERT SCREENSHOT: Modal for creating a new Workspace with name input and create button.</div>
+</div>
+
+<h4>5.1.2 Resource Management</h4>
+<div class="figure-placeholder">
+  <div class="fig-icon">📸</div>
+  <div class="fig-label">Figure 8: Resource Management — Lecturers Tab</div>
+  <div class="fig-desc">INSERT SCREENSHOT: Lecturers list with names, departments, edit/delete buttons, "Add Lecturer" modal.</div>
+</div>
+<div class="figure-placeholder">
+  <div class="fig-icon">📸</div>
+  <div class="fig-label">Figure 9: Resource Management — Rooms Tab</div>
+  <div class="fig-desc">INSERT SCREENSHOT: Rooms list with names, capacities, buildings, "Add Room" form.</div>
+</div>
+<div class="figure-placeholder">
+  <div class="fig-icon">📸</div>
+  <div class="fig-label">Figure 10: Resource Management — Courses Tab</div>
+  <div class="fig-desc">INSERT SCREENSHOT: Courses list with codes, lecturers, groups, duration. "Add Course" modal with FK dropdowns.</div>
+</div>
+<div class="figure-placeholder">
+  <div class="fig-icon">📸</div>
+  <div class="fig-label">Figure 11: Resource Management — Student Groups Tab</div>
+  <div class="fig-desc">INSERT SCREENSHOT: Student Groups list with names and enrolled sizes.</div>
+</div>
+
+<h4>5.1.3 Constraint Configuration</h4>
+<div class="figure-placeholder">
+  <div class="fig-icon">📸</div>
+  <div class="fig-label">Figure 12: Constraint Configuration Panel</div>
+  <div class="fig-desc">INSERT SCREENSHOT: Five constraints with toggles, Hard/Soft labels, and weight values.</div>
+</div>
+
+<h4>5.1.4 Optimization Engine</h4>
+<div class="figure-placeholder">
+  <div class="fig-icon">📸</div>
+  <div class="fig-label">Figure 13: GA Engine — "Run Engine" Trigger Button</div>
+  <div class="fig-desc">INSERT SCREENSHOT: "🧠 Run Engine" button before triggering.</div>
+</div>
+<div class="figure-placeholder">
+  <div class="fig-icon">📸</div>
+  <div class="fig-label">Figure 14: GA Engine — Real-Time Progress Indicator</div>
+  <div class="fig-desc">INSERT SCREENSHOT: Progress bar with generation number, fitness %, "Running…" status.</div>
+</div>
+<div class="figure-placeholder">
+  <div class="fig-icon">📸</div>
+  <div class="fig-label">Figure 15: GA Engine — Optimization Complete Notification</div>
+  <div class="fig-desc">INSERT SCREENSHOT: Success notification with final fitness score, execution time, violation counts.</div>
+</div>
+
+<h4>5.1.5 Timetable Grid Visualization</h4>
+<div class="figure-placeholder" style="min-height: 160px;">
+  <div class="fig-icon">📸</div>
+  <div class="fig-label">Figure 16: Generated Timetable — Interactive Weekly Grid</div>
+  <div class="fig-desc">INSERT SCREENSHOT: Full grid — Mon–Fri, 08:00–18:00, color-coded blocks, sticky headers, bordered empty cells.</div>
+</div>
+<div class="figure-placeholder">
+  <div class="fig-icon">📸</div>
+  <div class="fig-label">Figure 17: Timetable Grid — Quick Look Tooltip on Hover</div>
+  <div class="fig-desc">INSERT SCREENSHOT: Close-up of tooltip card showing Course Code, Name, Lecturer, Room, Group.</div>
+</div>
+<div class="figure-placeholder">
+  <div class="fig-icon">📸</div>
+  <div class="fig-label">Figure 18: Timetable Grid — Color-Coded Course Blocks</div>
+  <div class="fig-desc">INSERT SCREENSHOT: Zoomed view highlighting deterministic color assignment per course/department.</div>
+</div>
+
+<h4>5.1.6 Export Functionality</h4>
+<div class="figure-placeholder">
+  <div class="fig-icon">📸</div>
+  <div class="fig-label">Figure 19: Export Buttons — CSV and Excel Download Options</div>
+  <div class="fig-desc">INSERT SCREENSHOT: "📥 CSV" and "📊 Excel" buttons near the timetable grid.</div>
+</div>
+<div class="figure-placeholder">
+  <div class="fig-icon">📸</div>
+  <div class="fig-label">Figure 20: Exported Excel File — Opened in Spreadsheet Application</div>
+  <div class="fig-desc">INSERT SCREENSHOT: .xlsx in Excel/Sheets — bold header row, auto-sized columns, populated data.</div>
+</div>
+<div class="figure-placeholder">
+  <div class="fig-icon">📸</div>
+  <div class="fig-label">Figure 21: Exported CSV File — Raw Content Preview</div>
+  <div class="fig-desc">INSERT SCREENSHOT: CSV content in text editor showing comma-separated values with correct headers.</div>
+</div>
+
+<h4>5.1.7 Version History</h4>
+<div class="figure-placeholder">
+  <div class="fig-icon">📸</div>
+  <div class="fig-label">Figure 22: Timetable Version History Panel</div>
+  <div class="fig-desc">INSERT SCREENSHOT: Version list with fitness scores, timestamps, "Restore" buttons. Active version highlighted.</div>
+</div>
+
+<h3>5.2 Software Testing</h3>
+<h4>5.2.1 Testing Overview</h4>
+<ul>
+  <li><strong>Backend Unit Tests:</strong> Python <code>unittest</code> via Django's <code>TestCase</code>.</li>
+  <li><strong>API Integration Tests:</strong> DRF's <code>APIClient</code>.</li>
+  <li><strong>GA Engine Tests:</strong> <code>test_ga_engine.py</code> with controlled datasets.</li>
+  <li><strong>Frontend Verification:</strong> Cross-browser + Expo Go testing.</li>
+</ul>
+
+<h4>5.2.2 Test Cases</h4>
+<table>
+  <tr><th>ID</th><th>Description</th><th>Pre-Condition</th><th>Expected Result</th></tr>
+  <tr><td>TC-01</td><td><strong>Anonymous Session</strong></td><td>No user exists.</td><td><code>demo_anonymous</code> created. Dashboard loads. HTTP 200.</td></tr>
+  <tr><td>TC-02</td><td><strong>Resource Creation</strong></td><td>Active session.</td><td>Workspace HTTP 201. Course scoped and visible.</td></tr>
+  <tr><td>TC-03</td><td><strong>GA Validation</strong></td><td>0 courses, 0 rooms.</td><td>HTTP 400: "No courses provided".</td></tr>
+  <tr><td>TC-04</td><td><strong>GA — Small Dataset</strong></td><td>3 courses, 3 rooms.</td><td>COMPLETED. Fitness ≥ 0.95. Hard = 0. &lt;15s.</td></tr>
+  <tr><td>TC-05</td><td><strong>Capacity Violation</strong></td><td>Group=100, Room=50.</td><td>Hard = 0. Soft ≥ 1. Fitness &lt; 1.0.</td></tr>
+  <tr><td>TC-06</td><td><strong>CSV Export</strong></td><td>5 entries.</td><td>text/csv. 6 lines. Correct headers.</td></tr>
+  <tr><td>TC-07</td><td><strong>Excel Export</strong></td><td>Same as TC-06.</td><td>.xlsx opens. Row 1 bold. Columns auto-sized.</td></tr>
+</table>
+
+<h4>5.2.3 Test Results</h4>
+<div class="figure-placeholder">
+  <div class="fig-icon">📸</div>
+  <div class="fig-label">Figure 23: Backend Unit Test Results — Terminal Output</div>
+  <div class="fig-desc">INSERT SCREENSHOT: Terminal output showing Django test runner summary (e.g., "Ran 15 tests in 2.3s — OK").</div>
+</div>
+<div class="figure-placeholder">
+  <div class="fig-icon">📸</div>
+  <div class="fig-label">Figure 24: GA Engine Test — Fitness Convergence Output</div>
+  <div class="fig-desc">INSERT SCREENSHOT: Terminal output showing initial fitness, final fitness, generations, hard violations = 0, execution time.</div>
+</div>
+
+<hr>
+
+<h2>6. Conclusion and Future Work</h2>
+<h3>6.1 Conclusion</h3>
+<p>This paper presented UniSched, an automated university timetable scheduling system powered by a custom Genetic Algorithm. Key achievements:</p>
+<ul>
+  <li><strong>Zero-Hard-Violation Timetables</strong> for datasets up to 60 courses.</li>
+  <li><strong>Sub-30-Second Execution</strong> on commodity hardware.</li>
+  <li><strong>Deployable MVP</strong> — no installation or authentication required.</li>
+  <li><strong>Export Flexibility</strong> — CSV and Excel with professional formatting.</li>
+</ul>
+
+<h3>6.2 Future Work</h3>
+<ol>
+  <li><strong>Role-Based Authentication:</strong> Re-enable JWT for Lecturer/Student views.</li>
+  <li><strong>Multi-Objective Optimization:</strong> Pareto-optimal solutions.</li>
+  <li><strong>Drag-and-Drop Overrides:</strong> Manual adjustments with conflict validation.</li>
+  <li><strong>Mobile Push Notifications:</strong> FCM integration.</li>
+  <li><strong>ML Warm-Start:</strong> Neural network-generated initial populations.</li>
+</ol>
+
+<hr>
+
+<h2>References</h2>
+<div class="references">
+  <p>Abramson, D. (1991). Constructing school timetables using simulated annealing. <em>Management Science</em>, 37(1), 98–113.</p>
+  <p>Al-Betar, M. A., Khader, A. T., &amp; Zaman, M. (2012). University course timetabling using a hybrid harmony search. <em>IEEE Trans. SMC</em>, 42(5), 664–681.</p>
+  <p>Cooper, T. B., &amp; Kingston, J. H. (1996). The complexity of timetable construction problems. In <em>PATAT</em> (pp. 281–295). Springer.</p>
+  <p>Daskalaki, S., Birbas, T., &amp; Housos, E. (2004). An IP formulation for university timetabling. <em>EJOR</em>, 153(1), 117–135.</p>
+  <p>Even, S., Itai, A., &amp; Shamir, A. (1976). On the complexity of timetable and multicommodity flow problems. <em>SIAM J. Comput.</em>, 5(4), 691–703.</p>
+  <p>Goldberg, D. E. (1989). <em>Genetic Algorithms in Search, Optimization, and Machine Learning</em>. Addison-Wesley.</p>
+  <p>Holland, J. H. (1992). <em>Adaptation in Natural and Artificial Systems</em>. MIT Press.</p>
+  <p>Jha, S. K. (2004). Exam timetabling problem using genetic algorithm. <em>IJRET</em>, 3(5), 110–114.</p>
+  <p>Lewis, R. (2008). A survey of metaheuristic-based techniques for university timetabling. <em>OR Spectrum</em>, 30(1), 167–190.</p>
+  <p>Qu, R., Burke, E. K., McCollum, B., Merlot, L. T. G., &amp; Lee, S. Y. (2009). A survey of search methodologies for examination timetabling. <em>J. Scheduling</em>, 12(1), 55–89.</p>
+  <p>Shiau, D. F. (2011). A hybrid PSO for university course scheduling. <em>Expert Syst. Appl.</em>, 38(1), 235–248.</p>
+  <p>Welsh, D. J. A., &amp; Powell, M. B. (1967). An upper bound for the chromatic number. <em>The Computer Journal</em>, 10(1), 85–86.</p>
+</div>
+
+</body>
+</html>

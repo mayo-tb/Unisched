@@ -1,0 +1,4 @@
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, django_q, scheduling, sessions, token_blacklist
+Running migrations:
+  No migrations to apply.

@@ -1,0 +1,760 @@
+"""
+Genetics Cloud — DRF Views
+============================
+DRF ViewSets and API views for all endpoints.
+"""
+
+import logging
+import csv
+import openpyxl
+from openpyxl.styles import Font
+from django.core.cache import cache
+from django.db.models import Count
+from django.http import HttpResponse
+from rest_framework import viewsets, status, filters
+from rest_framework.decorators import action, api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from django.contrib.auth.models import User
+
+from django_q.tasks import async_task
+
+logger = logging.getLogger(__name__)
+
+from .models import (
+    UserProfile, Workspace, Lecturer, StudentGroup,
+    Room, Course, ConstraintConfig, TimetableVersion,
+    TaskTracker,
+)
+from .serializers import (
+    RegisterSerializer, UserSerializer,
+    WorkspaceSerializer, LecturerSerializer, StudentGroupSerializer,
+    RoomSerializer, CourseSerializer, ConstraintConfigSerializer,
+    TimetableVersionSerializer, TimetableEntryPatchSerializer,
+    GenerateSerializer,
+)
+
+
+
+def get_or_create_demo_user():
+    """Helper for Auth Bypass to assign workspaces to a default anonymous owner."""
+    user, created = User.objects.get_or_create(
+        username="demo_anonymous",
+        defaults={"email": "demo@example.com"}
+    )
+    if created:
+        user.set_password("demo123!")
+        user.save()
+    UserProfile.objects.get_or_create(user=user)
+    return user
+
+
+def ensure_default_constraints(workspace):
+    """
+    Ensure the workspace has the standard set of default constraint configurations.
+    They match the frontend assumption.
+    """
+    defaults = [
+        {
+            "name": "Lecturer Overlap",
+            "type": "hard",
+            "logic_type": "lecturer_conflict",
+            "weight": 1000,
+            "enabled": True
+        },
+        {
+            "name": "Room Overlap",
+            "type": "hard",
+            "logic_type": "room_conflict",
+            "weight": 1000,
+            "enabled": True
+        },
+        {
+            "name": "Group Overlap",
+            "type": "hard",
+            "logic_type": "group_conflict",
+            "weight": 1000,
+            "enabled": True
+        },
+        {
+            "name": "Room Capacity",
+            "type": "hard",
+            "logic_type": "capacity_overflow",
+            "weight": 500,
+            "enabled": True
+        },
+        {
+            "name": "Lecturer Availability",
+            "type": "soft",
+            "logic_type": "lecturer_preference",
+            "weight": 50,
+            "enabled": True
+        }
+    ]
+
+    for default in defaults:
+        ConstraintConfig.objects.get_or_create(
+            workspace=workspace,
+            logic_type=default["logic_type"],
+            defaults={
+                "name": default["name"],
+                "type": default["type"],
+                "weight": default["weight"],
+                "enabled": default["enabled"]
+            }
+        )
+
+
+# ═════════════════════════════════════════════════════════════
+# Auth Endpoints
+# ═════════════════════════════════════════════════════════════
+
+@api_view(["POST"])
+@permission_classes([AllowAny])
+def register_view(request):
+    """POST /api/auth/register/ — Create a new user account."""
+    serializer = RegisterSerializer(data=request.data)
+    serializer.is_valid(raise_exception=True)
+    user = serializer.save()
+    return Response(
+        UserSerializer(user).data,
+        status=status.HTTP_201_CREATED,
+    )
+
+
+@api_view(["POST"])
+@permission_classes([AllowAny])
+def login_view(request):
+    """POST /api/auth/login/ — Login and return JWT tokens."""
+    from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+    
+    username = request.data.get('username')
+    password = request.data.get('password')
+    
+    if not username or not password:
+        return Response(
+            {"detail": "username and password are required"},
+            status=status.HTTP_400_BAD_REQUEST,
+        )
+    
+    try:
+        # Use TokenObtainPairSerializer which expects username/password
+        serializer = TokenObtainPairSerializer(data={
+            'username': username,
+            'password': password
+        })
+        serializer.is_valid(raise_exception=True)
+        return Response(serializer.validated_data, status=status.HTTP_200_OK)
+    except Exception as e:
+        return Response(
+            {"detail": str(e)},
+            status=status.HTTP_401_UNAUTHORIZED,
+        )
+
+
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def me_view(request):
+    """GET /api/auth/me/ — Return current user profile."""
+    return Response(UserSerializer(request.user).data)
+
+
+class LogoutView(APIView):
+    """
+    POST /api/auth/logout/
+    Blacklist the submitted refresh token so it cannot be reused.
+    The access token expires naturally (6 h TTL).
+
+    Body: { "refresh": "<token>" }
+    """
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        refresh_token = request.data.get("refresh")
+        if not refresh_token:
+            return Response(
+                {"error": "refresh token is required."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+        try:
+            from rest_framework_simplejwt.tokens import RefreshToken
+            token = RefreshToken(refresh_token)
+            token.blacklist()
+            return Response({"detail": "Successfully logged out."}, status=status.HTTP_200_OK)
+        except Exception as exc:
+            return Response(
+                {"error": str(exc)},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+
+# ═════════════════════════════════════════════════════════════
+# Workspace Endpoints
+# ═════════════════════════════════════════════════════════════
+
+class WorkspaceViewSet(viewsets.ModelViewSet):
+    serializer_class = WorkspaceSerializer
+    permission_classes = [AllowAny]
+
+    def get_queryset(self):
+        user = self.request.user
+        if user.is_anonymous:
+            user = get_or_create_demo_user()
+            
+        return Workspace.objects.filter(
+            owner=user,
+        ).annotate(
+            courses_count=Count("courses", distinct=True),
+            rooms_count=Count("rooms", distinct=True),
+            lecturers_count=Count("lecturers", distinct=True),
+            groups_count=Count("student_groups", distinct=True),
+        )
+
+    def perform_create(self, serializer):
+        user = self.request.user
+        if user.is_anonymous:
+            user = get_or_create_demo_user()
+        serializer.save(owner=user)
+
+    @action(
+        detail=True, methods=["post"],
+        permission_classes=[AllowAny],
+        url_path="generate",
+    )
+    def generate(self, request, pk=None):
+        """POST /api/workspaces/<id>/generate/ — Trigger GA."""
+        workspace = self.get_object()
+
+        gen_serializer = GenerateSerializer(data=request.data)
+        gen_serializer.is_valid(raise_exception=True)
+        config_override = gen_serializer.validated_data
+
+        if not workspace.courses.exists():
+            return Response(
+                {"error": "Cannot run optimization: workspace has no courses."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+        if not workspace.rooms.exists():
+            return Response(
+                {"error": "Cannot run optimization: workspace has no rooms."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        # Create tracker record
+        tracker = TaskTracker.objects.create(
+            workspace=workspace,
+            status="PENDING",
+            progress=0,
+        )
+
+        # Seed the cache immediately so the first poll doesn't hit the DB
+        cache.set(
+            f"unisched:ga:progress:{tracker.id}",
+            {"state": "PENDING", "task_id": str(tracker.id), "progress": 0, "generation": 0, "fitness": 0.0},
+            timeout=120,
+        )
+
+        # Queue async task
+        from .tasks import run_ga_task
+        q_task_id = async_task(
+            run_ga_task,
+            tracker_id=str(tracker.id),
+            workspace_id=str(workspace.id),
+            config_override=dict(config_override),
+            task_name=f"GA-{workspace.name}",
+        )
+
+        tracker.task_id = q_task_id
+        tracker.save(update_fields=["task_id"])
+
+        username = request.user.username if request.user.is_authenticated else "demo_anonymous"
+        logger.info(
+            "[API] GA task queued",
+            extra={
+                "tracker_id": str(tracker.id),
+                "workspace_id": str(workspace.id),
+                "q_task_id": q_task_id,
+                "config": config_override,
+                "user": username,
+            },
+        )
+
+        return Response(
+            {"task_id": str(tracker.id), "status": "PENDING"},
+            status=status.HTTP_202_ACCEPTED,
+        )
+
+    @action(
+        detail=True, methods=["get"],
+        permission_classes=[AllowAny],
+        url_path="export_csv",
+    )
+    def export_csv(self, request, pk=None):
+        """GET /api/workspaces/<id>/export_csv/ - Export active timetable as CSV."""
+        workspace = self.get_object()
+        user = request.user
+        if user.is_anonymous:
+            user = get_or_create_demo_user()
+
+        if workspace.owner != user and not getattr(user.profile, 'is_admin', False):
+            return Response({"error": "Permission denied."}, status=status.HTTP_403_FORBIDDEN)
+
+        timetable = TimetableVersion.objects.filter(workspace=workspace, is_active=True).first()
+        if not timetable:
+            return Response({"error": "No active timetable available to export."}, status=status.HTTP_404_NOT_FOUND)
+
+        entries_data = timetable.history_data.get("entries", [])
+        
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = f'attachment; filename="timetable_{workspace.name}.csv"'
+        
+        writer = csv.writer(response)
+        writer.writerow(['Course Code', 'Course Name', 'Lecturer', 'Room', 'Student Group', 'Day', 'Start Time', 'End Time'])
+
+        days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+
+        for entry in entries_data:
+            try:
+                course = Course.objects.get(id=entry["course_id"])
+                room = Room.objects.get(id=entry["room_id"])
+                
+                lecturer_id = entry.get("lecturer_id")
+                lecturer = Lecturer.objects.filter(id=lecturer_id).first() if lecturer_id else None
+                
+                group_id = entry.get("student_group_id")
+                group = StudentGroup.objects.filter(id=group_id).first() if group_id else None
+
+                timeslot_id = entry["timeslot_id"]
+                day_idx = (timeslot_id - 1) // 8
+                period = (timeslot_id - 1) % 8 + 1
+                start_hour = 7 + period
+                end_hour = start_hour + course.duration_hours
+                
+                start_time_str = f"{min(start_hour, 23):02d}:00"
+                end_time_str = "23:59" if end_hour >= 24 else f"{end_hour:02d}:00"
+
+                writer.writerow([
+                    course.code,
+                    course.name,
+                    lecturer.name if lecturer else "Unassigned",
+                    room.name,
+                    group.name if group else "All Groups",
+                    days[day_idx] if day_idx < 5 else "N/A",
+                    start_time_str,
+                    end_time_str
+                ])
+            except (Course.DoesNotExist, Room.DoesNotExist):
+                continue
+
+        return response
+
+    @action(
+        detail=True, methods=["get"],
+        permission_classes=[AllowAny],
+        url_path="export_excel",
+    )
+    def export_excel(self, request, pk=None):
+        """GET /api/workspaces/<id>/export_excel/ - Export active timetable as Excel."""
+        workspace = self.get_object()
+        user = request.user
+        if user.is_anonymous:
+            user = get_or_create_demo_user()
+
+        if workspace.owner != user and not getattr(user.profile, 'is_admin', False):
+            return Response({"error": "Permission denied."}, status=status.HTTP_403_FORBIDDEN)
+
+        timetable = TimetableVersion.objects.filter(workspace=workspace, is_active=True).first()
+        if not timetable:
+            return Response({"error": "No active timetable available to export."}, status=status.HTTP_404_NOT_FOUND)
+
+        entries_data = timetable.history_data.get("entries", [])
+        
+        wb = openpyxl.Workbook()
+        ws = wb.active
+        ws.title = "Schedule"
+
+        headers = ['Course Code', 'Course Name', 'Lecturer', 'Room', 'Student Group', 'Day', 'Start Time', 'End Time']
+        ws.append(headers)
+
+        bold_font = Font(bold=True)
+        for col_num in range(1, len(headers) + 1):
+            cell = ws.cell(row=1, column=col_num)
+            cell.font = bold_font
+
+        days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+        for entry in entries_data:
+            try:
+                course = Course.objects.get(id=entry["course_id"])
+                room = Room.objects.get(id=entry["room_id"])
+                
+                lecturer_id = entry.get("lecturer_id")
+                lecturer = Lecturer.objects.filter(id=lecturer_id).first() if lecturer_id else None
+                
+                group_id = entry.get("student_group_id")
+                group = StudentGroup.objects.filter(id=group_id).first() if group_id else None
+
+                timeslot_id = entry["timeslot_id"]
+                day_idx = (timeslot_id - 1) // 8
+                period = (timeslot_id - 1) % 8 + 1
+                start_hour = 7 + period
+                end_hour = start_hour + course.duration_hours
+                
+                start_time_str = f"{min(start_hour, 23):02d}:00"
+                end_time_str = "23:59" if end_hour >= 24 else f"{end_hour:02d}:00"
+
+                row_data = [
+                    course.code,
+                    course.name,
+                    lecturer.name if lecturer else "Unassigned",
+                    room.name,
+                    group.name if group else "All Groups",
+                    days[day_idx] if day_idx < 5 else "N/A",
+                    start_time_str,
+                    end_time_str
+                ]
+                ws.append(row_data)
+            except (Course.DoesNotExist, Room.DoesNotExist):
+                continue
+
+        # Auto-size columns
+        for col in ws.columns:
+            max_length = 0
+            column_letter = col[0].column_letter
+            for cell in col:
+                try:
+                    if len(str(cell.value)) > max_length:
+                        max_length = len(cell.value)
+                except:
+                    pass
+            adjusted_width = (max_length + 2)
+            ws.column_dimensions[column_letter].width = adjusted_width
+
+        response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+        response['Content-Disposition'] = f'attachment; filename="timetable_{workspace.name}.xlsx"'
+        wb.save(response)
+
+        return response
+
+    @action(
+        detail=False, methods=["get"],
+        url_path=r"status/(?P<tracker_id>[a-zA-Z0-9\-]+)",
+        permission_classes=[AllowAny]
+    )
+    def task_status(self, request, tracker_id=None):
+        """
+        GET /api/workspaces/status/<tracker_id>/
+        Poll GA progress. Reads from DatabaseCache first to avoid per-request
+        DB hits during the evolution loop. Falls back to DB on cache miss.
+        """
+        user = request.user
+        if user.is_anonymous:
+            user = get_or_create_demo_user()
+
+        # Cache-first read
+        cached = cache.get(f"unisched:ga:progress:{tracker_id}")
+        if cached is not None:
+            # Still need ownership check — resolve workspace from DB once
+            # (cheap: simple PK lookup, not a full tracker fetch)
+            try:
+                tracker = TaskTracker.objects.select_related("workspace__owner").get(id=tracker_id)
+            except TaskTracker.DoesNotExist:
+                return Response({"error": "Task not found"}, status=status.HTTP_404_NOT_FOUND)
+
+            if tracker.workspace.owner != user:
+                return Response({"error": "Permission denied."}, status=status.HTTP_403_FORBIDDEN)
+
+            response_data = dict(cached)
+            # Attach final result/error from DB once the task is done
+            if tracker.status == "COMPLETED":
+                response_data["result"] = tracker.result
+            elif tracker.status == "FAILED":
+                response_data["error"] = tracker.error_message
+            return Response(response_data)
+
+        # ── DB fallback (cache miss / expired) ────────────────
+        try:
+            tracker = TaskTracker.objects.select_related("workspace__owner").get(id=tracker_id)
+        except TaskTracker.DoesNotExist:
+            return Response({"error": "Task not found"}, status=status.HTTP_404_NOT_FOUND)
+        except Exception:
+            return Response({"error": "Invalid tracker ID"}, status=status.HTTP_400_BAD_REQUEST)
+
+        if tracker.workspace.owner != user:
+            return Response({"error": "Permission denied."}, status=status.HTTP_403_FORBIDDEN)
+
+        response_data = {
+            "task_id":   str(tracker.id),
+            "state":     tracker.status,
+            "progress":  tracker.progress,
+            "generation": tracker.current_generation,
+            "fitness":   tracker.current_fitness,
+        }
+        if tracker.status == "COMPLETED":
+            response_data["result"] = tracker.result
+        elif tracker.status == "FAILED":
+            response_data["error"] = tracker.error_message
+
+        return Response(response_data)
+
+
+# ═════════════════════════════════════════════════════════════
+# Resource Endpoints (Scoped to Workspace)
+# ═════════════════════════════════════════════════════════════
+
+class _WorkspaceScopedMixin:
+    """Filter queryset to resources within the user's own workspaces."""
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        user = self.request.user
+        if user.is_anonymous:
+            user = get_or_create_demo_user()
+            
+        user_workspace_ids = Workspace.objects.filter(
+            owner=user
+        ).values_list("id", flat=True)
+        return qs.filter(workspace_id__in=user_workspace_ids)
+
+
+class LecturerViewSet(_WorkspaceScopedMixin, viewsets.ModelViewSet):
+    queryset = Lecturer.objects.select_related("workspace").all()
+    serializer_class = LecturerSerializer
+    permission_classes = [AllowAny]
+    filter_backends = [filters.SearchFilter, filters.OrderingFilter]
+    search_fields = ["name", "department"]
+    ordering_fields = ["name", "department"]
+    ordering = ["name"]
+
+
+class StudentGroupViewSet(_WorkspaceScopedMixin, viewsets.ModelViewSet):
+    queryset = StudentGroup.objects.select_related("workspace").all()
+    serializer_class = StudentGroupSerializer
+    permission_classes = [AllowAny]
+    filter_backends = [filters.SearchFilter, filters.OrderingFilter]
+    search_fields = ["name"]
+    ordering = ["name"]
+
+
+class RoomViewSet(_WorkspaceScopedMixin, viewsets.ModelViewSet):
+    queryset = Room.objects.select_related("workspace").all()
+    serializer_class = RoomSerializer
+    permission_classes = [AllowAny]
+    filter_backends = [filters.SearchFilter, filters.OrderingFilter]
+    search_fields = ["name", "building"]
+    ordering_fields = ["name", "capacity"]
+    ordering = ["name"]
+
+
+class CourseViewSet(_WorkspaceScopedMixin, viewsets.ModelViewSet):
+    queryset = Course.objects.select_related("lecturer", "student_group", "workspace").all()
+    serializer_class = CourseSerializer
+    permission_classes = [AllowAny]
+    filter_backends = [filters.SearchFilter, filters.OrderingFilter]
+    search_fields = ["name", "code", "description"]
+    ordering_fields = ["code", "name", "duration_hours"]
+    ordering = ["code"]
+
+
+class ConstraintConfigViewSet(_WorkspaceScopedMixin, viewsets.ModelViewSet):
+    queryset = ConstraintConfig.objects.select_related("workspace").all()
+    serializer_class = ConstraintConfigSerializer
+    permission_classes = [AllowAny]
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        user = self.request.user
+        if user.is_anonymous:
+            user = get_or_create_demo_user()
+            
+        user_workspaces = Workspace.objects.filter(owner=user)
+        for w in user_workspaces:
+            ensure_default_constraints(w)
+            
+        return qs
+
+
+# ═════════════════════════════════════════════════════════════
+# Timetable Version Endpoints
+# ═════════════════════════════════════════════════════════════
+
+class TimetableVersionViewSet(_WorkspaceScopedMixin, viewsets.ReadOnlyModelViewSet):
+    """Read-only access to timetable versions."""
+    queryset = TimetableVersion.objects.select_related("workspace").all()
+    serializer_class = TimetableVersionSerializer
+    permission_classes = [AllowAny]
+
+
+@api_view(["PATCH"])
+@permission_classes([AllowAny])
+def patch_timetable_entry(request, version_id, entry_index):
+    """
+    PATCH /api/timetable/entries/<version_id>/<entry_index>/
+    Manual override: swap room_id or timeslot_id for a specific entry.
+    """
+    try:
+        version = TimetableVersion.objects.select_related("workspace").get(id=version_id)
+    except TimetableVersion.DoesNotExist:
+        return Response(
+            {"error": "Timetable version not found."},
+            status=status.HTTP_404_NOT_FOUND,
+        )
+
+    user = request.user
+    if user.is_anonymous:
+        user = get_or_create_demo_user()
+
+    if version.workspace.owner != user:
+        return Response(
+            {"error": "Permission denied."},
+            status=status.HTTP_403_FORBIDDEN,
+        )
+
+    serializer = TimetableEntryPatchSerializer(data=request.data)
+    serializer.is_valid(raise_exception=True)
+
+    entries = version.history_data.get("entries", [])
+    try:
+        idx = int(entry_index)
+    except (TypeError, ValueError):
+        return Response(
+            {"error": "Invalid entry index."},
+            status=status.HTTP_400_BAD_REQUEST,
+        )
+
+    if idx < 0 or idx >= len(entries):
+        return Response(
+            {"error": f"Entry index {idx} out of range (0-{len(entries) - 1})."},
+            status=status.HTTP_400_BAD_REQUEST,
+        )
+
+    # Validate conflicts BEFORE allowing override
+    # Build proposed entry with updated fields
+    proposed_entry = dict(entries[idx])
+    if "room_id" in serializer.validated_data:
+        proposed_entry["room_id"] = serializer.validated_data["room_id"]
+    if "timeslot_id" in serializer.validated_data:
+        proposed_entry["timeslot_id"] = serializer.validated_data["timeslot_id"]
+
+    # Get existing entries EXCLUDING the current one (since we're replacing it)
+    other_entries = entries[:idx] + entries[idx+1:]
+
+    # Build lookup maps for conflict checking
+    rooms  = {r.id: {"capacity": r.capacity, "name": r.name}
+               for r in version.workspace.rooms.all()}
+    groups = {g.id: {"size": g.size, "name": g.name}
+               for g in version.workspace.student_groups.all()}
+
+    from .services.conflict_check import check_partial_conflicts
+    conflicts = check_partial_conflicts(
+        proposed=proposed_entry,
+        existing_entries=other_entries,
+        room_map=rooms,
+        group_map=groups,
+    )
+
+    # If conflicts detected, reject the override
+    if conflicts:
+        return Response(
+            {
+                "error": "Cannot apply override due to scheduling conflicts.",
+                "conflicts": conflicts,
+            },
+            status=status.HTTP_400_BAD_REQUEST,
+        )
+
+    # Apply the override
+    if "room_id" in serializer.validated_data:
+        entries[idx]["room_id"] = serializer.validated_data["room_id"]
+    if "timeslot_id" in serializer.validated_data:
+        entries[idx]["timeslot_id"] = serializer.validated_data["timeslot_id"]
+
+    version.history_data["entries"] = entries
+    version.save(update_fields=["history_data"])
+
+    return Response(
+        {"message": "Entry updated.", "entry": entries[idx]},
+        status=status.HTTP_200_OK,
+    )
+
+
+# ═════════════════════════════════════════════════════════════
+# Partial Conflict Check Endpoint
+# ═════════════════════════════════════════════════════════════
+
+@api_view(["POST"])
+@permission_classes([AllowAny])
+def conflict_check_view(request):
+    """
+    POST /api/timetable/conflict-check/
+
+    Validates a single proposed timetable entry against an existing version
+    for conflicts, WITHOUT re-running the full GA.
+
+    Used by the frontend for drag-and-drop manual override validation.
+
+    Request body:
+        {
+            "version_id": "<int>",
+            "entry": {
+                "room_id": 3,
+                "timeslot_id": 12,
+                "lecturer_id": 5,
+                "student_group_id": 2,
+                "course_id": 8
+            }
+        }
+
+    Response:
+        { "conflicts": ["Room conflict: ...", ...] }   # empty = no conflict
+    """
+    version_id = request.data.get("version_id")
+    proposed   = request.data.get("entry")
+
+    if not version_id or not proposed:
+        return Response(
+            {"error": "Both 'version_id' and 'entry' are required."},
+            status=status.HTTP_400_BAD_REQUEST,
+        )
+
+    # ── Cache-first read for frequently checked versions ──────────────
+    import hashlib, json
+    entry_hash = hashlib.md5(json.dumps(proposed, sort_keys=True).encode()).hexdigest()
+    cache_key  = f"unisched:conflict:{version_id}:{entry_hash}"
+    cached     = cache.get(cache_key)
+    if cached is not None:
+        return Response({"conflicts": cached, "cached": True})
+
+    # ── Load version ──────────────────────────────────────────────────
+    try:
+        version = TimetableVersion.objects.select_related("workspace").get(id=version_id)
+    except TimetableVersion.DoesNotExist:
+        return Response({"error": "Timetable version not found."}, status=status.HTTP_404_NOT_FOUND)
+
+    user = request.user
+    if user.is_anonymous:
+        user = get_or_create_demo_user()
+
+    if version.workspace.owner != user:
+        return Response({"error": "Permission denied."}, status=status.HTTP_403_FORBIDDEN)
+
+    existing_entries = version.history_data.get("entries", [])
+
+    # Build room & group lookup maps from workspace DB for capacity check
+    rooms  = {r.id: {"capacity": r.capacity, "name": r.name}
+               for r in version.workspace.rooms.all()}
+    groups = {g.id: {"size": g.size, "name": g.name}
+               for g in version.workspace.student_groups.all()}
+
+    from .services.conflict_check import check_partial_conflicts
+    conflicts = check_partial_conflicts(
+        proposed=proposed,
+        existing_entries=existing_entries,
+        room_map=rooms,
+        group_map=groups,
+    )
+
+    # Cache result for 60 s — entry + version combination unlikely to change faster
+    cache.set(cache_key, conflicts, timeout=60)
+
+    return Response({"conflicts": conflicts})

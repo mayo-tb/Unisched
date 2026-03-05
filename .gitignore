@@ -1,0 +1,55 @@
+# ── Python ────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+*.egg
+dist/
+build/
+
+# ── Virtual environments ─────────────────────
+backend/venv/
+venv/
+.venv/
+env/
+
+# ── Django ────────────────────────────────────
+backend/db.sqlite3
+backend/cache_files/
+backend/mediafiles/
+backend/staticfiles/
+*.log
+
+# ── Node / React Native ─────────────────────
+node_modules/
+mobile/node_modules/
+web/node_modules/
+.expo/
+mobile/.expo/
+web/dist/
+web/build/
+*.tsbuildinfo
+
+# ── OS files ──────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── IDE ───────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── Environment variables ────────────────────
+.env
+.env.local
+.env.production
+.env.*.local
+
+# ── Misc ──────────────────────────────────────
+*.bak
+*.tmp
+.gemini/

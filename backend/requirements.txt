@@ -1,0 +1,13 @@
+django>=4.2,<5.0
+djangorestframework>=3.14
+djangorestframework-simplejwt>=5.3
+django-cors-headers>=4.3
+psycopg2-binary>=2.9
+reportlab>=4.1
+openpyxl>=3.1
+numpy>=1.26
+firebase-admin>=6.4
+django-q2>=1.4.0
+jsonschema>=4.20 # JSON schema validation
+dj-database-url>=2.1.0
+python-dotenv>=1.0.1
