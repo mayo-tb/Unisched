@@ -11,6 +11,7 @@ os.environ.pop("DATABASE_URL", None)
 
 # Make sure dotenv doesn't override
 os.environ["DATABASE_URL"] = ""
+# whats up
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings")
 
