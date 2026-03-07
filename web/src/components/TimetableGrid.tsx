@@ -42,7 +42,7 @@ function getTimeslotLabel(timeslotIndex: number): string {
 
 /* ── Component ─────────────────────────────────── */
 
-export function TimetableGrid({ entries, rooms, versionId, onRoomReassign }: TimetableGridProps) {
+export function TimetableGrid({ entries, rooms, versionId: _versionId, onRoomReassign }: TimetableGridProps) {
     const [modalEntry, setModalEntry] = useState<TimetableEntryResponse | null>(null);
 
     /** Look up entries for a given day (0-4) and hour (8-16) */

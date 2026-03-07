@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { workspacesApi, resourcesApi, timetableApi } from "../lib/api";
-import type { CourseResponse, RoomResponse, TimetableEntryResponse } from "../lib/api";
+
 
 /* ── Workspaces ──────────────────────────────────── */
 
@@ -20,7 +20,7 @@ export function useCourses(workspaceId?: string, search?: string) {
     return useQuery({
         queryKey: ["courses", workspaceId, search],
         queryFn: async () => {
-            const { data } = await resourcesApi.courses(workspaceId, search);
+            const { data } = await resourcesApi.courses.list(workspaceId, search);
             return data;
         },
         enabled: !!workspaceId,
@@ -33,7 +33,7 @@ export function useRooms(workspaceId?: string) {
     return useQuery({
         queryKey: ["rooms", workspaceId],
         queryFn: async () => {
-            const { data } = await resourcesApi.rooms(workspaceId);
+            const { data } = await resourcesApi.rooms.list(workspaceId);
             return data;
         },
         enabled: !!workspaceId,
