@@ -91,6 +91,13 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8083",   # Expo Metro (current)
     "http://localhost:19006",  # Expo web
 ]
+
+# Add extra origins from environment (comma-separated)
+# e.g. CORS_EXTRA_ORIGINS=https://unisched-frontend.onrender.com
+_extra = os.environ.get("CORS_EXTRA_ORIGINS", "")
+if _extra:
+    CORS_ALLOWED_ORIGINS += [o.strip() for o in _extra.split(",") if o.strip()]
+
 CORS_ALLOW_CREDENTIALS = True
 
 # Explicitly whitelist all headers the frontend sends
