@@ -87,7 +87,7 @@ export function Sidebar({ collapsed, onToggle, onClose }: SidebarProps) {
                         <h1 className="text-slate-100 font-bold text-base tracking-tight whitespace-nowrap">
                             UniSched
                         </h1>
-                        <p className="text-slate-500 text-[11px] font-mono whitespace-nowrap">
+                        <p className="text-slate-500 text-fluid-xs font-mono whitespace-nowrap">
                             {isLecturer ? "Staff Portal" : "Admin Portal"}
                         </p>
                     </div>
@@ -135,7 +135,7 @@ export function Sidebar({ collapsed, onToggle, onClose }: SidebarProps) {
                             >
                                 <span className="block truncate">{item.label}</span>
                                 <span className={cn(
-                                    "block text-[10px] truncate",
+                                    "block text-fluid-xs truncate",
                                     isActive ? "text-sky-400/60" : "text-slate-600"
                                 )}>
                                     {item.subtitle}
@@ -161,8 +161,8 @@ export function Sidebar({ collapsed, onToggle, onClose }: SidebarProps) {
                     <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-800/40">
                         <div className="gc-led gc-led-success" />
                         <div className="flex-1 min-w-0">
-                            <p className="text-[11px] font-medium text-slate-300">Engine Online</p>
-                            <p className="text-[10px] text-slate-500 font-mono">GA Core v2.0</p>
+                            <p className="text-fluid-xs font-medium text-slate-300">Engine Online</p>
+                            <p className="text-fluid-xs text-slate-500 font-mono">GA Core v2.0</p>
                         </div>
                     </div>
                 </div>

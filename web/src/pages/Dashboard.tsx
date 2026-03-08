@@ -44,7 +44,7 @@ export function Dashboard() {
             {/* Header */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
-                    <h2 className="text-2xl sm:text-3xl font-bold text-slate-100 flex items-center gap-3">
+                    <h2 className="text-fluid-2xl sm:text-fluid-3xl font-bold text-slate-100 flex items-center gap-3">
                         <Activity className="text-sky-500 shrink-0" />
                         Intelligence Hub
                     </h2>
@@ -113,12 +113,12 @@ export function Dashboard() {
             {/* Lower section — stacks on mobile, 2/3 + 1/3 on lg */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
                 {/* Visualization */}
-                <div className="lg:col-span-2 bg-slate-900/50 border border-slate-800 rounded-2xl p-4 sm:p-6 min-h-[300px] sm:min-h-[400px] backdrop-blur-sm relative overflow-hidden">
+                <div className="lg:col-span-2 bg-slate-900/50 border border-slate-800 rounded-2xl p-4 sm:p-6 min-h-[40vh] backdrop-blur-sm relative overflow-hidden">
                     <div className="flex items-center justify-between mb-6 relative z-10">
                         <h3 className="text-base sm:text-lg font-semibold text-slate-200">Genetic Progression</h3>
                     </div>
 
-                    <div className="w-full h-[240px] sm:h-[300px] flex items-center justify-center border-2 border-dashed border-slate-800 rounded-xl bg-slate-950/30 relative z-10 p-4">
+                    <div className="w-full h-[min(35vh,300px)] flex items-center justify-center border-2 border-dashed border-slate-800 rounded-xl bg-slate-950/30 relative z-10 p-4">
                         {isRunning || generateMutation.isPending ? (
                             <div className="text-center space-y-4 w-full max-w-xs">
                                 <RefreshCw className="w-10 sm:w-12 h-10 sm:h-12 text-sky-500 animate-spin mx-auto" />

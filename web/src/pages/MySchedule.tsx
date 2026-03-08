@@ -54,11 +54,11 @@ export function MySchedule() {
             {/* Header */}
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-2xl font-bold text-slate-100 flex items-center gap-3">
-                        <Calendar className="w-7 h-7 text-sky-400" />
+                    <h1 className="text-fluid-xl sm:text-fluid-2xl font-bold text-slate-100 flex items-center gap-3">
+                        <Calendar className="text-sky-400 shrink-0 w-6 h-6 sm:w-7 sm:h-7" />
                         My Schedule
                     </h1>
-                    <p className="text-slate-400 text-sm mt-1">
+                    <p className="text-slate-400 text-fluid-sm mt-1">
                         Your assigned classes for the current timetable
                     </p>
                 </div>
@@ -82,9 +82,9 @@ export function MySchedule() {
                 </div>
             ) : (
                 /* ── Timetable Grid ─────────────────── */
-                <div className="bg-slate-900/50 border border-slate-800 rounded-2xl overflow-hidden">
-                    <div className="overflow-x-auto">
-                        <table className="w-full border-collapse min-w-[800px]">
+                <div className="bg-slate-900/50 border border-slate-800 rounded-2xl overflow-hidden w-full">
+                    <div className="overflow-x-auto w-full">
+                        <table className="w-full border-collapse min-w-max">
                             <thead>
                                 <tr className="bg-slate-800/60">
                                     <th className="p-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider border-b border-slate-700 w-28">
@@ -111,17 +111,17 @@ export function MySchedule() {
                                                         <div className="bg-sky-500/10 border border-sky-500/20 rounded-lg p-2.5 hover:bg-sky-500/15 transition-colors">
                                                             <div className="flex items-center gap-1.5 mb-1">
                                                                 <BookOpen className="w-3.5 h-3.5 text-sky-400" />
-                                                                <span className="text-sky-300 text-xs font-semibold truncate">
+                                                                <span className="text-sky-300 text-fluid-xs font-semibold truncate">
                                                                     {entry.course_code}
                                                                 </span>
                                                             </div>
-                                                            <p className="text-slate-300 text-[11px] truncate">{entry.course_name}</p>
-                                                            <div className="flex items-center gap-2 mt-1.5 text-[10px] text-slate-500">
-                                                                <span className="flex items-center gap-0.5">
-                                                                    <MapPin className="w-3 h-3" /> {entry.room_name}
+                                                            <p className="text-slate-300 text-fluid-xs truncate">{entry.course_name}</p>
+                                                            <div className="flex flex-wrap items-center gap-2 mt-1.5 text-fluid-xs text-slate-500">
+                                                                <span className="flex items-center gap-0.5 truncate">
+                                                                    <MapPin className="w-3 h-3 shrink-0" /> {entry.room_name}
                                                                 </span>
-                                                                <span className="flex items-center gap-0.5">
-                                                                    <Users className="w-3 h-3" /> {entry.group_name}
+                                                                <span className="flex items-center gap-0.5 truncate">
+                                                                    <Users className="w-3 h-3 shrink-0" /> {entry.group_name}
                                                                 </span>
                                                             </div>
                                                         </div>

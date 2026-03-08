@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,9 +7,6 @@
 /* ═══════════════════════════════════════════════
    Genetics Cloud — Global Stylesheet
    ═══════════════════════════════════════════════ */
-
-/* ── Google Fonts (Inter + JetBrains Mono) ────── */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap");
 
 /* ── Base Layer ─────────────────────────────────── */
 @layer base {
@@ -27,6 +26,15 @@
   body {
     @apply bg-surface-dark text-slate-200 font-inter antialiased leading-relaxed;
     font-feature-settings: "cv11", "ss01", "ss03";
+  }
+
+  /* Responsive media defaults */
+  img,
+  svg,
+  video {
+    max-width: 100%;
+    height: auto;
+    display: block;
   }
 
   /* Scrollbar styling for dark surfaces */

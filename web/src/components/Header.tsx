@@ -81,7 +81,7 @@ export function Header({ title, subtitle, user, onMenuClick }: HeaderProps) {
                     </div>
                     <div className="hidden lg:block text-left">
                         <p className="text-sm font-medium text-slate-200 group-hover:text-white">{user.name}</p>
-                        <p className="text-[10px] text-slate-500">{user.role}</p>
+                        <p className="text-fluid-xs text-slate-500">{user.role}</p>
                     </div>
                     <ChevronDown className="w-4 h-4 text-slate-500 hidden lg:block" />
                 </button>

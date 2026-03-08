@@ -112,7 +112,7 @@ export function Resources() {
             </div>
 
             {/* List Panel */}
-            <div className="bg-slate-900/50 border border-slate-800 rounded-2xl overflow-hidden backdrop-blur-sm min-h-[300px]">
+            <div className="bg-slate-900/50 border border-slate-800 rounded-2xl overflow-hidden backdrop-blur-sm min-h-[40vh] w-full">
                 {/* Search bar */}
                 <div className="p-3 sm:p-4 border-b border-slate-800">
                     <div className="relative">

@@ -85,11 +85,11 @@ export function Complaints() {
             {/* Header */}
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-2xl font-bold text-slate-100 flex items-center gap-3">
-                        <MessageSquareWarning className="w-7 h-7 text-amber-400" />
+                    <h1 className="text-fluid-xl sm:text-fluid-2xl font-bold text-slate-100 flex items-center gap-3">
+                        <MessageSquareWarning className="w-6 h-6 sm:w-7 sm:h-7 text-amber-400 shrink-0" />
                         {isAdmin ? 'All Complaints' : 'My Complaints'}
                     </h1>
-                    <p className="text-slate-400 text-sm mt-1">
+                    <p className="text-slate-400 text-fluid-xs sm:text-fluid-sm mt-1">
                         {isAdmin
                             ? 'View and manage complaints from all staff members'
                             : 'Submit feedback or report scheduling issues'}
@@ -189,9 +189,9 @@ export function Complaints() {
                             <div className="flex items-start justify-between gap-4">
                                 <div className="flex-1 min-w-0">
                                     <div className="flex items-center gap-3 mb-2">
-                                        <span className={`px-2.5 py-1 rounded-lg text-[11px] font-semibold uppercase tracking-wider ${c.status === 'OPEN'
-                                                ? 'bg-amber-500/15 text-amber-400 border border-amber-500/20'
-                                                : 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/20'
+                                        <span className={`px-2.5 py-1 rounded-lg text-fluid-xs font-semibold uppercase tracking-wider ${c.status === 'OPEN'
+                                            ? 'bg-amber-500/15 text-amber-400 border border-amber-500/20'
+                                            : 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/20'
                                             }`}>
                                             {c.status}
                                         </span>

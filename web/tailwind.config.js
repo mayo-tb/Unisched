@@ -60,6 +60,18 @@ export default {
                 mono: ["JetBrains Mono", "monospace"],
             },
 
+            /* ── Fluid Typography ──────────────────────── */
+            fontSize: {
+                "fluid-xs": "clamp(0.65rem, 1vw, 0.75rem)",
+                "fluid-sm": "clamp(0.80rem, 1.5vw, 0.875rem)",
+                "fluid-base": "clamp(0.875rem, 2vw, 1rem)",
+                "fluid-lg": "clamp(1rem, 2.5vw, 1.125rem)",
+                "fluid-xl": "clamp(1.25rem, 3vw, 1.5rem)",
+                "fluid-2xl": "clamp(1.5rem, 4vw, 2rem)",
+                "fluid-3xl": "clamp(1.875rem, 5vw, 2.5rem)",
+                "fluid-4xl": "clamp(2.25rem, 6vw, 3rem)",
+            },
+
             /* ── Page Transition Animation ─────────────── */
             keyframes: {
                 "animate-in": {

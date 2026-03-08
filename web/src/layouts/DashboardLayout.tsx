@@ -87,8 +87,8 @@ export function AppLayout({ children }: AppLayoutProps) {
                     onMenuClick={() => setMobileOpen((p) => !p)}
                 />
 
-                <main className="flex-1 p-4 sm:p-6 lg:p-8 overflow-x-hidden">
-                    <div className="max-w-[1400px] mx-auto gc-page" key={currentView}>
+                <main className="flex-1 p-4 sm:p-6 lg:p-8 overflow-x-hidden w-full">
+                    <div className="w-full max-w-[min(95vw,1400px)] mx-auto gc-page" key={currentView}>
                         {children}
                     </div>
                 </main>

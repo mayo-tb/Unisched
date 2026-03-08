@@ -70,8 +70,8 @@ export function TimetableGrid({ entries, rooms, versionId: _versionId, onRoomRea
                     )}
                 >
                     <div
-                        className="min-w-[900px] grid"
-                        style={{ gridTemplateColumns: "80px repeat(5, 1fr)" }}
+                        className="min-w-max w-full grid"
+                        style={{ gridTemplateColumns: "80px repeat(5, minmax(150px, 1fr))" }}
                     >
                         {/* ── Header Row: TIME + Days ─────────── */}
 
@@ -82,7 +82,7 @@ export function TimetableGrid({ entries, rooms, versionId: _versionId, onRoomRea
                                 "bg-slate-900/95 backdrop-blur-sm",
                                 "border-b border-r border-slate-700/40",
                                 "p-3 flex items-center justify-center",
-                                "font-mono text-[11px] text-slate-500 uppercase tracking-widest"
+                                "font-mono text-fluid-xs text-slate-500 uppercase tracking-widest"
                             )}
                         >
                             Time
@@ -133,7 +133,7 @@ export function TimetableGrid({ entries, rooms, versionId: _versionId, onRoomRea
                                         <div
                                             key={`${dayIndex}-${hour}`}
                                             className={cn(
-                                                "min-h-[110px] border-r border-b border-slate-800/40",
+                                                "min-h-[8rem] border-r border-b border-slate-800/40",
                                                 "p-1 transition-colors",
                                                 entry
                                                     ? "bg-slate-950/20"
@@ -151,7 +151,7 @@ export function TimetableGrid({ entries, rooms, versionId: _versionId, onRoomRea
                                                                     </h4>
                                                                     <span
                                                                         className={cn(
-                                                                            "text-[10px] font-mono px-1.5 py-0.5 rounded",
+                                                                            "text-fluid-xs font-mono px-1.5 py-0.5 rounded",
                                                                             color.text, "bg-primary/10"
                                                                         )}
                                                                     >
@@ -201,7 +201,7 @@ export function TimetableGrid({ entries, rooms, versionId: _versionId, onRoomRea
                                                         <div className="flex justify-between items-start mb-1.5">
                                                             <span
                                                                 className={cn(
-                                                                    "text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider text-white",
+                                                                    "text-fluid-xs font-bold px-1.5 py-0.5 rounded uppercase tracking-wider text-white",
                                                                     color.badge
                                                                 )}
                                                             >
@@ -215,7 +215,7 @@ export function TimetableGrid({ entries, rooms, versionId: _versionId, onRoomRea
                                                         </h4>
 
                                                         {/* Room chip */}
-                                                        <div className="flex items-center gap-1 text-[10px] text-slate-400">
+                                                        <div className="flex items-center gap-1 text-fluid-xs text-slate-400 mt-auto">
                                                             <MapPin className="w-3 h-3 shrink-0" />
                                                             <span className="truncate">
                                                                 {entry.room_name ?? `Rm #${entry.room}`}
