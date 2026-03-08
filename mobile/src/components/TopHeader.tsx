@@ -6,6 +6,7 @@ import { DrawerActions, useNavigation } from '@react-navigation/native';
 export default function TopHeader() {
     const navigation = useNavigation();
 
+
     return (
         <View style={styles.header}>
             <View style={styles.headerLeft}>
@@ -16,18 +17,12 @@ export default function TopHeader() {
                     <Feather name="menu" size={24} color="#0f172a" />
                 </TouchableOpacity>
                 <View>
-                    <Text style={styles.logoTitle}>Genetics Cloud</Text>
+                    <Text style={styles.logoTitle}>Nexus</Text>
                     <Text style={styles.logoSubtitle}>ENTERPRISE SCHEDULING ENGINE</Text>
                 </View>
             </View>
             <View style={styles.headerRight}>
-                <View style={styles.userInfo}>
-                    <Text style={styles.userId}>22/0102</Text>
-                    <Text style={styles.userRole}>ADMIN</Text>
-                </View>
-                <TouchableOpacity style={styles.logoutBtn}>
-                    <Feather name="log-out" size={18} color="#64748b" />
-                </TouchableOpacity>
+                {/* Empty right side per user request */}
             </View>
         </View>
     );

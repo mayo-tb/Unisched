@@ -56,20 +56,31 @@ api.interceptors.response.use(
 /* ── Auth ─────────────────────────────────────────── */
 
 export interface LoginPayload {
-    username: string;
+    credential: string;   // staff_id or username
     password: string;
 }
 
-export interface RegisterPayload {
+export interface LoginResponse {
+    access: string;
+    refresh: string;
+    role: "ADMIN" | "LECTURER";
+    staff_id: string | null;
+    user_id: number;
     username: string;
+    full_name: string;
+}
+
+export interface RegisterPayload {
+    full_name: string;
+    staff_id?: string;
+    email?: string;
     password: string;
-    email: string;
-    role?: "admin" | "faculty";
+    role?: "ADMIN" | "LECTURER";
 }
 
 export const authApi = {
     login: (data: LoginPayload) =>
-        api.post<{ access: string; refresh: string }>("/api/auth/login/", data),
+        api.post<LoginResponse>("/api/auth/login/", data),
 
     register: (data: RegisterPayload) =>
         api.post("/api/auth/register/", data),
@@ -218,4 +229,56 @@ export const timetableApi = {
 
     patchEntry: (versionId: number, entryIdx: number, data: { room_id?: number; timeslot_index?: number }) =>
         api.patch<TimetableEntryResponse>(`/api/timetable/entries/${versionId}/${entryIdx}/`, data),
+};
+
+/* ── Lecturer Self-Service ───────────────────────── */
+
+export interface ScheduleEntry {
+    course_id: number;
+    room_id: number;
+    timeslot_index: number;
+    course_name: string;
+    course_code: string;
+    room_name: string;
+    room_building: string;
+    group_name: string;
+    group_size: number;
+}
+
+export interface LecturerScheduleResponse {
+    entries: ScheduleEntry[];
+    version_id: string;
+    fitness: number;
+}
+
+export interface ComplaintResponse {
+    id: number;
+    lecturer: number;
+    lecturer_name: string;
+    subject: string;
+    description: string;
+    status: "OPEN" | "RESOLVED";
+    created_at: string;
+}
+
+export const lecturerApi = {
+    schedule: () =>
+        api.get<LecturerScheduleResponse>("/api/lecturer/schedule/"),
+
+    getPreferences: () =>
+        api.get<any>("/api/lecturer/preferences/"),
+
+    updatePreferences: (data: Record<string, any>) =>
+        api.patch<any>("/api/lecturer/preferences/", data),
+};
+
+export const complaintsApi = {
+    list: () =>
+        api.get<ComplaintResponse[]>("/api/complaints/"),
+
+    create: (data: { lecturer: number; subject: string; description: string }) =>
+        api.post<ComplaintResponse>("/api/complaints/", data),
+
+    update: (id: number, data: Partial<ComplaintResponse>) =>
+        api.patch<ComplaintResponse>(`/api/complaints/${id}/`, data),
 };

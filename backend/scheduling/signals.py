@@ -23,18 +23,18 @@ def sync_role_to_group(sender, instance, created, **kwargs):
     Keep the user's Django Groups membership in sync with their profile role.
 
     Mapping:
-      - role='admin'   → Group 'Admins'
-      - role='faculty' → Group 'Faculty'
+      - role='ADMIN'    → Group 'Admins'
+      - role='LECTURER' → Group 'Faculty'
 
     Groups are created on first use (get_or_create) so no fixture is needed.
     """
     user = instance.user
-    role = getattr(instance, 'role', 'admin')
+    role = instance.role  # Now a real model field
 
     # Map role strings to group names
     role_to_group = {
-        "admin":   "Admins",
-        "faculty": "Faculty",
+        "ADMIN":    "Admins",
+        "LECTURER": "Faculty",
     }
     target_group_name = role_to_group.get(role)
 

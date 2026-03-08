@@ -1,6 +1,13 @@
 import React, { createContext, useContext, useState } from 'react';
 
-export type ViewType = 'dashboard' | 'timetable' | 'resources' | 'settings';
+export type ViewType =
+    | 'dashboard'
+    | 'timetable'
+    | 'resources'
+    | 'settings'
+    | 'complaints'
+    | 'my-schedule'
+    | 'preferences';
 
 interface ViewContextType {
     currentView: ViewType;

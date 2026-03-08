@@ -108,6 +108,14 @@ CORS_ALLOW_HEADERS = list(default_headers) + [
 
 
 # ──────────────────────────────────────────────
+# Authentication Backends (Staff ID + Username)
+# ──────────────────────────────────────────────
+AUTHENTICATION_BACKENDS = [
+    "scheduling.backends.StaffIdOrUsernameBackend",
+    "django.contrib.auth.backends.ModelBackend",  # fallback for admin site
+]
+
+# ──────────────────────────────────────────────
 # Database — SQLite (for development)
 # ──────────────────────────────────────────────
 DATABASES = {

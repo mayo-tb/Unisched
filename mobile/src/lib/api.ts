@@ -5,8 +5,23 @@
 
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Platform } from 'react-native';
 
-const BASE_URL = process.env.EXPO_PUBLIC_API_BASE || 'http://localhost:8000';
+const getBaseUrl = () => {
+  // If we are explicitly in a development build via Expo/React Native, force local endpoints
+  if (__DEV__) {
+    // Android emulator needs 10.0.2.2 to reach PC localhost
+    if (Platform.OS === 'android') return 'http://10.0.2.2:8000';
+    return 'http://localhost:8000'; // iOS simulator and Web
+  }
+
+  // Production fallback
+  if (process.env.EXPO_PUBLIC_API_BASE) return process.env.EXPO_PUBLIC_API_BASE;
+  return 'https://unisched-axpq.onrender.com';
+};
+
+
+const BASE_URL = getBaseUrl();
 
 /**
  * Create axios instance for mobile with JWT handling
@@ -93,3 +108,54 @@ export const createApiClient = (): AxiosInstance => {
 
 // Export singleton instance
 export const api = createApiClient();
+
+/* ── Lecturer Self-Service ───────────────────────── */
+
+export interface ScheduleEntry {
+  course_id: number;
+  room_id: number;
+  timeslot_index: number;
+  course_name: string;
+  course_code: string;
+  room_name: string;
+  room_building: string;
+  group_name: string;
+  group_size: number;
+}
+
+export const lecturerApi = {
+  schedule: (workspaceId?: string) => {
+    const config = workspaceId ? { headers: { 'X-Workspace-Id': workspaceId } } : {};
+    return api.get('/api/lecturer/schedule/', config);
+  },
+
+  getPreferences: (workspaceId?: string) => {
+    const config = workspaceId ? { headers: { 'X-Workspace-Id': workspaceId } } : {};
+    return api.get('/api/lecturer/preferences/', config);
+  },
+
+  updatePreferences: (data: Record<string, any>, workspaceId?: string) => {
+    const config = workspaceId ? { headers: { 'X-Workspace-Id': workspaceId } } : {};
+    return api.patch('/api/lecturer/preferences/', data, config);
+  },
+};
+
+/* ── Complaints ──────────────────────────────────── */
+
+export interface ComplaintResponse {
+  id: number;
+  lecturer: number;
+  lecturer_name: string;
+  subject: string;
+  description: string;
+  status: 'OPEN' | 'RESOLVED';
+  created_at: string;
+}
+
+export const complaintsApi = {
+  list: () => api.get('/api/complaints/'),
+  create: (data: { subject: string; description: string; lecturer?: number }) =>
+    api.post('/api/complaints/', data),
+  update: (id: number, data: any) => api.patch(`/api/complaints/${id}/`, data),
+};
+

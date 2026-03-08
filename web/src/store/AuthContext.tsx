@@ -5,7 +5,8 @@ export interface User {
     id: string;
     name: string;
     email: string;
-    role: "admin" | "faculty" | "student";
+    role: "ADMIN" | "LECTURER";
+    staff_id?: string | null;
     avatar?: string;
 }
 
@@ -18,7 +19,7 @@ export interface Workspace {
 interface AuthContextType {
     user: User | null;
     workspace: Workspace | null;
-    login: (role: "admin" | "faculty") => Promise<void>;
+    login: (credential: string, password: string) => Promise<void>;
     logout: () => void;
     isAuthenticated: boolean;
     isLoading: boolean;
@@ -47,34 +48,40 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         }
     }, []);
 
-    const login = async (role: "admin" | "faculty") => {
+    const login = async (credential: string, password: string) => {
         setIsLoading(true);
         setError(null);
 
         try {
-            const credentials =
-                role === "admin"
-                    ? { username: "admin", password: "adminpass123" }
-                    : { username: "faculty", password: "facultypass123" };
+            // 1. Authenticate → get JWT tokens + role
+            const { data } = await authApi.login({ credential, password });
+            localStorage.setItem(
+                "gc_tokens",
+                JSON.stringify({ access: data.access, refresh: data.refresh })
+            );
 
-            // 1. Authenticate → get JWT tokens
-            const { data: tokens } = await authApi.login(credentials);
-            localStorage.setItem("gc_tokens", JSON.stringify(tokens));
-
-            // 2. Fetch real profile from backend
-            const { data: meData } = await authApi.me();
+            // 2. Build user from login response (no extra /me/ call needed)
             const userData: User = {
-                id: String(meData.id),
-                name: meData.username,
-                email: meData.email || "",
-                role: (meData.role as User["role"]) || role,
+                id: String(data.user_id),
+                name: data.full_name || data.username,
+                email: "",
+                role: data.role,
+                staff_id: data.staff_id,
             };
+
+            // Optionally fetch full profile for email/avatar
+            try {
+                const { data: meData } = await authApi.me();
+                userData.email = meData.email || "";
+                userData.avatar = meData.avatar_url || "";
+            } catch {
+                // Non-fatal: login response has enough data
+            }
+
             setUser(userData);
             localStorage.setItem("gc_user", JSON.stringify(userData));
 
-            // FIX: Load the REAL first workspace from the API instead of
-            // hardcoding 'default-ws' which caused all resource API calls
-            // to fail with 404/400 since 'default-ws' doesn't exist in the DB.
+            // 3. Load workspace
             try {
                 const { data: workspaces } = await workspacesApi.list();
                 if (workspaces && workspaces.length > 0) {
@@ -98,15 +105,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                     localStorage.setItem("gc_workspace", JSON.stringify(wsData));
                 }
             } catch {
-                // Non-fatal: workspace loading failed, user can still navigate
                 console.warn("Could not load workspaces after login.");
             }
 
         } catch (err: any) {
             console.error("Login failed:", err);
-            const detail = err?.response?.data?.detail || err?.message || "Login failed.";
+            const detail =
+                err?.response?.data?.non_field_errors?.[0] ||
+                err?.response?.data?.detail ||
+                err?.message ||
+                "Login failed.";
             setError(String(detail));
-            // Clean up any partial tokens
             localStorage.removeItem("gc_tokens");
         } finally {
             setIsLoading(false);

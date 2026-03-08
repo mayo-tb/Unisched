@@ -37,14 +37,35 @@ from .validators_schemas import validate_lecturer_preferences
 
 class UserProfile(models.Model):
     """
-    Extends Django's User with avatar and metadata.
-    All users have full admin access to all features and functions.
+    Extends Django's User with RBAC role and optional staff ID.
+
+    Roles:
+        - ADMIN: Full access to all features (workspaces, GA, resources).
+        - LECTURER: Can view schedule, submit complaints, limited access.
     """
+
+    ROLE_CHOICES = [
+        ("ADMIN", "Admin"),
+        ("LECTURER", "Lecturer"),
+    ]
 
     user = models.OneToOneField(
         User,
         on_delete=models.CASCADE,
         related_name="profile",
+    )
+    role = models.CharField(
+        max_length=20,
+        choices=ROLE_CHOICES,
+        default="ADMIN",
+        help_text="ADMIN = full access, LECTURER = limited access.",
+    )
+    staff_id = models.CharField(
+        max_length=50,
+        unique=True,
+        null=True,
+        blank=True,
+        help_text="Unique staff identifier for lecturer login.",
     )
     avatar_url = models.URLField(
         blank=True,
@@ -56,11 +77,11 @@ class UserProfile(models.Model):
         ordering = ["user__username"]
 
     def __str__(self):
-        return f"{self.user.username}"
+        return f"{self.user.username} ({self.role})"
 
     @property
     def is_admin(self):
-        return True
+        return self.role == "ADMIN"
 
 
 # ─────────────────────────────────────────────────────────────
@@ -149,6 +170,9 @@ class Lecturer(models.Model):
     """
     Teaching staff member.
 
+    Optionally linked to a UserProfile via ``user_profile``, which allows
+    the lecturer to log in with their staff_id and view their own schedule.
+
     The ``preferences`` JSONField stores flexible scheduling hints consumed
     by the GA engine as **soft constraints**. Structure::
 
@@ -162,11 +186,19 @@ class Lecturer(models.Model):
 
     name = models.CharField(max_length=200)
     email = models.EmailField(blank=True, default="")
-    department = models.CharField(max_length=100)
+    department = models.CharField(max_length=100, blank=True, default="")
     workspace = models.ForeignKey(
         Workspace,
         on_delete=models.CASCADE,
         related_name="lecturers",
+    )
+    user_profile = models.ForeignKey(
+        UserProfile,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="lecturer_profiles",
+        help_text="Link to the user account (for staff login).",
     )
     preferences = models.JSONField(
         default=dict,
@@ -380,3 +412,39 @@ class TimetableVersion(models.Model):
 
     def __str__(self):
         return f"v{self.id} (Fitness: {self.fitness:.2f})"
+
+
+# ─────────────────────────────────────────────────────────────
+# Complaint (Lecturer feedback / issue tracking)
+# ─────────────────────────────────────────────────────────────
+
+class Complaint(models.Model):
+    """
+    A complaint or feedback item submitted by a lecturer regarding
+    their schedule, room assignment, or other concerns.
+    """
+
+    STATUS_CHOICES = [
+        ("OPEN", "Open"),
+        ("RESOLVED", "Resolved"),
+    ]
+
+    lecturer = models.ForeignKey(
+        Lecturer,
+        on_delete=models.CASCADE,
+        related_name="complaints",
+    )
+    subject = models.CharField(max_length=255)
+    description = models.TextField()
+    status = models.CharField(
+        max_length=20,
+        choices=STATUS_CHOICES,
+        default="OPEN",
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-created_at"]
+
+    def __str__(self):
+        return f"{self.subject} ({self.status})"

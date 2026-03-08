@@ -7,21 +7,34 @@ import { Dashboard } from './pages/Dashboard';
 import { Timetable } from './pages/Timetable';
 import { Resources } from './pages/Resources';
 import { Settings } from './pages/Settings';
+import { MySchedule } from './pages/MySchedule';
+import { Preferences } from './pages/Preferences';
+import { Complaints } from './pages/Complaints';
 
 function AppContent() {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, user } = useAuth();
   const { currentView } = useView();
 
   if (!isAuthenticated) {
     return <LoginOverlay />;
   }
 
+  const isLecturer = user?.role === 'LECTURER';
+
   return (
     <AppLayout>
-      {currentView === 'dashboard' && <Dashboard />}
-      {currentView === 'timetable' && <Timetable />}
-      {currentView === 'resources' && <Resources />}
-      {currentView === 'settings' && <Settings />}
+      {/* Admin views */}
+      {!isLecturer && currentView === 'dashboard' && <Dashboard />}
+      {!isLecturer && currentView === 'timetable' && <Timetable />}
+      {!isLecturer && currentView === 'resources' && <Resources />}
+      {!isLecturer && currentView === 'settings' && <Settings />}
+
+      {/* Lecturer views */}
+      {isLecturer && currentView === 'my-schedule' && <MySchedule />}
+      {isLecturer && currentView === 'preferences' && <Preferences />}
+
+      {/* Shared views */}
+      {currentView === 'complaints' && <Complaints />}
     </AppLayout>
   );
 }

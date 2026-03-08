@@ -25,14 +25,14 @@ logger = logging.getLogger(__name__)
 from .models import (
     UserProfile, Workspace, Lecturer, StudentGroup,
     Room, Course, ConstraintConfig, TimetableVersion,
-    TaskTracker,
+    TaskTracker, Complaint,
 )
 from .serializers import (
-    RegisterSerializer, UserSerializer,
+    RegisterSerializer, LoginSerializer, UserSerializer,
     WorkspaceSerializer, LecturerSerializer, StudentGroupSerializer,
     RoomSerializer, CourseSerializer, ConstraintConfigSerializer,
     TimetableVersionSerializer, TimetableEntryPatchSerializer,
-    GenerateSerializer,
+    GenerateSerializer, ComplaintSerializer,
 )
 
 
@@ -113,7 +113,10 @@ def ensure_default_constraints(workspace):
 @api_view(["POST"])
 @permission_classes([AllowAny])
 def register_view(request):
-    """POST /api/auth/register/ — Create a new user account."""
+    """
+    POST /api/auth/register/
+    Body: { full_name, staff_id?, email?, password, role? }
+    """
     serializer = RegisterSerializer(data=request.data)
     serializer.is_valid(raise_exception=True)
     user = serializer.save()
@@ -126,37 +129,24 @@ def register_view(request):
 @api_view(["POST"])
 @permission_classes([AllowAny])
 def login_view(request):
-    """POST /api/auth/login/ — Login and return JWT tokens."""
-    from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-    
-    username = request.data.get('username')
-    password = request.data.get('password')
-    
-    if not username or not password:
-        return Response(
-            {"detail": "username and password are required"},
-            status=status.HTTP_400_BAD_REQUEST,
-        )
-    
-    try:
-        # Use TokenObtainPairSerializer which expects username/password
-        serializer = TokenObtainPairSerializer(data={
-            'username': username,
-            'password': password
-        })
-        serializer.is_valid(raise_exception=True)
-        return Response(serializer.validated_data, status=status.HTTP_200_OK)
-    except Exception as e:
-        return Response(
-            {"detail": str(e)},
-            status=status.HTTP_401_UNAUTHORIZED,
-        )
+    """
+    POST /api/auth/login/
+    Body: { credential, password }
+    credential = staff_id (for lecturers) OR username (for admins)
+    Returns: { access, refresh, role, staff_id, user_id, username, full_name }
+    """
+    serializer = LoginSerializer(
+        data=request.data,
+        context={"request": request},
+    )
+    serializer.is_valid(raise_exception=True)
+    return Response(serializer.validated_data, status=status.HTTP_200_OK)
 
 
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
 def me_view(request):
-    """GET /api/auth/me/ — Return current user profile."""
+    """GET /api/auth/me/ — Return current user profile with role."""
     return Response(UserSerializer(request.user).data)
 
 
@@ -583,6 +573,183 @@ class TimetableVersionViewSet(_WorkspaceScopedMixin, viewsets.ReadOnlyModelViewS
     queryset = TimetableVersion.objects.select_related("workspace").all()
     serializer_class = TimetableVersionSerializer
     permission_classes = [AllowAny]
+
+
+# ═════════════════════════════════════════════════════════════
+# Complaint Endpoints
+# ═════════════════════════════════════════════════════════════
+
+class ComplaintViewSet(viewsets.ModelViewSet):
+    """
+    CRUD for lecturer complaints.
+    - Lecturers can view/create their own complaints.
+    - Admins can view/update all complaints.
+    """
+    serializer_class = ComplaintSerializer
+    permission_classes = [AllowAny]
+
+    def get_queryset(self):
+        user = self.request.user
+        if user.is_anonymous:
+            return Complaint.objects.none()
+
+        profile = getattr(user, "profile", None)
+        if profile and profile.role == "LECTURER":
+            # Lecturers see only their own complaints
+            lecturer_ids = Lecturer.objects.filter(
+                user_profile=profile
+            ).values_list("id", flat=True)
+            return Complaint.objects.filter(
+                lecturer_id__in=lecturer_ids
+            ).select_related("lecturer")
+
+        # Admins see all complaints
+        return Complaint.objects.all().select_related("lecturer")
+
+
+# ═════════════════════════════════════════════════════════════
+# Lecturer Self-Service Endpoints
+# ═════════════════════════════════════════════════════════════
+
+@api_view(["GET", "PATCH"])
+@permission_classes([IsAuthenticated])
+def lecturer_preferences_view(request):
+    """
+    GET/PATCH /api/lecturer/preferences/
+    Uses X-Workspace-Id header to locate the correct Lecturer record
+    linked to the request.user's UserProfile.
+
+    PATCH body (all optional):
+        {
+            "max_hours_per_week": 20,
+            "preferred_days": [0, 1, 2],
+            "preferences": { ... GA scheduling hints ... }
+        }
+    """
+    profile = getattr(request.user, "profile", None)
+    if not profile:
+        return Response({"error": "User profile not found."}, status=status.HTTP_404_NOT_FOUND)
+
+    workspace_id = request.headers.get("X-Workspace-Id")
+    if not workspace_id:
+        return Response(
+            {"error": "X-Workspace-Id header is required."},
+            status=status.HTTP_400_BAD_REQUEST,
+        )
+
+    try:
+        lecturer = Lecturer.objects.get(
+            user_profile=profile,
+            workspace_id=workspace_id,
+        )
+    except Lecturer.DoesNotExist:
+        return Response(
+            {"error": "No lecturer profile found for this workspace."},
+            status=status.HTTP_404_NOT_FOUND,
+        )
+
+    if request.method == "GET":
+        from .serializers import LecturerSerializer
+        return Response(LecturerSerializer(lecturer).data)
+
+    # PATCH — update preferences
+    preferences = lecturer.preferences or {}
+
+    if "max_hours_per_week" in request.data:
+        preferences["max_hours_per_week"] = request.data["max_hours_per_week"]
+    if "preferred_days" in request.data:
+        preferences["preferred_days"] = request.data["preferred_days"]
+    if "preferred_timeslots" in request.data:
+        preferences["preferred_timeslots"] = request.data["preferred_timeslots"]
+    if "max_daily_hours" in request.data:
+        preferences["max_daily_hours"] = request.data["max_daily_hours"]
+    if "avoid_days" in request.data:
+        preferences["avoid_days"] = request.data["avoid_days"]
+    if "morning_only" in request.data:
+        preferences["morning_only"] = request.data["morning_only"]
+
+    # Accept top-level "preferences" dict to replace entire object
+    if "preferences" in request.data and isinstance(request.data["preferences"], dict):
+        preferences.update(request.data["preferences"])
+
+    lecturer.preferences = preferences
+    lecturer.save(update_fields=["preferences"])
+
+    from .serializers import LecturerSerializer
+    return Response(LecturerSerializer(lecturer).data)
+
+
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def lecturer_schedule_view(request):
+    """
+    GET /api/lecturer/schedule/
+    Returns timetable entries for the request.user's lecturer profile
+    within the active workspace (X-Workspace-Id).
+    """
+    profile = getattr(request.user, "profile", None)
+    if not profile:
+        return Response({"error": "User profile not found."}, status=status.HTTP_404_NOT_FOUND)
+
+    workspace_id = request.headers.get("X-Workspace-Id")
+    if not workspace_id:
+        return Response(
+            {"error": "X-Workspace-Id header is required."},
+            status=status.HTTP_400_BAD_REQUEST,
+        )
+
+    try:
+        lecturer = Lecturer.objects.get(
+            user_profile=profile,
+            workspace_id=workspace_id,
+        )
+    except Lecturer.DoesNotExist:
+        return Response(
+            {"error": "No lecturer profile found for this workspace."},
+            status=status.HTTP_404_NOT_FOUND,
+        )
+
+    # Get active timetable version for this workspace
+    timetable = TimetableVersion.objects.filter(
+        workspace_id=workspace_id,
+        is_active=True,
+    ).first()
+
+    if not timetable:
+        return Response({"entries": [], "message": "No active timetable."})
+
+    # Filter entries where lecturer_id matches
+    all_entries = timetable.history_data.get("entries", [])
+    lecturer_entries = [
+        entry for entry in all_entries
+        if entry.get("lecturer_id") == lecturer.id
+    ]
+
+    # Enrich entries with course/room names for display
+    course_map = {c.id: {"name": c.name, "code": c.code} for c in Course.objects.filter(workspace_id=workspace_id)}
+    room_map = {r.id: {"name": r.name, "building": r.building} for r in Room.objects.filter(workspace_id=workspace_id)}
+    group_map = {g.id: {"name": g.name, "size": g.size} for g in StudentGroup.objects.filter(workspace_id=workspace_id)}
+
+    enriched = []
+    for entry in lecturer_entries:
+        c = course_map.get(entry.get("course_id"), {})
+        r = room_map.get(entry.get("room_id"), {})
+        g = group_map.get(entry.get("student_group_id"), {})
+        enriched.append({
+            **entry,
+            "course_name": c.get("name", ""),
+            "course_code": c.get("code", ""),
+            "room_name": r.get("name", ""),
+            "room_building": r.get("building", ""),
+            "group_name": g.get("name", ""),
+            "group_size": g.get("size", 0),
+        })
+
+    return Response({
+        "entries": enriched,
+        "version_id": str(timetable.id),
+        "fitness": timetable.fitness,
+    })
 
 
 @api_view(["PATCH"])

@@ -10,6 +10,8 @@ export default function AdminDashboard() {
   const [metrics, setMetrics] = useState({
     coursesCount: 0,
     groupsCount: 0,
+    lecturersCount: 0,
+    roomsCount: 0,
     executionTime: 0,
     fitness: 0,
     hardViolations: 0,
@@ -63,7 +65,9 @@ export default function AdminDashboard() {
         const latest = wsVersions.length > 0 ? wsVersions[0] : null;
         setMetrics({
           coursesCount: ws ? ws.courses_count : 0,
-          groupsCount: ws ? ws.groups_count : 0, // We could add constraint constraints count too if available
+          groupsCount: ws ? ws.groups_count : 0,
+          lecturersCount: ws ? ws.lecturers_count : 0,
+          roomsCount: ws ? ws.rooms_count : 0,
           executionTime: latest ? latest.execution_time : 0,
           fitness: latest ? latest.fitness : 0,
           hardViolations: latest ? latest.hard_violations : 0,
@@ -234,23 +238,45 @@ export default function AdminDashboard() {
 
             {/* Sub Summary Cards */}
             <View style={styles.subCardsRow}>
-              <View style={styles.subCard}>
-                <View style={[styles.subCardIconWrapper, { backgroundColor: '#eff6ff' }]}>
-                  <Feather name="book-open" size={24} color="#3b82f6" />
+              <View style={[styles.subCard, { width: '48%' }]}>
+                <View style={[styles.subCardIconWrapper, { backgroundColor: '#eff6ff', width: 48, height: 48 }]}>
+                  <Feather name="book-open" size={20} color="#3b82f6" />
                 </View>
                 <View>
                   <Text style={styles.subCardValue}>{metrics.coursesCount}</Text>
-                  <Text style={styles.subCardLabel}>MANAGED COURSES</Text>
+                  <Text style={styles.subCardLabel}>COURSES</Text>
                 </View>
               </View>
 
-              <View style={styles.subCard}>
-                <View style={[styles.subCardIconWrapper, { backgroundColor: '#fef2f2' }]}>
-                  <Feather name="alert-triangle" size={24} color="#ef4444" />
+              <View style={[styles.subCard, { width: '48%' }]}>
+                <View style={[styles.subCardIconWrapper, { backgroundColor: '#ecfdf5', width: 48, height: 48 }]}>
+                  <Feather name="users" size={20} color="#10b981" />
                 </View>
                 <View>
-                  <Text style={styles.subCardValue}>0</Text>
-                  <Text style={styles.subCardLabel}>CONSTRAINT CONFLICTS</Text>
+                  <Text style={styles.subCardValue}>{metrics.lecturersCount}</Text>
+                  <Text style={styles.subCardLabel}>LECTURERS</Text>
+                </View>
+              </View>
+            </View>
+
+            <View style={[styles.subCardsRow, { marginTop: 20 }]}>
+              <View style={[styles.subCard, { width: '48%' }]}>
+                <View style={[styles.subCardIconWrapper, { backgroundColor: '#fef3c7', width: 48, height: 48 }]}>
+                  <Feather name="map-pin" size={20} color="#d97706" />
+                </View>
+                <View>
+                  <Text style={styles.subCardValue}>{metrics.roomsCount}</Text>
+                  <Text style={styles.subCardLabel}>ROOMS</Text>
+                </View>
+              </View>
+
+              <View style={[styles.subCard, { width: '48%' }]}>
+                <View style={[styles.subCardIconWrapper, { backgroundColor: '#f3e8ff', width: 48, height: 48 }]}>
+                  <Feather name="users" size={20} color="#9333ea" />
+                </View>
+                <View>
+                  <Text style={styles.subCardValue}>{metrics.groupsCount}</Text>
+                  <Text style={styles.subCardLabel}>GROUPS</Text>
                 </View>
               </View>
             </View>

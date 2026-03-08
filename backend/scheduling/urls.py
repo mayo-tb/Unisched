@@ -19,6 +19,7 @@ router.register(r"resources/rooms", views.RoomViewSet, basename="room")
 router.register(r"resources/courses", views.CourseViewSet, basename="course")
 router.register(r"resources/constraints", views.ConstraintConfigViewSet, basename="constraint")
 router.register(r"timetable/versions", views.TimetableVersionViewSet, basename="timetableversion")
+router.register(r"complaints", views.ComplaintViewSet, basename="complaint")
 
 
 
@@ -46,6 +47,10 @@ urlpatterns = [
 
     # Presentation layer endpoint
     path("student/schedule/", presentation_views.student_schedule_view, name="student-schedule"),
+
+    # Lecturer self-service endpoints
+    path("lecturer/preferences/", views.lecturer_preferences_view, name="lecturer-preferences"),
+    path("lecturer/schedule/", views.lecturer_schedule_view, name="lecturer-schedule"),
 
     # Router-generated viewset URLs
     path("", include(router.urls)),
