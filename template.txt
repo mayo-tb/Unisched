@@ -1,0 +1,638 @@
+ Corresponding author : Akande Oyebola. 
+Copyright ©  2024 Author(s) retain the copyright of this article. This article is published under the terms of the Creative Commons Attribution Liscense 4.0. 
+Design and implementation of an E-commerce market place 
+Akande Oyebola 1, *, Adegbola Adesoji 2, Uzoma-Ezeuli Chukwuemeka Chinecherem 2, Fadahunsi Timi 
+Omotola 2, George Biobele Bright 2 and Adewuyi Joseph Oluwaseyi 3
+1 Department of Computer Science, School of Computing, Babcock University of Technology , Ogun State, Nigeria . 
+2 Department of Software Engineering, School of Computing, B abcock University of Technology, Ogun State , Nigeria . 
+3 Department of Information Technology, School of Computing, B abcock University of Technology, Ogun State, Nigeria . 
+Global Journal of Engineering and Technology Advances, 2024 , 20(03), 171– 187  
+Publication history: Received on 1 3 August 2024; revised on 25 September 2024; accepted on 28 September 2024  
+Article DOI: https://doi.org/10.30574/gjeta.2024.20.3.0188  
+Abstract 
+Many small businesses and start-ups are faced with the challenge of promoting their business awareness to increase 
+their profit margin. But many of these small businesses and start-ups cannot pay for domain registration and building 
+of a functional website of their own. Thus, e-commerce application which can be a platform for many businesses is a 
+good solution to this. It serves as incentive for revenue generation and business expansion in addition to promoting 
+consumer interaction, entrepreneurship, and the growth of small businesses. Therefore, this paper aimed at design and 
+implementation of an e-commerce application for tailors. The e-commerce system can protect sensitive customer data 
+and secure online payment system which can serve as a platform for many businesses and start-up. This will promote 
+business awareness, give ability to reach more customers and then improve owners profit margin. This project aims to 
+harness the power of e-commerce marketplaces to create a tailored shopping experience for a specific target audience. 
+Keywords: E-commerce; Small Business; Marketplace; Customer  
+1.Introduction
+E-commerce means electronic commerce; it means trading pf products or services using the platform of the Internet 
+through computer networks (computer networks or mobile networks). Other technologies such as electronic data 
+interchange (EDI) and electronic fund transfer (EFT) made this possible. EDI allows businesses to interchange business 
+information electronically (Ram611 O'Callaghan and Jon A. Turner), while EFT allows money to electronically flow from 
+one bank to another. EDI is strictly done computer to computer. Internet protocols such as hypertext transfer protocol 
+(HTTP) and digital subscriber line (DSL) in 1998 provided a secure platform for e-commerce (Dhanyakumar Kurmude, 
+Pradip Paithane, and Sangeeta Kakarwal, 2019). 
+Historically, Advanced Research Projects Agency (ARPANET) in 1972 used packet switching network and implementing 
+transmission control protocol/internet protocol TCP/IP protocol for cannabis sale between students from Standford 
+Artificial Intelligence Laboratory and Massachusetts Institute of Technology (MIT). In 1979 Teleputer was invented by 
+a British entrepreneur called Michael Aldric. Teleputer was used by to enable transaction between business and 
+computers (B2C) and business to business (B2B). Boston Computer Exchange (BCX) in 1982 was the first e-commerce 
+company for buying and selling of computer equipment online. This was followed by Amazon in 1994 when Amazon 
+started by selling books online. Other online shopping website are: Books Stacks Unlimited in 1992 (by Charles M.Stack) 
+and Internet Shopping Network in 1994 (by Dan Kohn), eBay founded by Pierre Omidyar in 1995. 
+
+Global Journal of Engineering and Technology Advances , 202 4, 20(03), 171 –187  
+172  Some e -commerce platforms are specific in what they sell but others sell a wide variety of products and ser vices. This 
+focused on e -commerce for fashion industry or simply called, tailor. The accessibility of e -commerce marketplaces is 
+particularly empowering for consumers with limited mobility or those residing in remote areas. The ability to browse 
+products, compare prices, and make purchases from anywhere with an internet connection has revolutionized the way  
+people shop, breaking down barriers and opening new avenues for consumerism. Different methodologies such as 
+waterfall and Agile have been used over th e years. The following sections discussed related works, methodology, 
+implementation and results, and system testing.   
+2. Related Work  
+(Jaya, 2023)  developed a web -based furniture sales system for Teak Megah Furniture. Previously , marketing was done 
+by the company by offering good directly to consumers through word of mouth or social media, there was poor access 
+to goods data such as sales reports, list of ordered goods and goods availability and unless customers appear physically , 
+they cannot buy goods. System analysis was performed firstly by drawing a data flow diagram (DFD) up to level two. 
+After this entity relationship diagram (ERD) was drawn. The drawing of DFD and ERD is towards the building of the 
+system database. The inte rface design was done so that users may connect to the database. The web application is not 
+a mobile application, it can only work on desktop.  
+(Fernando, 2023)  used waterfall model to develop a platform for footwears makers to showcase and sell their products. 
+Waterfall model was used because of its advantage of finishing up a developmental stage before moving to the another 
+one. It also integrates secure gateway platform.  
+(Aulia Jannah, Adila Mawadda Meu raxa, Azzahrah, 2023)  also developed a web -based e -commerce system using 
+waterfall model. The researchers found that e -commerce applications that run on Google Chrome and Mozilla Firefox 
+are more efficient than others. The web application interface was designed with Hypertext Preprocessor (PHP), 
+HyperText Markup Language (HTML), Cascading Style Sheets (CSS) on Notepad. The database used was My -
+SQL(Structure query language) accessed via Cross -Platform, Apache, MySQL, PHP, and Perl  (XAMPP).  Reporting and 
+controlling of inventory  data is easier to do since it can be automatically automated. Marketing also reaches more 
+audience and this increases sales.  
+3. Methodology  
+This process will involve identifying target audience, eliciting requirements, conceptual design, detailed design, 
+usability testing, and implementation and testing.  
+3.1. Identifying target audience:  
+ Potential customers  
+ Existing customers  
+ Business partners  
+ Administrators  
+3.2. Eliciting requirements from target audience  
+Requirement elicitation is the process of gathering and analyz ing information about the needs and expectations of 
+stakeholders for a software system. It is a crucial step in the software development process, as it ensures that the system 
+is designed and built to meet the real needs of its users. There are a number of  different techniques that can be used for 
+requirement elicitation. Some of the most common techniques include: Interviews, workshop and survey. Survey in 
+form of questionnaire was used here. Surveys was used to gather quantitative data on user preferences  and 
+expectations. This is a great way to get feedback from a large number of users and to identify common trends.  
+3.3. Core Requirements  
+Requirements gathered are divided into user and system requirements.  
+3.4. User Requirements  
+User requirements are the expectati on of the user from the proposed system. These requirements should be written 
+from the user's perspective and should be clear, concise, and unambiguous. For example:  
+Global Journal of Engineering and Technology Advances , 202 4, 20(03), 171 –187  
+173   CUSTOMERS (potential and existing customers)  
+ Customers shall be able to browse products a nd services.  
+ Customers shall be able to add products and services to their shopping orders.  
+ Customers shall be able to checkout and purchase products and services.  
+ Customers shall be able to track their orders.  
+ Customers shall be able to manage their account information.  
+ Customers shall be able to connect with the fashion designers  
+ Customers shall be able to interact with the works of other designers  
+ Customers shall be able to interact with the various fashion designers  
+3.4.1.  Fashion designer  
+ Fashion desi gners shall be able to upload their works to the web application  
+ Fashion designers shall be able to keep track of their customers  
+ Fashion designers shall be able to monitor the order list of their customers  
+ Fashion designers shall be able to interact wit h the works of other fashion designers  
+ Fashion designers shall be able to connect with other fashion designers  
+ Fashion designers shall be able to track the orders of customers.  
+ Fashion designers shall be able to update their account information  
+3.4.2.  System Re quirements  
+System requirements define the functional and non -functional requirements.  
+3.4.3.  Functional requirements  
+The functional requirements are behaviours the system should do or support.  The behaviours are expressed with input 
+and output, which is the desc ription of the behaviour itself.  Requirement elicitation and functional requirements are 
+essential for the success of any software development project. By carefully gathering and analyzing requirements, 
+developers can ensure that the system they build is u seful, usable, and meets the needs of its users.  
+For example  
+ Input: customer clicking shopping cart  
+ Output: all products added should be displayed on shopping cart  
+3.4.4.  Non -Functional Requirements  
+System requirements define the essential characteristics and ca pabilities that the e -commerce marketplace must 
+possess to fulfill its intended purpose and meet the needs of its users. These requirements focus on the overall 
+performance, security, software tools, hardware requirements and accessibility of the system.  
+3.4.5.  Scalability  
+The e -commerce marketplace must be designed to handle a growing user base and increasing transaction volume 
+without compromising performance or user experience. Scalability that can be implemented are:  
+ Horizontal scaling: Adding more servers or computing resources to distribute the workload across multiple 
+nodes.  
+ Vertical scaling: Upgrading the hardware capabilities of existing servers to increase their processing power and 
+memory capacity.  
+ Load balancing: Distributing incoming traffic among multiple servers to prevent any single server from 
+becoming overloaded.  
+3.4.6.  Security  
+Security is paramount in an e -commerce marketplace, as it deals with sensitive user data, financial transactions, and 
+confidential business information. Robust security measur es must be implemented to protect against unauthorized 
+access, data breaches, and cyberattacks. These security measures were included:  
+Global Journal of Engineering and Technology Advances , 202 4, 20(03), 171 –187  
+174   Authentication and authorization: Implementing strong authentication mechanisms to verify user identities 
+and enforce acc ess controls based on user roles and permissions.  
+ Data encryption: Encrypting sensitive data, such as user passwords, credit card numbers, and personal 
+information, to prevent unauthorized access in case of data breaches.  
+ Vulnerability management: Regularl y scanning the system for vulnerabilities and implementing timely patches 
+to address security weaknesses.  
+ Secure coding practices: Employing secure coding practices to prevent common programming errors that can 
+introduce security loopholes.  
+3.4.7.  Secure payment processing  
+ Payment gateway integration: Integration with secure payment gateways that adhere to industry standards for 
+data security and encryption.  
+ Tokenization: Tokenization of sensitive cardholder data, replacing the actual card information with a rando mly 
+generated token for secure storage and processing.  
+ Fraud prevention: Fraud prevention mechanisms to detect and prevent fraudulent transactions, such as real -
+time transaction monitoring and anomaly detection.  
+ Data encryption: Encryption of all sensitive  data transmitted between the user's device and the marketplace's 
+servers.  
+ Software tools needed for the e -commerce marketplace project encompass the programming language, UI 
+toolkit, cloud platform etc. These requirements ensure that the marketplace funct ions seamlessly across 
+various devices and platforms while meeting performance, security, and scalability standards. These are the 
+software tools needed to achieve quality application.  
+3.5. Programming Language  
+3.5.1.  JavaScript  
+JavaScript is a versatile and widely u sed programming language primarily known for its use in web development. 
+Initially created to make web pages more interactive, it has evolved to become a foundational technology in modern 
+web development and is now used for a wide range of applications bey ond the web.  
+3.5.2.  Python  
+Python is a high -level, versatile programming language known for its simplicity, readability, and ease of learning. It was 
+created by Guido van Rossum and first released in 1991. Python's design philosophy emphasizes code readability an d 
+productivity, making it a popular choice for beginners and experienced developers alike.  
+3.5.3.  User Interface (UI) Toolkit  
+CSS (Cascading Style Sheet)  
+CSS is a fundamental technology used for describing the presentation of web pages, including their layout, co lors, fonts, 
+and other visual aspects. It's not a toolkit per se but a language used to style the elements of a web page. CSS provides 
+the styling instructions for HTML elements and is crucial in defining the visual appearance and layout of a website or 
+web application's user interface.  
+Bootstrap  
+Bootstrap is a popular front -end framework that relies on HTML, CSS, and JavaScript to aid in the development of 
+responsive and mobile -first web projects. It includes a collection of pre -built CSS and JavaScript co mponents, such as 
+buttons, forms, navigation bars, and more, along with a grid system and other utilities. Bootstrap simplifies and speeds 
+up the process of creating a consistent and visually appealing UI by providing ready -made components and styles that 
+can be easily customized and integrated into web projects.  
+Database Management System: Mongo DB  
+MongoDB is a popular, open -source, NoSQL (Not Only SQL) database management system. It is designed to handle large 
+volumes of data and is known for its flexibility, scalability, and ease of use. MongoDB stores data in a flexible, document -
+based model known as BSON (Binary JSON), which is a binary -encoded serialization of JSON -like documents.  
+Global Journal of Engineering and Technology Advances , 202 4, 20(03), 171 –187  
+175  Hardware Requirements  
+The e -commerce marketplace should function  smoothly on a range of devices with varying hardware specifications, 
+ensuring accessibility for a wide range of users. Key hardware considerations include:  
+ Processor: The application should be optimized for different processor speeds and architectures to ensure 
+smooth performance on various devices. This may involve implementing code that adapts to different 
+processor capabilities.  
+ Memory: The application should have a reasonable memory footprint to accommodate devices with limited 
+RAM. Efficient memory ma nagement techniques, such as garbage collection and memory leaks prevention, are 
+crucial.  
+ Storage: The application should have efficient storage management to ensure it doesn't consume excessive 
+storage space, especially on devices with limited internal st orage. Data caching strategies and optimization of 
+image sizes can help minimize storage usage.  
+ Network: The application should be able to function seamlessly on different network conditions, including 2G, 
+3G, 4G, and Wi -Fi. Adaptive networking techniques,  such as adjusting data transfer rates based on network 
+availability, can ensure a consistent user experience.  
+By carefully considering these technological and software requirements, the e -commerce marketplace will be developed 
+on a solid foundation, ensur ing compatibility, performance, security, and scalability across a wide range of devices and 
+platforms.  
+3.6. System design: this includes: user stories, use case diagrams and sequence diagram.  
+3.6.1.  Use Case Diagram  
+A use case diagram is a fundamental tool in softwa re development that visually depicts the interactions between users 
+and the system. It serves as a valuable communication medium among stakeholders, facilitating a shared understanding 
+of the system's functionality and user roles. Within the context of an e-commerce marketplace, the use case diagram 
+plays a crucial role in defining the system's behavior from the perspective of its users. It identifies the primary actors, 
+which represent different user roles, and the use cases, which encapsulate the actions or interactions that users perform 
+within the system. The use case diagram serves as a foundational document in the design phase of the e -commerce 
+marketplace, providing a clear understanding of the system's functionality and user interactions. It facilita tes 
+collaboration among stakeholders, ensuring that the system aligns with their expectations and meets the needs of its 
+users.  
+Use Case for Customers  
+Customers are essential contributors to the e -commerce marketplace, handling various tasks that ensure sm ooth 
+operation and customer satisfaction. The use case in figure below illustrates the customer 's and fashion designer 
+interactions with the system:  
+ 
+Global Journal of Engineering and Technology Advances , 202 4, 20(03), 171 –187  
+176   
+Figure 1  Use Case Diagram for an E -commerce Marketplace  
+Actors: customer/user and fashion designer  
+ Brows e Products and Services: This includes filtering, searching, and viewing details of the products and 
+services.  
+ Add to Shopping Order: Customers can select products or services and add them to a virtual shopping order or 
+cart.  
+ Checkout and Purchase: This us e case involves the process of finalizing the order and proceeding with the 
+purchase, which includes providing payment and shipping information.  
+ Track Orders: Post -purchase, customers can track the status of their orders, such as processing, shipping, and 
+delivery times.  
+ Manage Account Information: Customers can manage their personal and payment information, preferences, 
+and other account settings.  
+ Connect with Fashion Designers: This feature allows customers to connect or get in touch with fashion 
+designers directly, possibly for custom orders or queries.  
+ Interact with Fashion Designers' Work: Customers can interact with the works of fashion designers, which may 
+include providing feedback, ratings, or sharing on social media.  
+ Use case s for Fashion Designer  
+ Upload Works: Fashion designers can upload images or descriptions of their designs and products onto the 
+platform.  
+ Track Customer Orders: Designers can track the orders made by customers for their products, monitoring the 
+status and processing of these orders.  
+ Monitor Order List: This use case involves overseeing the list of orders received for their products, which helps 
+in inventory and demand management.  
+ Interact with other Fashion Designers: Designers can interact with each other, possibly for collaborations, 
+sharing insights, or discussing trends.  
+ Update Account Information: Designers can update their personal and professional information, portfolio, and 
+other relevant details on their profiles.  
+3.6.2.  Sequence Diagram  
+The sequence diagram portrays th e series of actions occurring within the system as users browse through available 
+products. Upon entering their login credentials, the website's backend processes this information by sending a request 
+to the database, which in turn responds based on the va lidity of the provided data. Once authenticated, users gain access 
+to browse various products, interact with them, add desired items to their shopping cart, and even submit 
+measurements for tailored items.  
+
+Global Journal of Engineering and Technology Advances , 202 4, 20(03), 171 –187  
+177  Furthermore, the diagram elucidates the procedure  for verifying the status of products, such as determining availability 
+or identifying items that are out of stock. This verification process involves querying the database to ascertain the 
+current status of each product before allowing users to add them t o their cart. By dynamically assessing the availability 
+status, the system ensures that users are presented with accurate information regarding product availability, thus 
+enhancing the overall user experience and minimizing potential frustration caused by attempting to add unavailable 
+items to their cart. In essence, this sequence diagram encapsulates the seamless flow of interactions between users and 
+the system's backend, facilitating a smooth and efficient browsing experience within the e -commerce market place.  
+ 
+Figure 2 System/User Flow Diagram of an E -commerce marketplace  
+This user flow diagram effectively illustrates how different components of the system interact to facilitate a smooth and 
+efficient user experience from logging in to tracking their or der.  The System/User Flow Diagram above provides a 
+comprehensive view of how users interact with the system, detailing the step -by-step process from initial access to 
+order fulfilment. Here's a detailed breakdown based on the provided project documentation : 
+User Registration/Login:  
+- Purpose: Allows users to either create a new account or access their existing account.  
+- Flow:  
+- User Interaction: Users enter their login credentials or registration details in their web browser.  
+- System Process:  
+- The web browser send s this information to the web server.  
+- The web server forwards the data to the application server.  
+- The application server queries the database server to verify user credentials or store new account 
+details.  
+
+Global Journal of Engineering and Technology Advances , 202 4, 20(03), 171 –187  
+178  - Based on the response from the database, the application server informs the web server, which then 
+sends the appropriate response (e.g., login success or registration confirmation) back to the user’s 
+browser.  
+Browsing Products:  
+- Purpose: Users explore and search for products within the platform.  
+- Flow:  
+- User Interaction: Users browse through product categories or use the search function on their web 
+browser.  
+- System Process:  
+- The web browser sends the browsing or search request to the web server.  
+- The web server passes this request to the application server . 
+- The application server retrieves relevant product data from the database server.  
+- The product information is then sent back from the database server to the application server, to the 
+web server, and finally displayed on the user’s browser.  
+Adding Items to  Cart:  
+- Purpose: Allows users to add selected products to their shopping cart for purchase.  
+- Flow:  
+- User Interaction: Users choose products and add them to their cart using their web browser.  
+- System Process:  
+- The web browser sends the add -to-cart request to th e web server.  
+- The web server communicates with the application server to update cart information.  
+- The application server updates the cart data in the database server.  
+- The updated cart details are then sent back to the user’s browser through the web server.  
+Checkout and Payment:  
+- Purpose: Users finalize their purchase by entering shipping details and making a payment.  
+- Flow:  
+- User Interaction: Users proceed to checkout, input their shipping information, and make a payment 
+through their web browser.  
+- System Process:  
+- The web browser sends checkout information to the web server.  
+- The web server forwards this information to the application server.  
+- The application server processes the payment by interacting with an external payment gateway (via 
+an external API).  
+- Order and payment data are recorded in the database server.  
+- The payment gateway communicates the result back to the application server.  
+- The application server updates the web server with the payment status, which is then sent back to the 
+user’s browser.  
+Order Confirmation and Tracking:  
+- Purpose: Users receive confirmation of their order and can track its shipment.  
+- Flow:  
+- User Interaction: Users request order confirmation and tracking details via their web browser.  
+- System Process:  
+- The web browser sends this re quest to the web server.  
+- The web server passes the request to the application server.  
+- The application server queries an external shipping service via an API to get shipment details.  
+- The shipping information is sent back through the application server and w eb server to the user’s 
+browser.  
+Global Journal of Engineering and Technology Advances , 202 4, 20(03), 171 –187  
+179   
+Figure 3  Figure System/User Flow Diagram of an E -commerce marketplace . 
+4. Implementation and Testing  
+4.1. Web Application Interface  
+This section shows the graphical representation of the system interface in various modules. The m odules include the 
+tailor module and the customer module.  
+4.1.1.  Tailor Module  
+This consists of the activities of the tailors which involves login, reset password, overviewing the dashboard, managing 
+orders, customer management, networking amongst tailors and cus tomers and managing their personal portfolio or 
+gallery.  
+Tailor Login Page  
+This is the page where tailors can login into the application.  
+ 
+Figure 4  Login Page  
+
+Global Journal of Engineering and Technology Advances , 202 4, 20(03), 171 –187  
+180  Tailor Dashboard Page  
+It forms the platform's operational and analytical core. This module is designed to offer comprehensive administrative 
+functions, facilitating efficient administration and real -time observation of the system's multiple facets.  
+ 
+Figure 5  Tailor Dashboard Page  
+ Tailor Orders Page  
+From order initiation to order completion, this  module is carefully developed to manage the complexities of order 
+processing. By incorporating proficient tracking methods, it offers transparent and current status data, improving both 
+operational efficiency and customer satisfaction.  
+ 
+Figure 6  Tailor O rder Page  
+4.2. Customer Communication Interface:  
+This is focused on building and sustaining strong customer relationships. It is designed to handle client profiles, 
+comprehend their preferences, manage their individual orders, and enable individualised communic ations. This module 
+plays an important role in ensuring that every user has a customised purchasing experience.  
+ 
+
+Global Journal of Engineering and Technology Advances , 202 4, 20(03), 171 –187  
+181   
+Figure 7  Customer Communication Page  
+Tailor Interface  
+This specialized module caters to the unique needs of tailors and designers on the plat form. It encompasses 
+functionalities for profile management, order handling, and customer engagement. Moreover, it provides a virtual space 
+for tailors to showcase their portfolios, thus highlighting their craftsmanship and attracting potential customers.  
+ 
+Figure 8  Tailor Interface Page  
+Tailor Gallery Page  
+This module is an integral part of the system, designed to function as a virtual gallery. It offers tailors and designers a 
+platform to exhibit their creations, share their previous works, and garner rev iews from customers. This module not 
+only enhances the visibility of professionals on the platform but also aids customers in making informed choices.  
+ 
+
+Global Journal of Engineering and Technology Advances , 202 4, 20(03), 171 –187  
+182   
+Figure 9  My Works Page  
+4.3. Customer Module  
+This consists of the activities of the tailors which involves l ogin, reset password, overviewing the dashboard, keep 
+tracking of orders and networking amongst tailors.  
+4.4. Customer Dashboard Page  
+It displays an overview of the user's followed tailors and the top tailors for the application aswell as personalized 
+recommend ations or featured fashion items. This page may also provide quick access tailored to the user's interests 
+and past activities.  
+ 
+Figure 10 Customer Dashboard Page  
+4.5. Customer Order Page:  
+It shows a list of current and past orders placed by the user, including details like order status, amount spent, and date 
+and time of the order. Users can use this page to track their orders or make repeated orders.  
+
+Global Journal of Engineering and Technology Advances , 202 4, 20(03), 171 –187  
+183   
+Figure 11  Customer Order Page  
+Customer -To-Tailor Interface  
+This section features profiles of various  tailors, showcasing their work, ratings, and reviews. Users can browse, connect, 
+or request services from tailors. It includes filters for location, experience level, or specific fashion styles, allowing us ers 
+to find tailors that match their preferences.  
+ 
+Figure 12  Customer -To-Tailor Interface  
+ 
+
+Global Journal of Engineering and Technology Advances , 202 4, 20(03), 171 –187  
+184   
+Figure 13 Detail of a Tailor’s Work  
+ 
+Figure 14  Tailor’s Profile  
+Reset Password Page  
+Users enter their email address to receive a link or instructions on how to reset their password. This is useful if they 
+have forgotten their current password.  
+ 
+Figure 15  Reset Password Page  
+
+Global Journal of Engineering and Technology Advances , 202 4, 20(03), 171 –187  
+185  OTP Verification Page  
+Users enter a One -Time Password (OTP) sent to their email. This step ensures that the person attempting to perform 
+the action is the legitimate account owner.  
+ 
+Figure 16 OTP Verification Page  
+Software Testing  
+Software testing is essential for assessing and confirming that a software program or product performs as intended. 
+Bugs can be avoided, requirements can be confirmed, and efficiency can be enhanced. Unit testing, integration testing, 
+system testing, and acceptance testing are all testing stages that were carried out during the development of this 
+software. Table 1 below shows different test cases that were carried out.  
+Unit Testing  
+This entails checking out each component or feature of a piece of software. The goal is to confirm that each program 
+component carries out its intended function.  
+4.5.1.  .Integration Testing  
+In this stage of software testing, separate units and modules are evaluated collectively to see if they function as intended 
+when combined. Testing the interface between the different modules is the goal.  
+System Testing  
+After the integration test is finished, this step involves testing the entire system.  
+This type of testing, which is carried out prior to t he product's release to the market, verifies the finished, completely 
+integrated software product.  
+Acceptance Testing  
+This is carried out to evaluate approval. Customers, users, or other authorized stakeholders test an application in this 
+way to see if it satisfies their requirements or accomplishes their goals. This stage is crucial because it affects whether 
+the client will accept the software or not.  
+ 
+ 
+ 
+
+Global Journal of Engineering and Technology Advances , 202 4, 20(03), 171 –187  
+186  Table 1  Test cases  
+Test 
+ID Descriptio
+n Pre-
+Condition  Test Steps  Test Data  Expected Result  Actual Resul t Statu
+s 
+U1 Accessing 
+the User 
+Dashboard  User must 
+be logged 
+in 1. Log in as 
+a user.  User 
+credentials  User's dashboard 
+displays with 
+activities and 
+recommendations
+. User's dashboard 
+displays with 
+activities and 
+recommendations
+. Pass  
+T1 Managing 
+Orders as  a 
+Tailor  Tailor must 
+be logged 
+in 1. Log in as 
+a tailor.  
+ 2. Click on 
+the 'Orders' 
+link.  Tailor 
+credentials  Orders page opens 
+with order details.  Orders page opens 
+with order details.  Pass  
+TT1  Exploring 
+and 
+Interacting 
+with Tailors  User/Tailo
+r must be 
+logged in  1. Log in as 
+a user or 
+tailor.  
+2. Navigate 
+to 'Tailors' 
+page.  
+3. Interact 
+with a 
+profile.  User/Tailo
+r 
+credentials  Able to view and 
+interact with 
+tailor profiles.  Users are able to 
+view and interact 
+with tailor 
+profiles.  Pass  
+US1  New User 
+Accou nt 
+Registration  User is not 
+already 
+registered  1. Navigate 
+to sign up 
+page.  
+2. Fill in 
+details.  
+ 3. Click 
+'Sign Up'.  New user 
+details  User registers and 
+can log in.  User registers and 
+can log in.  Pass  
+OTP1  Verifying 
+User 
+Identity 
+with OTP  Action 
+requiring 
+OTP 
+initiated  1. Go to 
+OTP page. 
+2. Enter 
+OTP.  
+ 3. Click 
+'Verify'.  OTP  User completes 
+verification 
+process.  User completes 
+verification 
+process.  Pass  
+TC1  Accessing 
+Customer 
+Information 
+by a Tailor  Tailor must 
+be logged 
+in 1. Log in as 
+a tailor.  
+2. Navigate 
+to 
+'Customers
+' page.  Tailor 
+credentials  Tailor views and 
+interacts with 
+customer info.  Tailor views and 
+interacts with 
+customer info.  Pass  
+UO1  Managing 
+Orders by a 
+User  User must 
+be logged 
+in 1. Log in as 
+a user.  
+2. Navigate 
+to 'Orders' 
+page.  User 
+credentials  User views and 
+manages their 
+orders.  User views and 
+manages their 
+orders.  Pass  
+TMW
+1 Managing 
+Tailor’s 
+Portfolio  Tailor must 
+be logged 
+in 1. Log in as 
+a tailor.  
+2. Navigate 
+to 'My 
+Works' 
+page.  Tailor 
+credentials  Tailor manages 
+their  works 
+portfolio.  Tailor can manage 
+their works 
+portfolio.  Pass  
+TNO1  Creating 
+New Order 
+in Tailor's 
+Module  Tailor must 
+be logged 
+in 1. Log in as 
+a tailor.  
+2. Create 
+New Order.  Order 
+details  Tailor creates and 
+saves a new order.  Tailor can create 
+and save  a new 
+order.  Pass  
+Global Journal of Engineering and Technology Advances , 202 4, 20(03), 171 –187  
+187  UOA1  Opening the 
+Web 
+Application 
+(User 
+Perspective
+) Access to a 
+web 
+browser  1. Open 
+browser.  
+2. Enter 
+Stylus URL. 
+3. Observe 
+homepage.  Web 
+browser, 
+URL  Homepage loads 
+successfully 
+without errors.  Homepage loads 
+successfully 
+without errors.  Pass  
+ 
+5. Conclusion  
+E-commerce involves the buying and selling of goods or services through the internet, with electronic data interchange 
+(EDI) and electronic funds transfer (EFT) playing a major role. Historically, platforms like ARPANET and compan ies like 
+Amazon and eBay were pivotal in developing e -commerce. E -commerce platforms today offer varied product ranges or 
+specialize in specific areas, such as fashion. The widespread accessibility of e -commerce platforms has significantly 
+transformed shop ping by allowing consumers to browse, compare, and purchase goods from any location.  
+A review of related works shows the development of e -commerce platforms for various industries. These platforms 
+enhance the marketing reach and sales potential of business es, streamlining tasks such as inventory tracking and report 
+generation. The methodologies for developing these systems often follow structured models like the waterfall approach, 
+ensuring efficiency and scalability.  
+The requirements elicitation process id entified the needs of users and businesses, focusing on both user and system 
+requirements. User needs include features like browsing, ordering, and account management, while system 
+requirements focus on scalability, security, and hardware considerations. T echnologies such as JavaScript, Python, and 
+MongoDB are highlighted as essential software tools. System design, represented by use case and sequence diagrams, 
+illustrates interactions between users and the system, emphasizing user experience and smooth bac kend processes.  
+Finally, the implementation focuses on modules for both tailors and customers, providing functionalities such as order 
+management, customer interaction, and a virtual gallery for tailors to showcase their work.  
+The development of e -commerce  platforms, particularly in specialized fields like fashion, relies on a deep understanding 
+of both user and system needs. Incorporating strong security, scalability, and user -friendly interfaces ensures that these 
+platforms can cater to a wide audience, o ffering tailored experiences for both consumers and designers. With continued 
+advancements in technology and thoughtful system design, e -commerce platforms will further revolutionize online 
+shopping experiences.  
+Compliance  with  ethical  standards  
+Disclosure  of conflict  of interest  
+No conflict  of interest  to be disclosed.  
+References  
+[1] Aulia Jannah, Adila Mawadda Meuraxa, Azzahrah. (2023). Web Based E -Commerce System Design at EXO Shop 
+Using The Waterfall Method. Journal of Information Systems , 1-5. 
+[2] Dhanyakumar Kurmude, Pradip Paithane, and Sangeeta Kakarwal. (2019). Computing Techniques, Trends And 
+Types Of Ecommerce. Proceedings of SARC International Conference , (pp. 1 -5). Pattaya, Thailand.  
+[3] Fernando, E. (2023). Designing E -Commerce Sales Of Fo otwear Using The Waterfall Method. International Journal 
+of Science, Technology & Management , 1531 -1541.  
+[4] Jaya, S. M. (2023). Web -Based Furniture Sales Information System. Journal of ImproSci , 47-60. 
+[5] Miftahul Jannah, Nora Anisa. (2022). E -Commerce Based Sal es Application To Increase Profit During Covid19 In 
+Furniture Stores. Journal of Informatics and Telecommunication Engineering , 276 -285.  
+[6] Ram611 O'Callaghan and Jon A. Turner. (n.d.). Electronic Data Interchange Concepts And Issues. Retrieved from 
+https://c ore.ac.uk/download/pdf/162457926.pdf  
