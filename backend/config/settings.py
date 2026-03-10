@@ -98,6 +98,11 @@ _extra = os.environ.get("CORS_EXTRA_ORIGINS", "")
 if _extra:
     CORS_ALLOWED_ORIGINS += [o.strip() for o in _extra.split(",") if o.strip()]
 
+# Allow all vercel preview deployments
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://[-a-zA-Z0-9_]+\.vercel\.app$",
+]
+
 CORS_ALLOW_CREDENTIALS = True
 
 # Explicitly whitelist all headers the frontend sends
