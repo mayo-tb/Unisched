@@ -276,7 +276,7 @@ export const complaintsApi = {
     list: () =>
         api.get<ComplaintResponse[]>("/api/complaints/"),
 
-    create: (data: { lecturer: number; subject: string; description: string }) =>
+    create: (data: { subject: string; description: string }) =>
         api.post<ComplaintResponse>("/api/complaints/", data),
 
     update: (id: number, data: Partial<ComplaintResponse>) =>

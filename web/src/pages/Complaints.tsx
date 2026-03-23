@@ -46,7 +46,6 @@ export function Complaints() {
         try {
             // Lecturer submits — the backend knows who they are via auth
             await complaintsApi.create({
-                lecturer: 0, // Will be overridden by backend for auth'd user
                 subject: subject.trim(),
                 description: description.trim(),
             });

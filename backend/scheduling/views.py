@@ -500,11 +500,18 @@ class _WorkspaceScopedMixin:
         user = self.request.user
         if user.is_anonymous:
             user = get_or_create_demo_user()
-            
+
         user_workspace_ids = Workspace.objects.filter(
             owner=user
         ).values_list("id", flat=True)
-        return qs.filter(workspace_id__in=user_workspace_ids)
+        qs = qs.filter(workspace_id__in=user_workspace_ids)
+
+        # Narrow to a specific workspace when the frontend passes ?workspace=<id>
+        ws_id = self.request.query_params.get("workspace")
+        if ws_id:
+            qs = qs.filter(workspace_id=ws_id)
+
+        return qs
 
 
 class LecturerViewSet(_WorkspaceScopedMixin, viewsets.ModelViewSet):
@@ -605,6 +612,17 @@ class ComplaintViewSet(viewsets.ModelViewSet):
 
         # Admins see all complaints
         return Complaint.objects.all().select_related("lecturer")
+
+    def perform_create(self, serializer):
+        """Auto-assign the lecturer from the authenticated user's profile."""
+        from rest_framework.exceptions import PermissionDenied, ValidationError
+        profile = getattr(self.request.user, "profile", None)
+        if not profile or profile.role != "LECTURER":
+            raise PermissionDenied("Only lecturers can submit complaints.")
+        lecturer = Lecturer.objects.filter(user_profile=profile).first()
+        if not lecturer:
+            raise ValidationError({"lecturer": "No lecturer profile found for this user."})
+        serializer.save(lecturer=lecturer)
 
 
 # ═════════════════════════════════════════════════════════════

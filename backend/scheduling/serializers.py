@@ -295,4 +295,4 @@ class ComplaintSerializer(serializers.ModelSerializer):
             "id", "lecturer", "lecturer_name",
             "subject", "description", "status", "created_at",
         )
-        read_only_fields = ("id", "created_at")
+        read_only_fields = ("id", "lecturer", "created_at")
