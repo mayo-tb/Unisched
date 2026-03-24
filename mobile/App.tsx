@@ -202,7 +202,7 @@ const App: React.FC = () => {
                 <Drawer.Screen
                   name="Complaints"
                   component={ComplaintsView}
-                  options={{ title: 'Complaints' }}
+                  options={{ title: 'Feedback' }}
                 />
               </>
             )}

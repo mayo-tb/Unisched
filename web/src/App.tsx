@@ -10,6 +10,8 @@ import { Settings } from './pages/Settings';
 import { MySchedule } from './pages/MySchedule';
 import { Preferences } from './pages/Preferences';
 import { Complaints } from './pages/Complaints';
+import { Officers } from './pages/Officers';
+import { AuditLog } from './pages/AuditLog';
 
 function AppContent() {
   const { isAuthenticated, user } = useAuth();
@@ -28,6 +30,8 @@ function AppContent() {
       {!isLecturer && currentView === 'timetable' && <Timetable />}
       {!isLecturer && currentView === 'resources' && <Resources />}
       {!isLecturer && currentView === 'settings' && <Settings />}
+      {!isLecturer && currentView === 'officers' && <Officers />}
+      {!isLecturer && currentView === 'audit-log' && <AuditLog />}
 
       {/* Lecturer views */}
       {isLecturer && currentView === 'my-schedule' && <MySchedule />}

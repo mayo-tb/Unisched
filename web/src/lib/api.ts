@@ -282,3 +282,71 @@ export const complaintsApi = {
     update: (id: number, data: Partial<ComplaintResponse>) =>
         api.patch<ComplaintResponse>(`/api/complaints/${id}/`, data),
 };
+
+/* ── Departments ───────────────────────────────── */
+
+export interface DepartmentResponse {
+    id: number;
+    name: string;
+    workspace: string;
+}
+
+export const departmentsApi = {
+    list: (wsId?: string) => {
+        const params: Record<string, string> = {};
+        if (wsId) params.workspace = wsId;
+        return api.get<DepartmentResponse[]>('/api/resources/departments/', { params });
+    },
+    create: (data: { name: string; workspace: string }) =>
+        api.post<DepartmentResponse>('/api/resources/departments/', data),
+    delete: (id: number) => api.delete(`/api/resources/departments/${id}/`),
+};
+
+/* ── Timetable Officers ────────────────────────── */
+
+export interface OfficerResponse {
+    id: number;
+    full_name: string;
+    email: string;
+    username: string;
+    date_joined: string;
+}
+
+export interface RegisterOfficerPayload {
+    full_name: string;
+    email: string;
+    department?: string;
+}
+
+export interface RegisterOfficerResult {
+    full_name: string;
+    email: string;
+    department: string;
+    username: string;
+    generated_password: string;
+}
+
+export const officersApi = {
+    list: () => api.get<OfficerResponse[]>('/api/auth/officers/'),
+    register: (data: RegisterOfficerPayload) =>
+        api.post<RegisterOfficerResult>('/api/auth/register-officer/', data),
+};
+
+/* ── Audit Log ────────────────────────────────── */
+
+export interface AuditLogEntry {
+    id: number;
+    actor: number | null;
+    actor_name: string;
+    action: string;
+    workspace: string | null;
+    timestamp: string;
+}
+
+export const auditLogApi = {
+    list: (wsId?: string) => {
+        const params: Record<string, string> = {};
+        if (wsId) params.workspace = wsId;
+        return api.get<AuditLogEntry[]>('/api/audit-log/', { params });
+    },
+};

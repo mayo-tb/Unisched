@@ -30,6 +30,10 @@ from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, MaxValueValidator
 from .validators_schemas import validate_lecturer_preferences
 
+# Re-export Department so FK string refs (e.g. "scheduling.Department") resolve correctly.
+# The actual class lives in presentation_models.py (already migrated in 0006).
+from .presentation_models import Department  # noqa: F401
+
 
 # ─────────────────────────────────────────────────────────────
 # User Profile (extends built-in User with role + avatar)
@@ -47,6 +51,7 @@ class UserProfile(models.Model):
     ROLE_CHOICES = [
         ("ADMIN", "Admin"),
         ("LECTURER", "Lecturer"),
+        ("OFFICER", "Timetable Officer"),
     ]
 
     user = models.OneToOneField(
@@ -187,6 +192,14 @@ class Lecturer(models.Model):
     name = models.CharField(max_length=200)
     email = models.EmailField(blank=True, default="")
     department = models.CharField(max_length=100, blank=True, default="")
+    department_obj = models.ForeignKey(
+        "Department",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="lecturers",
+        help_text="Linked department (optional).",
+    )
     workspace = models.ForeignKey(
         Workspace,
         on_delete=models.CASCADE,
@@ -297,6 +310,14 @@ class Course(models.Model):
         related_name="courses",
         null=True,
         blank=True,
+    )
+    department = models.ForeignKey(
+        "scheduling.Department",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="courses",
+        help_text="Department this course belongs to.",
     )
     workspace = models.ForeignKey(
         Workspace,
@@ -448,3 +469,44 @@ class Complaint(models.Model):
 
     def __str__(self):
         return f"{self.subject} ({self.status})"
+
+
+# ─────────────────────────────────────────────────────────────
+# Audit Log (activity tracking)
+# ─────────────────────────────────────────────────────────────
+
+class AuditLog(models.Model):
+    """
+    Records administrative actions performed by officers and admins.
+    Tracks who changed what and when.
+    """
+
+    actor = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="audit_logs",
+    )
+    action = models.CharField(
+        max_length=500,
+        help_text="Human-readable description of the action.",
+    )
+    workspace = models.ForeignKey(
+        Workspace,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="audit_logs",
+    )
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-timestamp"]
+        indexes = [
+            models.Index(fields=["-timestamp"]),
+        ]
+
+    def __str__(self):
+        actor_name = self.actor.username if self.actor else "System"
+        return f"[{self.timestamp}] {actor_name}: {self.action}"

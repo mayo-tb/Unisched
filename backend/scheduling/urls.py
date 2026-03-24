@@ -18,8 +18,10 @@ router.register(r"resources/groups", views.StudentGroupViewSet, basename="studen
 router.register(r"resources/rooms", views.RoomViewSet, basename="room")
 router.register(r"resources/courses", views.CourseViewSet, basename="course")
 router.register(r"resources/constraints", views.ConstraintConfigViewSet, basename="constraint")
+router.register(r"resources/departments", views.DepartmentViewSet, basename="department")
 router.register(r"timetable/versions", views.TimetableVersionViewSet, basename="timetableversion")
 router.register(r"complaints", views.ComplaintViewSet, basename="complaint")
+router.register(r"audit-log", views.AuditLogViewSet, basename="auditlog")
 
 
 
@@ -30,6 +32,8 @@ urlpatterns = [
     path("auth/refresh/",  TokenRefreshView.as_view(), name="token_refresh"),
     path("auth/me/",       views.me_view, name="me"),
     path("auth/logout/",   views.LogoutView.as_view(), name="logout"),
+    path("auth/register-officer/", views.register_officer_view, name="register-officer"),
+    path("auth/officers/", views.list_officers_view, name="list-officers"),
 
     # Timetable manual override
     path(

@@ -6,6 +6,8 @@ export type ViewType =
     | 'resources'
     | 'settings'
     | 'complaints'
+    | 'officers'
+    | 'audit-log'
     | 'my-schedule'
     | 'preferences';
 

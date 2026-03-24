@@ -9,10 +9,15 @@ interface AppLayoutProps {
 }
 
 const PAGE_META: Record<string, { title: string; subtitle: string }> = {
-    dashboard: { title: "Intelligence Hub", subtitle: "Real-time analytics & GA insights" },
-    timetable: { title: "Schedules", subtitle: "Timetable grid & version history" },
-    resources: { title: "Resources", subtitle: "Courses · Rooms · Lecturers · Groups" },
-    settings: { title: "Configuration", subtitle: "Constraints · Preferences · System" },
+    dashboard:    { title: "Command Hub",          subtitle: "Central hub for your academic scheduling system" },
+    timetable:    { title: "Timetable",            subtitle: "View and manage generated academic timetables" },
+    resources:    { title: "Manage Resources",     subtitle: "Create and manage rooms, lecturers, and courses" },
+    settings:     { title: "Settings",             subtitle: "Configure constraints and scheduling preferences" },
+    complaints:   { title: "Feedback & Responses", subtitle: "View and manage staff scheduling feedback" },
+    officers:     { title: "Timetable Officers",   subtitle: "Register and manage timetable officer accounts" },
+    "audit-log":  { title: "Audit Log",            subtitle: "Recent system activity and change history" },
+    "my-schedule": { title: "My Schedule",         subtitle: "Your personal timetable for this semester" },
+    preferences:  { title: "Preferences",          subtitle: "Set your scheduling availability and preferences" },
 };
 
 export function AppLayout({ children }: AppLayoutProps) {

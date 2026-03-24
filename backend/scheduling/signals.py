@@ -6,7 +6,7 @@ Genetics Cloud — Django Signals
 """
 
 import logging
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 from django.contrib.auth.models import Group
 
@@ -35,6 +35,7 @@ def sync_role_to_group(sender, instance, created, **kwargs):
     role_to_group = {
         "ADMIN":    "Admins",
         "LECTURER": "Faculty",
+        "OFFICER":  "Officers",
     }
     target_group_name = role_to_group.get(role)
 
@@ -95,3 +96,58 @@ def notify_timetable_published(sender, instance, created, **kwargs):
     except Exception as exc:
         # Never crash the save — FCM is best-effort
         logger.exception("[Signal] Could not queue FCM push: %s", exc)
+
+
+# ─────────────────────────────────────────────────────────────
+# 3. Audit Log — record resource changes
+# ─────────────────────────────────────────────────────────────
+
+def _write_audit(action: str, workspace=None):
+    """Write a system-level audit log entry (no actor = system action)."""
+    try:
+        from .models import AuditLog
+        AuditLog.objects.create(action=action, workspace=workspace)
+    except Exception as exc:
+        logger.warning("[Signal] Could not write audit log: %s", exc)
+
+
+@receiver(post_save, sender="scheduling.Room")
+def audit_room_save(sender, instance, created, **kwargs):
+    verb = "Created" if created else "Updated"
+    _write_audit(f"{verb} Room: {instance.name} ({instance.building})", workspace=instance.workspace)
+
+
+@receiver(post_delete, sender="scheduling.Room")
+def audit_room_delete(sender, instance, **kwargs):
+    _write_audit(f"Deleted Room: {instance.name}", workspace=instance.workspace)
+
+
+@receiver(post_save, sender="scheduling.Lecturer")
+def audit_lecturer_save(sender, instance, created, **kwargs):
+    verb = "Created" if created else "Updated"
+    _write_audit(f"{verb} Lecturer: {instance.name}", workspace=instance.workspace)
+
+
+@receiver(post_delete, sender="scheduling.Lecturer")
+def audit_lecturer_delete(sender, instance, **kwargs):
+    _write_audit(f"Deleted Lecturer: {instance.name}", workspace=instance.workspace)
+
+
+@receiver(post_save, sender="scheduling.Course")
+def audit_course_save(sender, instance, created, **kwargs):
+    verb = "Created" if created else "Updated"
+    _write_audit(f"{verb} Course: {instance.code} - {instance.name}", workspace=instance.workspace)
+
+
+@receiver(post_delete, sender="scheduling.Course")
+def audit_course_delete(sender, instance, **kwargs):
+    _write_audit(f"Deleted Course: {instance.code} - {instance.name}", workspace=instance.workspace)
+
+
+@receiver(post_save, sender="scheduling.TimetableVersion")
+def audit_timetable_version(sender, instance, created, **kwargs):
+    if created:
+        _write_audit(
+            f"Timetable version generated (fitness: {instance.fitness:.4f})",
+            workspace=instance.workspace,
+        )

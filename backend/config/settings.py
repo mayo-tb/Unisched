@@ -180,6 +180,7 @@ EMAIL_USE_TLS       = True
 EMAIL_HOST_USER     = os.environ.get("EMAIL_HOST_USER", "")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "")
 DEFAULT_FROM_EMAIL  = os.environ.get("DEFAULT_FROM_EMAIL", EMAIL_HOST_USER or "noreply@unisched.app")
+FRONTEND_URL        = os.environ.get("FRONTEND_URL", "https://unisched.netlify.app")
 
 # ──────────────────────────────────────────────
 # Internationalization

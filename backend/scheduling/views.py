@@ -25,14 +25,16 @@ logger = logging.getLogger(__name__)
 from .models import (
     UserProfile, Workspace, Lecturer, StudentGroup,
     Room, Course, ConstraintConfig, TimetableVersion,
-    TaskTracker, Complaint,
+    TaskTracker, Complaint, AuditLog,
 )
+from .presentation_models import Department
 from .serializers import (
     RegisterSerializer, LoginSerializer, UserSerializer,
     WorkspaceSerializer, LecturerSerializer, StudentGroupSerializer,
     RoomSerializer, CourseSerializer, ConstraintConfigSerializer,
     TimetableVersionSerializer, TimetableEntryPatchSerializer,
     GenerateSerializer, ComplaintSerializer,
+    DepartmentSerializer, AuditLogSerializer, RegisterOfficerSerializer,
 )
 
 
@@ -177,6 +179,69 @@ class LogoutView(APIView):
                 {"error": str(exc)},
                 status=status.HTTP_400_BAD_REQUEST,
             )
+
+
+# ═════════════════════════════════════════════════════════════
+# Officer Registration & Management
+# ═════════════════════════════════════════════════════════════
+
+@api_view(["POST"])
+@permission_classes([IsAuthenticated])
+def register_officer_view(request):
+    """
+    POST /api/auth/register-officer/
+    Admin-only: register a new Timetable Officer.
+    Auto-generates password, sends email with credentials.
+    Returns the generated password so admin can record it.
+    """
+    profile = getattr(request.user, "profile", None)
+    if not profile or profile.role not in ("ADMIN", "OFFICER"):
+        return Response({"error": "Only admins can register officers."}, status=status.HTTP_403_FORBIDDEN)
+
+    serializer = RegisterOfficerSerializer(data=request.data)
+    serializer.is_valid(raise_exception=True)
+    result = serializer.save()
+
+    # Write audit log
+    workspace_id = request.headers.get("X-Workspace-Id")
+    workspace = None
+    if workspace_id:
+        try:
+            workspace = Workspace.objects.get(id=workspace_id)
+        except Workspace.DoesNotExist:
+            pass
+    AuditLog.objects.create(
+        actor=request.user,
+        action=f"Registered Timetable Officer: {result['full_name']} ({result['email']})",
+        workspace=workspace,
+    )
+
+    return Response(result, status=status.HTTP_201_CREATED)
+
+
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def list_officers_view(request):
+    """
+    GET /api/auth/officers/
+    Returns all users with OFFICER role (admin view).
+    """
+    profile = getattr(request.user, "profile", None)
+    if not profile or profile.role not in ("ADMIN", "OFFICER"):
+        return Response({"error": "Permission denied."}, status=status.HTTP_403_FORBIDDEN)
+
+    officers = UserProfile.objects.filter(role="OFFICER").select_related("user")
+    data = [
+        {
+            "id": op.user.id,
+            "full_name": f"{op.user.first_name} {op.user.last_name}".strip() or op.user.username,
+            "email": op.user.email,
+            "username": op.user.username,
+            "date_joined": op.user.date_joined,
+        }
+        for op in officers
+    ]
+    return Response(data)
 
 
 # ═════════════════════════════════════════════════════════════
@@ -580,6 +645,43 @@ class TimetableVersionViewSet(_WorkspaceScopedMixin, viewsets.ReadOnlyModelViewS
     queryset = TimetableVersion.objects.select_related("workspace").all()
     serializer_class = TimetableVersionSerializer
     permission_classes = [AllowAny]
+
+
+# ═════════════════════════════════════════════════════════════
+# Department Endpoints
+# ═════════════════════════════════════════════════════════════
+
+class DepartmentViewSet(_WorkspaceScopedMixin, viewsets.ModelViewSet):
+    """CRUD for departments, scoped to the user's workspaces."""
+    queryset = Department.objects.select_related("workspace").all()
+    serializer_class = DepartmentSerializer
+    permission_classes = [AllowAny]
+    filter_backends = [filters.SearchFilter, filters.OrderingFilter]
+    search_fields = ["name"]
+    ordering = ["name"]
+
+
+# ═════════════════════════════════════════════════════════════
+# Audit Log Endpoints
+# ═════════════════════════════════════════════════════════════
+
+class AuditLogViewSet(viewsets.ReadOnlyModelViewSet):
+    """Read-only audit log. Admins and officers only, scoped to workspace."""
+    serializer_class = AuditLogSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        profile = getattr(user, "profile", None)
+        if not profile or profile.role not in ("ADMIN", "OFFICER"):
+            return AuditLog.objects.none()
+
+        qs = AuditLog.objects.select_related("actor", "workspace").order_by("-timestamp")
+        ws_id = self.request.query_params.get("workspace") or self.request.headers.get("X-Workspace-Id")
+        if ws_id:
+            qs = qs.filter(workspace_id=ws_id)
+        return qs[:100]  # Limit to last 100
+
 
 
 # ═════════════════════════════════════════════════════════════

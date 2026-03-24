@@ -10,6 +10,8 @@ import {
     X,
     SlidersHorizontal,
     MessageSquareWarning,
+    Users,
+    ClipboardList,
 } from "lucide-react";
 import { useView } from "../store/ViewContext";
 import { useAuth } from "../store/AuthContext";
@@ -31,10 +33,12 @@ interface SidebarProps {
 
 /* Admin sees full system controls */
 const ADMIN_NAV: NavItem[] = [
-    { id: "dashboard", label: "Dashboard", icon: LayoutDashboard, subtitle: "Intelligence Hub" },
+    { id: "dashboard", label: "Dashboard", icon: LayoutDashboard, subtitle: "Command Hub" },
     { id: "timetable", label: "Schedules", icon: Calendar, subtitle: "Timetable Grid" },
-    { id: "resources", label: "Resources", icon: BookOpen, subtitle: "Data & Logic" },
-    { id: "complaints", label: "Complaints", icon: MessageSquareWarning, subtitle: "Staff Feedback" },
+    { id: "resources", label: "Manage Resources", icon: BookOpen, subtitle: "Rooms · Lecturers · Courses" },
+    { id: "officers", label: "Timetable Officers", icon: Users, subtitle: "Manage Officers" },
+    { id: "complaints", label: "Feedback", icon: MessageSquareWarning, subtitle: "Staff Feedback" },
+    { id: "audit-log", label: "Audit Log", icon: ClipboardList, subtitle: "Activity History" },
     { id: "settings", label: "Settings", icon: Settings, subtitle: "Configuration" },
 ];
 
@@ -105,6 +109,11 @@ export function Sidebar({ collapsed, onToggle, onClose }: SidebarProps) {
 
             {/* ── Navigation ───────────────────────── */}
             <nav className="flex-1 p-3 space-y-1 overflow-y-auto">
+                {!collapsed && (
+                    <p className="px-3 pb-2 pt-1 text-[10px] font-semibold uppercase tracking-widest text-slate-600">
+                        Navigation
+                    </p>
+                )}
                 {navItems.map((item) => {
                     const isActive = currentView === item.id;
                     const Icon = item.icon;
