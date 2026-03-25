@@ -35,6 +35,7 @@ urlpatterns = [
     path("auth/register-officer/", views.register_officer_view, name="register-officer"),
     path("auth/officers/", views.list_officers_view, name="list-officers"),
     path("auth/officers/<int:user_id>/", views.update_officer_view, name="update-officer"),
+    path("auth/officers/<int:user_id>/delete/", views.delete_officer_view, name="delete-officer"),
     path("auth/officers/<int:user_id>/toggle-active/", views.toggle_officer_active_view, name="toggle-officer-active"),
 
     # Timetable manual override

@@ -335,6 +335,8 @@ export const officersApi = {
         api.patch<OfficerResponse>(`/api/auth/officers/${id}/`, data),
     toggleActive: (id: number) =>
         api.post<{ id: number; is_active: boolean; message: string }>(`/api/auth/officers/${id}/toggle-active/`),
+    delete: (id: number) =>
+        api.delete(`/api/auth/officers/${id}/delete/`),
 };
 
 /* ── Audit Log ────────────────────────────────── */

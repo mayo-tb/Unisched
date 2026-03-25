@@ -105,6 +105,26 @@ export default function OfficersView() {
     }
   };
 
+  const handleDeleteOfficer = (officer: OfficerResponse) => {
+    const confirmMsg = `Permanently delete ${officer.full_name}'s account? This cannot be undone.`;
+    const doDelete = async () => {
+      try {
+        await officersApi.delete(officer.id);
+        loadOfficers();
+      } catch {
+        /* silent */
+      }
+    };
+    if (Platform.OS === 'web') {
+      if (window.confirm(confirmMsg)) doDelete();
+    } else {
+      Alert.alert('Delete Officer', confirmMsg, [
+        { text: 'Cancel', style: 'cancel' },
+        { text: 'Delete', style: 'destructive', onPress: doDelete },
+      ]);
+    }
+  };
+
   const getInitials = (name: string) =>
     name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
 
@@ -223,7 +243,7 @@ export default function OfficersView() {
                   {/* Action Buttons */}
                   <View style={styles.actionBtns}>
                     <TouchableOpacity style={styles.iconBtn} onPress={() => openEdit(officer)}>
-                      <Feather name="edit-2" size={15} color="#64748b" />
+                      <Feather name="edit-2" size={14} color="#64748b" />
                     </TouchableOpacity>
                     <TouchableOpacity
                       style={[styles.iconBtn, toggling === officer.id && { opacity: 0.4 }]}
@@ -231,10 +251,16 @@ export default function OfficersView() {
                       disabled={toggling === officer.id}
                     >
                       <Feather
-                        name={officer.is_active ? 'power' : 'power'}
-                        size={15}
-                        color={officer.is_active ? '#ef4444' : '#10b981'}
+                        name="power"
+                        size={14}
+                        color={officer.is_active ? '#f59e0b' : '#10b981'}
                       />
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      style={[styles.iconBtn, { borderColor: '#fee2e2' }]}
+                      onPress={() => handleDeleteOfficer(officer)}
+                    >
+                      <Feather name="trash-2" size={14} color="#ef4444" />
                     </TouchableOpacity>
                   </View>
                 </View>

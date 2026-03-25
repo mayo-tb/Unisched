@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Users, Plus, Loader2, AlertCircle, CheckCircle2, Copy, X, Mail, User, Building2, Pencil, Power, PowerOff } from 'lucide-react';
+import { Users, Plus, Loader2, AlertCircle, CheckCircle2, Copy, X, Mail, User, Building2, Pencil, Power, PowerOff, Trash2 } from 'lucide-react';
 import { officersApi, type OfficerResponse, type RegisterOfficerResult } from '../lib/api';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 
@@ -54,6 +54,11 @@ export function Officers() {
         onError: (err: any) => {
             setEditError(err.response?.data?.error || 'Update failed.');
         },
+    });
+
+    const deleteMutation = useMutation({
+        mutationFn: (id: number) => officersApi.delete(id),
+        onSuccess: () => queryClient.invalidateQueries({ queryKey: ['officers'] }),
     });
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -271,9 +276,20 @@ export function Officers() {
                                     <button
                                         onClick={() => toggleMutation.mutate(officer.id)}
                                         disabled={toggleMutation.isPending}
-                                        className={`p-2 rounded-lg transition-colors ${officer.is_active ? 'text-slate-500 hover:text-red-400 hover:bg-red-500/10' : 'text-slate-500 hover:text-emerald-400 hover:bg-emerald-500/10'}`}
+                                        className={`p-2 rounded-lg transition-colors ${officer.is_active ? 'text-slate-500 hover:text-amber-400 hover:bg-amber-500/10' : 'text-slate-500 hover:text-emerald-400 hover:bg-emerald-500/10'}`}
                                         title={officer.is_active ? 'Deactivate account' : 'Activate account'}>
                                         {officer.is_active ? <PowerOff className="w-4 h-4" /> : <Power className="w-4 h-4" />}
+                                    </button>
+                                    <button
+                                        onClick={() => {
+                                            if (window.confirm(`Permanently delete ${officer.full_name}'s account? This cannot be undone.`)) {
+                                                deleteMutation.mutate(officer.id);
+                                            }
+                                        }}
+                                        disabled={deleteMutation.isPending}
+                                        className="p-2 rounded-lg text-slate-500 hover:text-red-400 hover:bg-red-500/10 transition-colors"
+                                        title="Delete officer permanently">
+                                        <Trash2 className="w-4 h-4" />
                                     </button>
                                 </div>
                             </div>

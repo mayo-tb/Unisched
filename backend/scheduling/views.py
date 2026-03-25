@@ -322,6 +322,35 @@ def toggle_officer_active_view(request, user_id):
     return Response({"id": user.id, "is_active": user.is_active, "message": f"Officer {verb.lower()} successfully."})
 
 
+@api_view(["DELETE"])
+@permission_classes([IsAuthenticated])
+def delete_officer_view(request, user_id):
+    """
+    DELETE /api/auth/officers/<user_id>/
+    Admin-only: permanently delete a Timetable Officer account.
+    """
+    profile = getattr(request.user, "profile", None)
+    if not profile or profile.role not in ("ADMIN", "OFFICER"):
+        return Response({"error": "Permission denied."}, status=status.HTTP_403_FORBIDDEN)
+
+    from django.contrib.auth.models import User as DjangoUser
+    try:
+        user = DjangoUser.objects.get(id=user_id, profile__role="OFFICER")
+    except DjangoUser.DoesNotExist:
+        return Response({"error": "Officer not found."}, status=status.HTTP_404_NOT_FOUND)
+
+    full_name = user.get_full_name() or user.username
+    email = user.email
+    user.delete()  # cascades to UserProfile
+
+    AuditLog.objects.create(
+        actor=request.user,
+        action=f"Deleted officer: {full_name} ({email})",
+    )
+
+    return Response(status=status.HTTP_204_NO_CONTENT)
+
+
 # ═════════════════════════════════════════════════════════════
 # Workspace Endpoints
 # ═════════════════════════════════════════════════════════════
