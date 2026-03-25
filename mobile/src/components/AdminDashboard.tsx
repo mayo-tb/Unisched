@@ -1,78 +1,86 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView, SafeAreaView, ActivityIndicator, Platform } from 'react-native';
+import {
+  View, Text, StyleSheet, TouchableOpacity, ScrollView,
+  SafeAreaView, ActivityIndicator, Platform,
+} from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useNavigation } from '@react-navigation/native';
 import TopHeader from './TopHeader';
-import { api } from '../lib/api';
+import { api, auditLogApi, type AuditLogEntry } from '../lib/api';
 
 export default function AdminDashboard() {
+  const navigation = useNavigation<any>();
   const [workspaceId, setWorkspaceId] = useState<string | null>(null);
+  const [workspaceName, setWorkspaceName] = useState<string | null>(null);
   const [metrics, setMetrics] = useState({
-    coursesCount: 0,
-    groupsCount: 0,
-    lecturersCount: 0,
-    roomsCount: 0,
-    executionTime: 0,
-    fitness: 0,
-    hardViolations: 0,
-    engineLoad: 'Stable'
+    coursesCount: 0, groupsCount: 0, lecturersCount: 0, roomsCount: 0,
+    executionTime: 0, fitness: 0, hardViolations: 0, engineLoad: 'Stable'
   });
   const [runHistory, setRunHistory] = useState<any[]>([]);
+  const [auditLogs, setAuditLogs] = useState<AuditLogEntry[]>([]);
   const [loading, setLoading] = useState(true);
   const [optimizing, setOptimizing] = useState(false);
   const [pollStatus, setPollStatus] = useState('');
+  const [showGA, setShowGA] = useState(false);
 
-  useEffect(() => {
-    loadDashboardData();
-  }, []);
+  useEffect(() => { loadDashboardData(); }, []);
 
   const loadDashboardData = async () => {
     setLoading(true);
     try {
-      // 1. Get Workspace Data
       let currentWsId = workspaceId;
+      let currentWsName = workspaceName;
       if (!currentWsId) {
         const wsData = await AsyncStorage.getItem('gc_workspace');
         if (wsData) {
-          currentWsId = JSON.parse(wsData).id;
+          const parsed = JSON.parse(wsData);
+          currentWsId = parsed.id;
+          currentWsName = parsed.name || null;
           setWorkspaceId(currentWsId);
         } else {
           const wsRes = await api.get('/api/workspaces/');
           const workspaces = wsRes.data.results || wsRes.data || [];
-          if (workspaces && workspaces.length > 0) {
+          if (workspaces.length > 0) {
             currentWsId = workspaces[0].id;
+            currentWsName = workspaces[0].name;
             setWorkspaceId(currentWsId);
-            await AsyncStorage.setItem('gc_workspace', JSON.stringify({ id: currentWsId }));
+            setWorkspaceName(currentWsName);
+            await AsyncStorage.setItem('gc_workspace', JSON.stringify({ id: currentWsId, name: currentWsName }));
           }
         }
+        if (currentWsName) setWorkspaceName(currentWsName);
       }
 
       if (currentWsId) {
-        // Find workspace to get basic counts
         const wsRes = await api.get('/api/workspaces/');
         const ws = (wsRes.data.results || wsRes.data || []).find((w: any) => w.id === currentWsId);
 
-        // 2. Get Timetable Versions
         const verRes = await api.get('/api/timetable/versions/');
         const versions = verRes.data.results || verRes.data || [];
-        // Filter versions for this workspace
-        const wsVersions = versions.filter((v: any) => v.workspace === currentWsId)
+        const wsVersions = versions
+          .filter((v: any) => v.workspace === currentWsId)
           .sort((a: any, b: any) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
-
         setRunHistory(wsVersions);
 
-        // Update metrics
         const latest = wsVersions.length > 0 ? wsVersions[0] : null;
         setMetrics({
-          coursesCount: ws ? ws.courses_count : 0,
-          groupsCount: ws ? ws.groups_count : 0,
-          lecturersCount: ws ? ws.lecturers_count : 0,
-          roomsCount: ws ? ws.rooms_count : 0,
-          executionTime: latest ? latest.execution_time : 0,
-          fitness: latest ? latest.fitness : 0,
-          hardViolations: latest ? latest.hard_violations : 0,
-          engineLoad: 'Stable'
+          coursesCount: ws?.courses_count ?? 0,
+          groupsCount: ws?.groups_count ?? 0,
+          lecturersCount: ws?.lecturers_count ?? 0,
+          roomsCount: ws?.rooms_count ?? 0,
+          executionTime: latest?.execution_time ?? 0,
+          fitness: latest?.fitness ?? 0,
+          hardViolations: latest?.hard_violations ?? 0,
+          engineLoad: 'Stable',
         });
+        if (ws?.name) setWorkspaceName(ws.name);
+
+        // Load recent audit log
+        try {
+          const logRes = await auditLogApi.list(currentWsId);
+          setAuditLogs((logRes.data as AuditLogEntry[]).slice(0, 6));
+        } catch { /* non-fatal: user might not be admin */ }
       }
     } catch (err) {
       console.error('Failed to load dashboard data:', err);
@@ -82,495 +90,271 @@ export default function AdminDashboard() {
   };
 
   const executeOptimization = async () => {
-    if (!workspaceId) {
-      showAlert('Error', 'No active workspace found. Please add resources first.');
-      return;
-    }
-
-    setOptimizing(true);
-    setPollStatus('Initializing Engine...');
-
+    if (!workspaceId) { showAlert('Error', 'No active workspace found.'); return; }
+    setOptimizing(true); setPollStatus('Initializing Engine...');
     try {
       const res = await api.post(`/api/workspaces/${workspaceId}/generate/`, {});
-      const taskId = res.data.task_id;
-
-      // Start polling
-      pollTask(taskId);
+      pollTask(res.data.task_id);
     } catch (err: any) {
-      console.error('Failed to start optimization:', err);
-
-      let errorMsg = 'Failed to start optimization.';
-      if (err.response?.status === 429) {
-        errorMsg = 'Rate limit exceeded. Please wait a moment before trying again.';
-      } else if (err.response?.data?.error) {
-        errorMsg = err.response.data.error;
-      }
-
-      showAlert('Error', errorMsg);
-      setOptimizing(false);
-      setPollStatus('');
+      let msg = err.response?.status === 429
+        ? 'Rate limit exceeded. Please wait before trying again.'
+        : err.response?.data?.error || 'Failed to start optimization.';
+      showAlert('Error', msg);
+      setOptimizing(false); setPollStatus('');
     }
   };
 
   const pollTask = async (taskId: string) => {
     try {
       const res = await api.get(`/api/workspaces/status/${taskId}/`);
-      const { state, progress, fitness, generation } = res.data;
-
+      const { state, progress, generation } = res.data;
       if (state === 'COMPLETED') {
-        setPollStatus('Complete');
-        setOptimizing(false);
-        // Refresh data to show new metrics and history
+        setPollStatus('Complete'); setOptimizing(false);
         loadDashboardData();
         setTimeout(() => setPollStatus(''), 3000);
       } else if (state === 'FAILED') {
         setOptimizing(false);
-        showAlert('Optimization Failed', res.data.error || 'An unknown error occurred.');
+        showAlert('Optimization Failed', res.data.error || 'Unknown error.');
         setPollStatus('Failed');
         setTimeout(() => setPollStatus(''), 3000);
       } else {
-        // STILL RUNNING OR PENDING
         setPollStatus(`Evolving Gen ${generation} (${progress}%)...`);
-        setTimeout(() => pollTask(taskId), 2000); // Poll every 2 seconds
+        setTimeout(() => pollTask(taskId), 2000);
       }
     } catch (err: any) {
-      console.error('Error polling task:', err);
-      // Wait a bit longer and try again instead of giving up entirely on generic network blips
-
-      // If we got a 429 while polling, back off heavily
-      if (err.response?.status === 429) {
-        setTimeout(() => pollTask(taskId), 10000);
-      } else {
-        setTimeout(() => pollTask(taskId), 5000);
-      }
+      const delay = err.response?.status === 429 ? 10000 : 5000;
+      setTimeout(() => pollTask(taskId), delay);
     }
   };
 
   const showAlert = (title: string, msg: string) => {
-    if (Platform.OS === 'web') {
-      window.alert(`${title}\n\n${msg}`);
-    } else {
-      const { Alert } = require('react-native');
-      Alert.alert(title, msg);
-    }
+    if (Platform.OS === 'web') window.alert(`${title}\n\n${msg}`);
+    else Alert.alert(title, msg);
   };
 
-  const formatDate = (dateString: string) => {
-    const d = new Date(dateString);
-    return d.toLocaleDateString() + ' ' + d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-  };
+  const formatTime = (ts: string) =>
+    new Date(ts).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+
+  const { Alert } = require('react-native');
 
   if (loading && !runHistory.length) {
     return (
       <SafeAreaView style={styles.container}>
         <TopHeader />
         <View style={styles.centerLoading}>
-          <ActivityIndicator size="large" color="#1d4ed8" />
+          <ActivityIndicator size="large" color="#0ea5e9" />
         </View>
       </SafeAreaView>
     );
   }
 
+  const quickLinks = [
+    { label: 'Manage Resources', icon: 'book-open', color: '#eff6ff', iconColor: '#3b82f6', nav: 'Resources' },
+    { label: 'Timetable Officers', icon: 'users', color: '#f3e8ff', iconColor: '#9333ea', nav: 'Officers' },
+    { label: 'Feedback',          icon: 'message-square', color: '#fff1f2', iconColor: '#f43f5e', nav: 'Complaints' },
+    { label: 'Audit Log',         icon: 'list', color: '#ecfdf5', iconColor: '#10b981', nav: 'AuditLog' },
+  ];
+
   return (
     <SafeAreaView style={styles.container}>
       <TopHeader />
-
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
-        <View style={styles.topSectionRow}>
-          <View>
-            <Text style={styles.pageTitle}>Intelligence Hub</Text>
-            <Text style={styles.pageSubtitle}>Real-time scheduling performance and version control.</Text>
+
+        {/* Page Title */}
+        <Text style={styles.pageTitle}>Command Hub</Text>
+        <Text style={styles.pageSubtitle}>Central hub for your academic scheduling system.</Text>
+
+        {/* ── Active Session Banner ────────────────────── */}
+        <View style={styles.sessionBanner}>
+          <View style={styles.sessionIconWrap}>
+            <Feather name="layers" size={18} color="#0ea5e9" />
           </View>
-          <TouchableOpacity
-            style={[styles.executeBtn, optimizing && styles.executeBtnDisabled]}
-            onPress={executeOptimization}
-            disabled={optimizing}
-          >
-            {optimizing ? (
-              <ActivityIndicator color="#fff" size="small" style={{ marginRight: 8 }} />
-            ) : (
-              <Feather name="zap" size={18} color="#fff" style={{ marginRight: 8 }} />
-            )}
-            <Text style={styles.executeBtnText}>
-              {optimizing ? pollStatus : 'Execute Optimization'}
-            </Text>
-          </TouchableOpacity>
+          <View style={{ flex: 1 }}>
+            <Text style={styles.sessionLabel}>ACTIVE ACADEMIC MANAGEMENT SESSION</Text>
+            <Text style={styles.sessionName}>{workspaceName ?? 'No session selected'}</Text>
+          </View>
+          <View style={styles.sessionActiveDot} />
         </View>
 
-        <View style={styles.dashboardGrid}>
-          {/* Left Column: Metrics & Summary */}
-          <View style={styles.leftCol}>
-
-            {/* Main Metrics Card */}
-            <View style={styles.metricsCard}>
-              <View style={styles.metricsHeaderRow}>
-                <Feather name="activity" size={20} color="#38bdf8" />
-                <Text style={styles.metricsTitle}>COMPUTATIONAL METRICS</Text>
+        {/* ── Quick Links ──────────────────────────────── */}
+        <Text style={styles.sectionHeading}>Quick Links</Text>
+        <View style={styles.quickLinksGrid}>
+          {quickLinks.map(link => (
+            <TouchableOpacity
+              key={link.label}
+              style={[styles.quickCard, { backgroundColor: link.color }]}
+              onPress={() => navigation.navigate(link.nav)}
+              activeOpacity={0.75}
+            >
+              <View style={[styles.quickIconWrap, { backgroundColor: link.iconColor + '22' }]}>
+                <Feather name={link.icon as any} size={20} color={link.iconColor} />
               </View>
+              <Text style={styles.quickLabel}>{link.label}</Text>
+              <Feather name="arrow-right" size={14} color="#94a3b8" style={{ marginTop: 8 }} />
+            </TouchableOpacity>
+          ))}
+        </View>
 
-              <View style={styles.metricsDataRow}>
-                <View style={styles.metricItem}>
-                  <Text style={styles.metricLabel}>EXEC. TIME</Text>
-                  <View style={styles.metricValueRow}>
-                    <Feather name="clock" size={14} color="#94a3b8" />
-                    <Text style={styles.metricValue}>{Math.round(metrics.executionTime)} <Text style={styles.metricMs}>ms</Text></Text>
-                  </View>
+        {/* ── Resource Counts ──────────────────────────── */}
+        <Text style={styles.sectionHeading}>Resources Overview</Text>
+        <View style={styles.countRow}>
+          {[
+            { label: 'COURSES',   val: metrics.coursesCount,   color: '#3b82f6' },
+            { label: 'LECTURERS', val: metrics.lecturersCount, color: '#10b981' },
+            { label: 'ROOMS',     val: metrics.roomsCount,     color: '#f59e0b' },
+            { label: 'GROUPS',    val: metrics.groupsCount,    color: '#9333ea' },
+          ].map(m => (
+            <View key={m.label} style={styles.countCard}>
+              <Text style={[styles.countValue, { color: m.color }]}>{m.val}</Text>
+              <Text style={styles.countLabel}>{m.label}</Text>
+            </View>
+          ))}
+        </View>
+
+        {/* ── GA Engine (Collapsible) ───────────────────── */}
+        <TouchableOpacity style={styles.gaSectionHeader} onPress={() => setShowGA(!showGA)}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+            <Feather name="zap" size={16} color="#f59e0b" />
+            <Text style={styles.sectionHeadingInline}>GA Engine</Text>
+          </View>
+          <Feather name={showGA ? 'chevron-up' : 'chevron-down'} size={18} color="#94a3b8" />
+        </TouchableOpacity>
+
+        {showGA && (
+          <View style={styles.gaPanel}>
+            <View style={styles.gaMetricRow}>
+              {[
+                { l: 'FITNESS',    v: metrics.fitness.toFixed(4) },
+                { l: 'EXEC TIME',  v: `${Math.round(metrics.executionTime)}ms` },
+                { l: 'VIOLATIONS', v: String(metrics.hardViolations) },
+                { l: 'STATUS',     v: metrics.engineLoad },
+              ].map(m => (
+                <View key={m.l} style={styles.gaMetric}>
+                  <Text style={styles.gaMetricLabel}>{m.l}</Text>
+                  <Text style={styles.gaMetricValue}>{m.v}</Text>
                 </View>
+              ))}
+            </View>
+            <TouchableOpacity
+              style={[styles.executeBtn, optimizing && styles.executeBtnDisabled]}
+              onPress={executeOptimization}
+              disabled={optimizing}
+            >
+              {optimizing
+                ? <ActivityIndicator color="#fff" size="small" style={{ marginRight: 8 }} />
+                : <Feather name="play" size={16} color="#fff" style={{ marginRight: 8 }} />}
+              <Text style={styles.executeBtnText}>{optimizing ? pollStatus : 'Execute Optimization'}</Text>
+            </TouchableOpacity>
+          </View>
+        )}
 
-                <View style={styles.metricItem}>
-                  <Text style={styles.metricLabel}>FITNESS</Text>
-                  <Text style={[styles.metricValue, { color: '#34d399' }]}>{metrics.fitness.toFixed(4)}</Text>
-                </View>
-
-                <View style={styles.metricItem}>
-                  <Text style={styles.metricLabel}>HARD VIOLATIONS</Text>
-                  <Text style={[styles.metricValue, metrics.hardViolations > 0 && { color: '#ef4444' }]}>
-                    {metrics.hardViolations}
+        {/* ── Recent Activity ───────────────────────────── */}
+        <Text style={styles.sectionHeading}>Recent Activity</Text>
+        <View style={styles.activityCard}>
+          {auditLogs.length === 0 ? (
+            <View style={styles.emptyActivity}>
+              <Feather name="clock" size={24} color="#e2e8f0" />
+              <Text style={styles.emptyActivityText}>No activity recorded yet.</Text>
+            </View>
+          ) : (
+            auditLogs.map((entry, i) => (
+              <View key={entry.id} style={[styles.activityRow, i === auditLogs.length - 1 && { borderBottomWidth: 0 }]}>
+                <View style={styles.activityDot} />
+                <View style={{ flex: 1 }}>
+                  <Text style={styles.activityText} numberOfLines={1}>
+                    <Text style={styles.actorName}>{entry.actor_name}</Text>
+                    {' — '}{entry.action}
                   </Text>
-                </View>
-
-                <View style={styles.metricItem}>
-                  <Text style={styles.metricLabel}>ENGINE LOAD</Text>
-                  <Text style={[styles.metricValue, { color: '#38bdf8' }]}>{metrics.engineLoad}</Text>
+                  <Text style={styles.activityTime}>{formatTime(entry.timestamp)}</Text>
                 </View>
               </View>
-            </View>
-
-            {/* Sub Summary Cards */}
-            <View style={styles.subCardsRow}>
-              <View style={[styles.subCard, { width: '48%' }]}>
-                <View style={[styles.subCardIconWrapper, { backgroundColor: '#eff6ff', width: 48, height: 48 }]}>
-                  <Feather name="book-open" size={20} color="#3b82f6" />
-                </View>
-                <View>
-                  <Text style={styles.subCardValue}>{metrics.coursesCount}</Text>
-                  <Text style={styles.subCardLabel}>COURSES</Text>
-                </View>
-              </View>
-
-              <View style={[styles.subCard, { width: '48%' }]}>
-                <View style={[styles.subCardIconWrapper, { backgroundColor: '#ecfdf5', width: 48, height: 48 }]}>
-                  <Feather name="users" size={20} color="#10b981" />
-                </View>
-                <View>
-                  <Text style={styles.subCardValue}>{metrics.lecturersCount}</Text>
-                  <Text style={styles.subCardLabel}>LECTURERS</Text>
-                </View>
-              </View>
-            </View>
-
-            <View style={[styles.subCardsRow, { marginTop: 20 }]}>
-              <View style={[styles.subCard, { width: '48%' }]}>
-                <View style={[styles.subCardIconWrapper, { backgroundColor: '#fef3c7', width: 48, height: 48 }]}>
-                  <Feather name="map-pin" size={20} color="#d97706" />
-                </View>
-                <View>
-                  <Text style={styles.subCardValue}>{metrics.roomsCount}</Text>
-                  <Text style={styles.subCardLabel}>ROOMS</Text>
-                </View>
-              </View>
-
-              <View style={[styles.subCard, { width: '48%' }]}>
-                <View style={[styles.subCardIconWrapper, { backgroundColor: '#f3e8ff', width: 48, height: 48 }]}>
-                  <Feather name="users" size={20} color="#9333ea" />
-                </View>
-                <View>
-                  <Text style={styles.subCardValue}>{metrics.groupsCount}</Text>
-                  <Text style={styles.subCardLabel}>GROUPS</Text>
-                </View>
-              </View>
-            </View>
-
-          </View>
-
-          {/* Right Column: Run History */}
-          <View style={styles.rightCol}>
-            <View style={styles.historyCard}>
-              <View style={styles.historyHeader}>
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-                  <Feather name="rotate-ccw" size={18} color="#0f172a" />
-                  <Text style={styles.historyTitle}>Run History</Text>
-                </View>
-                <View style={styles.badgeSolid}>
-                  <Text style={styles.badgeSolidText}>CACHED</Text>
-                </View>
-              </View>
-
-              {runHistory.length === 0 ? (
-                <View style={styles.emptyHistory}>
-                  <Feather name="zap-off" size={32} color="#e2e8f0" />
-                  <Text style={styles.emptyHistoryText}>NO ENGINE RUNS{'\n'}RECORDED YET</Text>
-                </View>
-              ) : (
-                <View style={styles.historyList}>
-                  {runHistory.map((run, index) => (
-                    <View key={run.id} style={styles.historyItem}>
-                      <View style={styles.historyItemLeft}>
-                        {index === 0 && <View style={styles.activeDot} />}
-                        <View>
-                          <Text style={styles.runName}>Version {run.id.substring(0, 6)}</Text>
-                          <Text style={styles.runDate}>{formatDate(run.created_at)}</Text>
-                        </View>
-                      </View>
-                      <Text style={[styles.runFitness, { color: '#34d399' }]}>{run.fitness.toFixed(4)}</Text>
-                    </View>
-                  ))}
-                </View>
-              )}
-
-            </View>
-          </View>
+            ))
+          )}
         </View>
+
+        <View style={{ height: 40 }} />
       </ScrollView>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
+  container: { flex: 1, backgroundColor: '#fff' },
+  centerLoading: { flex: 1, justifyContent: 'center', alignItems: 'center' },
+  content: { flex: 1, paddingHorizontal: 20, paddingTop: 24 },
+
+  pageTitle: { fontSize: 26, fontWeight: '800', color: '#0f172a', letterSpacing: -0.5 },
+  pageSubtitle: { fontSize: 13, color: '#64748b', marginTop: 2, marginBottom: 20 },
+
+  // Session Banner
+  sessionBanner: {
+    flexDirection: 'row', alignItems: 'center', gap: 12,
+    backgroundColor: '#f0f9ff', borderColor: '#bae6fd', borderWidth: 1,
+    borderRadius: 14, padding: 16, marginBottom: 24,
   },
-  centerLoading: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+  sessionIconWrap: {
+    width: 40, height: 40, borderRadius: 12,
+    backgroundColor: '#e0f2fe', alignItems: 'center', justifyContent: 'center',
   },
-  content: {
-    flex: 1,
-    paddingHorizontal: 30,
-    paddingTop: 40,
+  sessionLabel: { fontSize: 9, fontWeight: '800', color: '#0284c7', letterSpacing: 1, marginBottom: 2 },
+  sessionName: { fontSize: 16, fontWeight: '800', color: '#0f172a' },
+  sessionActiveDot: { width: 10, height: 10, borderRadius: 5, backgroundColor: '#10b981' },
+
+  // Section Headings
+  sectionHeading: { fontSize: 11, fontWeight: '800', color: '#94a3b8', letterSpacing: 1, marginBottom: 12, textTransform: 'uppercase' },
+  sectionHeadingInline: { fontSize: 14, fontWeight: '700', color: '#0f172a' },
+
+  // Quick Links
+  quickLinksGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: 10, marginBottom: 28 },
+  quickCard: {
+    width: '47%', borderRadius: 14, padding: 16,
+    shadowColor: '#000', shadowOpacity: 0.04, shadowOffset: { width: 0, height: 2 }, shadowRadius: 6, elevation: 2,
   },
-  topSectionRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 40,
+  quickIconWrap: { width: 40, height: 40, borderRadius: 10, alignItems: 'center', justifyContent: 'center', marginBottom: 10 },
+  quickLabel: { fontSize: 13, fontWeight: '700', color: '#0f172a' },
+
+  // Resource Counts
+  countRow: { flexDirection: 'row', gap: 10, marginBottom: 24 },
+  countCard: {
+    flex: 1, backgroundColor: '#f8fafc', borderRadius: 12, padding: 14,
+    alignItems: 'center', borderWidth: 1, borderColor: '#f1f5f9',
   },
-  pageTitle: {
-    fontSize: 28,
-    fontWeight: '800',
-    color: '#0f172a',
-    letterSpacing: -0.5,
+  countValue: { fontSize: 22, fontWeight: '800' },
+  countLabel: { fontSize: 9, fontWeight: '800', color: '#94a3b8', letterSpacing: 0.5, marginTop: 2 },
+
+  // GA Engine
+  gaSectionHeader: {
+    flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center',
+    paddingVertical: 14, borderTopWidth: 1, borderTopColor: '#f1f5f9', marginBottom: 0,
   },
-  pageSubtitle: {
-    fontSize: 15,
-    color: '#64748b',
-    marginTop: 4,
+  gaPanel: {
+    backgroundColor: '#0f172a', borderRadius: 16, padding: 20, marginBottom: 24,
   },
+  gaMetricRow: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 16 },
+  gaMetric: { alignItems: 'center' },
+  gaMetricLabel: { fontSize: 9, fontWeight: '800', color: '#64748b', letterSpacing: 0.5 },
+  gaMetricValue: { fontSize: 18, fontWeight: '800', color: '#fff', marginTop: 4 },
   executeBtn: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#0ea5e9', // lighter blue as per screenshot
-    paddingHorizontal: 24,
-    paddingVertical: 14,
-    borderRadius: 12,
-    shadowColor: '#0ea5e9',
-    shadowOpacity: 0.3,
-    shadowOffset: { width: 0, height: 4 },
-    shadowRadius: 12,
-    elevation: 4,
+    flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
+    backgroundColor: '#0ea5e9', borderRadius: 12, paddingVertical: 14,
   },
-  executeBtnDisabled: {
-    backgroundColor: '#94a3b8',
-    shadowOpacity: 0,
-    elevation: 0,
+  executeBtnDisabled: { backgroundColor: '#64748b' },
+  executeBtnText: { color: '#fff', fontSize: 15, fontWeight: '700' },
+
+  // Recent Activity
+  activityCard: {
+    borderWidth: 1, borderColor: '#f1f5f9', borderRadius: 14, overflow: 'hidden', marginBottom: 20,
   },
-  executeBtnText: {
-    color: '#fff',
-    fontSize: 15,
-    fontWeight: '700',
+  emptyActivity: { alignItems: 'center', paddingVertical: 30, gap: 8 },
+  emptyActivityText: { color: '#94a3b8', fontSize: 13 },
+  activityRow: {
+    flexDirection: 'row', alignItems: 'flex-start', padding: 14,
+    borderBottomWidth: 1, borderBottomColor: '#f8fafc', gap: 12,
   },
-  dashboardGrid: {
-    flexDirection: Platform.OS === 'web' ? 'row' : 'column',
-    gap: 30,
-    paddingBottom: 40,
+  activityDot: {
+    width: 8, height: 8, borderRadius: 4, backgroundColor: '#0ea5e9', marginTop: 5,
   },
-  leftCol: {
-    flex: 2,
-    gap: 20,
-  },
-  rightCol: {
-    flex: 1,
-  },
-  metricsCard: {
-    backgroundColor: '#0f172a',
-    borderRadius: 24,
-    padding: 30,
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    shadowOffset: { width: 0, height: 10 },
-    shadowRadius: 30,
-    elevation: 10,
-  },
-  metricsHeaderRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 12,
-    marginBottom: 40,
-  },
-  metricsTitle: {
-    color: '#38bdf8',
-    fontSize: 12,
-    fontWeight: '800',
-    letterSpacing: 1.5,
-  },
-  metricsDataRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    flexWrap: 'wrap',
-    gap: 20,
-  },
-  metricItem: {
-    gap: 8,
-  },
-  metricLabel: {
-    color: '#64748b',
-    fontSize: 10,
-    fontWeight: '800',
-    letterSpacing: 1,
-  },
-  metricValueRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 6,
-  },
-  metricValue: {
-    color: '#fff',
-    fontSize: 24,
-    fontWeight: '800',
-  },
-  metricMs: {
-    fontSize: 16,
-    color: '#94a3b8',
-    fontWeight: '600',
-  },
-  subCardsRow: {
-    flexDirection: 'row',
-    gap: 20,
-  },
-  subCard: {
-    flex: 1,
-    backgroundColor: '#fff',
-    borderRadius: 24,
-    padding: 24,
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 20,
-    borderWidth: 1,
-    borderColor: '#f1f5f9',
-    shadowColor: '#000',
-    shadowOpacity: 0.02,
-    shadowOffset: { width: 0, height: 4 },
-    shadowRadius: 10,
-    elevation: 2,
-  },
-  subCardIconWrapper: {
-    width: 60,
-    height: 60,
-    borderRadius: 16,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  subCardValue: {
-    fontSize: 24,
-    fontWeight: '800',
-    color: '#0f172a',
-    marginBottom: 4,
-  },
-  subCardLabel: {
-    fontSize: 10,
-    fontWeight: '800',
-    color: '#64748b',
-    letterSpacing: 1,
-  },
-  historyCard: {
-    backgroundColor: '#fff',
-    borderRadius: 24,
-    padding: 30,
-    flex: 1,
-    borderWidth: 1,
-    borderColor: '#f1f5f9',
-    shadowColor: '#000',
-    shadowOpacity: 0.02,
-    shadowOffset: { width: 0, height: 4 },
-    shadowRadius: 10,
-    elevation: 2,
-    minHeight: 300,
-  },
-  historyHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 30,
-  },
-  historyTitle: {
-    fontSize: 18,
-    fontWeight: '800',
-    color: '#0f172a',
-  },
-  badgeSolid: {
-    backgroundColor: '#f1f5f9',
-    paddingHorizontal: 10,
-    paddingVertical: 4,
-    borderRadius: 12,
-  },
-  badgeSolidText: {
-    fontSize: 10,
-    fontWeight: '800',
-    color: '#64748b',
-    letterSpacing: 0.5,
-  },
-  emptyHistory: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: 16,
-    opacity: 0.8,
-  },
-  emptyHistoryText: {
-    textAlign: 'center',
-    fontSize: 14,
-    fontWeight: '800',
-    color: '#94a3b8',
-    letterSpacing: 0.5,
-    lineHeight: 22,
-  },
-  historyList: {
-    gap: 20,
-  },
-  historyItem: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    borderBottomWidth: 1,
-    borderBottomColor: '#f8fafc',
-    paddingBottom: 16,
-  },
-  historyItemLeft: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 12,
-  },
-  activeDot: {
-    width: 8,
-    height: 8,
-    borderRadius: 4,
-    backgroundColor: '#34d399',
-  },
-  runName: {
-    fontSize: 15,
-    fontWeight: '700',
-    color: '#0f172a',
-    marginBottom: 2,
-  },
-  runDate: {
-    fontSize: 12,
-    color: '#94a3b8',
-    fontWeight: '500',
-  },
-  runFitness: {
-    fontSize: 16,
-    fontWeight: '800',
-  }
+  activityText: { fontSize: 13, color: '#334155', lineHeight: 18 },
+  actorName: { fontWeight: '700', color: '#0ea5e9' },
+  activityTime: { fontSize: 11, color: '#94a3b8', marginTop: 2 },
 });
