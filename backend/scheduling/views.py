@@ -237,11 +237,89 @@ def list_officers_view(request):
             "full_name": f"{op.user.first_name} {op.user.last_name}".strip() or op.user.username,
             "email": op.user.email,
             "username": op.user.username,
+            "is_active": op.user.is_active,
             "date_joined": op.user.date_joined,
         }
         for op in officers
     ]
     return Response(data)
+
+
+@api_view(["PATCH"])
+@permission_classes([IsAuthenticated])
+def update_officer_view(request, user_id):
+    """
+    PATCH /api/auth/officers/<user_id>/
+    Admin-only: edit officer full_name, email, department.
+    """
+    profile = getattr(request.user, "profile", None)
+    if not profile or profile.role not in ("ADMIN", "OFFICER"):
+        return Response({"error": "Permission denied."}, status=status.HTTP_403_FORBIDDEN)
+
+    from django.contrib.auth.models import User as DjangoUser
+    try:
+        user = DjangoUser.objects.get(id=user_id, profile__role="OFFICER")
+    except DjangoUser.DoesNotExist:
+        return Response({"error": "Officer not found."}, status=status.HTTP_404_NOT_FOUND)
+
+    full_name = request.data.get("full_name", "").strip()
+    email = request.data.get("email", "").strip()
+
+    if full_name:
+        parts = full_name.split(" ", 1)
+        user.first_name = parts[0]
+        user.last_name = parts[1] if len(parts) > 1 else ""
+
+    if email and email != user.email:
+        if DjangoUser.objects.filter(email=email).exclude(id=user_id).exists():
+            return Response({"error": "This email is already in use."}, status=status.HTTP_400_BAD_REQUEST)
+        user.email = email
+        user.username = email
+
+    user.save()
+
+    AuditLog.objects.create(
+        actor=request.user,
+        action=f"Updated officer details: {user.get_full_name() or user.username} ({user.email})",
+    )
+
+    return Response({
+        "id": user.id,
+        "full_name": user.get_full_name() or user.username,
+        "email": user.email,
+        "username": user.username,
+        "is_active": user.is_active,
+        "date_joined": user.date_joined,
+    })
+
+
+@api_view(["POST"])
+@permission_classes([IsAuthenticated])
+def toggle_officer_active_view(request, user_id):
+    """
+    POST /api/auth/officers/<user_id>/toggle-active/
+    Admin-only: activate or deactivate an officer account.
+    """
+    profile = getattr(request.user, "profile", None)
+    if not profile or profile.role not in ("ADMIN", "OFFICER"):
+        return Response({"error": "Permission denied."}, status=status.HTTP_403_FORBIDDEN)
+
+    from django.contrib.auth.models import User as DjangoUser
+    try:
+        user = DjangoUser.objects.get(id=user_id, profile__role="OFFICER")
+    except DjangoUser.DoesNotExist:
+        return Response({"error": "Officer not found."}, status=status.HTTP_404_NOT_FOUND)
+
+    user.is_active = not user.is_active
+    user.save()
+
+    verb = "Activated" if user.is_active else "Deactivated"
+    AuditLog.objects.create(
+        actor=request.user,
+        action=f"{verb} officer: {user.get_full_name() or user.username} ({user.email})",
+    )
+
+    return Response({"id": user.id, "is_active": user.is_active, "message": f"Officer {verb.lower()} successfully."})
 
 
 # ═════════════════════════════════════════════════════════════

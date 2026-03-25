@@ -166,6 +166,7 @@ export interface OfficerResponse {
   full_name: string;
   email: string;
   username: string;
+  is_active: boolean;
   date_joined: string;
 }
 
@@ -187,6 +188,10 @@ export const officersApi = {
   list: () => api.get<OfficerResponse[]>('/api/auth/officers/'),
   register: (data: RegisterOfficerPayload) =>
     api.post<RegisterOfficerResult>('/api/auth/register-officer/', data),
+  update: (id: number, data: { full_name?: string; email?: string }) =>
+    api.patch<OfficerResponse>(`/api/auth/officers/${id}/`, data),
+  toggleActive: (id: number) =>
+    api.post<{ id: number; is_active: boolean; message: string }>(`/api/auth/officers/${id}/toggle-active/`),
 };
 
 /* ── Audit Log ────────────────────────────────────── */

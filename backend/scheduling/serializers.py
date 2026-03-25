@@ -399,25 +399,31 @@ class RegisterOfficerSerializer(serializers.Serializer):
             role="OFFICER",
         )
 
-        # Send welcome email
-        try:
-            send_mail(
-                subject="Your UniSched Timetable Officer Account",
-                message=(
-                    f"Hello {full_name},\n\n"
-                    f"Your Timetable Officer account has been created.\n\n"
-                    f"Login URL: {getattr(django_settings, 'FRONTEND_URL', 'https://unisched.netlify.app')}\n"
-                    f"Username (Email): {email}\n"
-                    f"Password: {password}\n\n"
-                    f"Please change your password after first login.\n\n"
-                    f"UniSched System"
-                ),
-                from_email=getattr(django_settings, 'DEFAULT_FROM_EMAIL', 'noreply@unisched.app'),
-                recipient_list=[email],
-                fail_silently=True,
-            )
-        except Exception:
-            pass  # Email failure is non-fatal; admin can see the password in the response
+        # Send welcome email in a background thread so a blocked SMTP socket
+        # never hangs the gunicorn worker (Render blocks outbound SMTP ports).
+        def _send_welcome():
+            try:
+                send_mail(
+                    subject="Your UniSched Timetable Officer Account",
+                    message=(
+                        f"Hello {full_name},\n\n"
+                        f"Your Timetable Officer account has been created.\n\n"
+                        f"Login URL: {getattr(django_settings, 'FRONTEND_URL', 'https://unisched.netlify.app')}\n"
+                        f"Username (Email): {email}\n"
+                        f"Password: {password}\n\n"
+                        f"Please change your password after first login.\n\n"
+                        f"UniSched System"
+                    ),
+                    from_email=getattr(django_settings, 'DEFAULT_FROM_EMAIL', 'noreply@unisched.app'),
+                    recipient_list=[email],
+                    fail_silently=True,
+                )
+            except Exception:
+                pass  # Email failure is best-effort; admin sees password in response
+
+        import threading
+        t = threading.Thread(target=_send_welcome, daemon=True)
+        t.start()
 
         return {
             "full_name": full_name,
